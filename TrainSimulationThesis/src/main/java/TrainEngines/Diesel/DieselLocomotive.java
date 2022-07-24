@@ -2,7 +2,7 @@ package TrainEngines.Diesel;
 
 import TrainEngines.Locomotive;
 
-public abstract class DieselLocomotive extends Locomotive
+public abstract class DieselLocomotive implements Locomotive
 {
     /**
      * Lokomotív teljesítménye lóerőben.

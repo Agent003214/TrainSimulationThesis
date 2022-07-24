@@ -2,7 +2,7 @@ package TrainEngines.Electric;
 
 import TrainEngines.Locomotive;
 
-public abstract class ElectricLocomotive extends Locomotive
+public abstract class ElectricLocomotive implements Locomotive
 {
     /**
      * Lokomotív teljesítménye kW-ban.

@@ -1,34 +1,23 @@
 package Main;
 
-import TrainEngines.Diesel.F40PH;
-import TrainFactories.Train;
-import TrainFactories.TrainClass;
-import TrainFactories.TrainFactory;
-import TrainFactories.TrainBuilder;
-
-import java.util.ArrayList;
+import Attachables.Attachable;
+import TrainBuilder.Builder;
+import TrainBuilder.Director;
+import TrainBuilder.PassengerTrain;
+import TrainBuilder.PassengerTrainBuilder;
+import TrainEngines.Locomotive;
 
 public class Main
 {
     public static void main(String[] args)
     {
-        /*System.out.println("Hello world!");
-        TrainFactory valami=TrainBuilder.getFactory(true);
+        Director director=new Director();
 
-        TrainFactories.Train valamiMas=valami.getTrain();
-        System.out.println(valamiMas.toString());*/
+        PassengerTrainBuilder builder=new PassengerTrainBuilder();
+        director.createPassengerTrain(builder);
 
-        ArrayList<Train> vonat=new ArrayList<>();
+        PassengerTrain train1=builder.getResult();
 
-        TrainBuilder epit=new TrainBuilder();
-        TrainClass utas=epit.createPassengerTrain();
-        utas.draw();
-
-/*
-        TrainBuilder epit2=new TrainBuilder();
-        TrainClass cargo=epit2.createCargoTrain();
-        cargo.draw();*/
-        
-
+        System.out.println(train1.getEngine());
     }
 }

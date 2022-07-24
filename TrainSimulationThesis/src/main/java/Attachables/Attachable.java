@@ -4,5 +4,5 @@ public interface Attachable
 {
     public int getCapacity();
     public int maxAllowedSpeed();
-    public int gaugeSize();
+    public int getgaugeSize();
 }

@@ -1,30 +1,25 @@
 package Attachables.PassengerCar;
 
 import Attachables.Attachable;
-import Attachables.AttachableClass;
 
-public class Mark3 extends AttachableClass
+public class Mark3 implements Attachable
 {
 
-    /**
-     * Number of passenger
-     * @return
-     */
     @Override
     public int getCapacity()
     {
-        return 74;
+        return 0;
     }
 
     @Override
     public int maxAllowedSpeed()
     {
-        return 200;
+        return 0;
     }
 
     @Override
-    public int gaugeSize()
+    public int getgaugeSize()
     {
-        return 1435;
+        return 0;
     }
 }

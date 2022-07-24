@@ -1,9 +1,8 @@
 package Attachables.PassengerCar;
 
 import Attachables.Attachable;
-import Attachables.AttachableClass;
 
-public class InterCityPlus extends AttachableClass
+public class InterCityPlus implements Attachable
 {
     @Override
     public int getCapacity()
@@ -18,7 +17,7 @@ public class InterCityPlus extends AttachableClass
     }
 
     @Override
-    public int gaugeSize()
+    public int getgaugeSize()
     {
         return 1435;
     }
