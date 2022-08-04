@@ -33,6 +33,12 @@ public class V63 extends ElectricLocomotive
     }
 
     @Override
+    public int getLenght()
+    {
+        return 20;
+    }
+
+    @Override
     public int getGaugeSize()
     {
         return 1435;

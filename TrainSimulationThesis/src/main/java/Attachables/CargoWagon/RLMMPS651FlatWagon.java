@@ -1,10 +1,15 @@
-package Attachables.PassengerCar;
+package Attachables.CargoWagon;
 
 import Attachables.Attachable;
+import Attachables.Cargo.Cargo;
 
-public class Mark3 extends Car
+/**
+ * The flatbed train wagon.
+ */
+public class RLMMPS651FlatWagon extends Attachable
 {
-
+    //https://www.dybas.de/dybas/gw/gw_r_6/g651.html
+    private Cargo cargo;
     @Override
     public int getCapacity()
     {
@@ -14,19 +19,24 @@ public class Mark3 extends Car
     @Override
     public int maxAllowedSpeed()
     {
-        return 0;
+        return 120;
     }
 
     @Override
     public int getGaugeSize()
     {
-        return 0;
+        return 1435;
     }
 
     @Override
     public int getLength()
     {
-        return 23;
+        return 11;
+    }
+
+    public void loadCargo(Cargo cargo)
+    {
+        this.cargo=cargo;
     }
 
     @Override

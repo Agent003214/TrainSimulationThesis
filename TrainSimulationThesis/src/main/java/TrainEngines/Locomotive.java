@@ -1,23 +1,27 @@
 package TrainEngines;
 
-public interface Locomotive
-{
-    String getModelName();
+import Factories.BaseTrain;
 
-    String getMakerName();
-    int getPower();
+public abstract class Locomotive extends BaseTrain
+{
+    public abstract String getModelName();
+
+    public abstract String getMakerName();
+    public abstract int getPower();
 
     /**
      * Lokomotív maximális sebessége km/h-ban.
      * @return
      */
-     int getMaxSpeed();
+     public abstract int getMaxSpeed();
 
     /**
      * Lokomotív tömege kilóban.
      * @return
      */
-    int getWeight();
+    public abstract int getWeight();
 
-    int getGaugeSize();
+    public abstract int getLenght();
+
+    public abstract int getGaugeSize();
 }

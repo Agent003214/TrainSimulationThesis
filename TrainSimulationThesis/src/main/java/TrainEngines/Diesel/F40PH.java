@@ -33,6 +33,12 @@ public class F40PH extends DieselLocomotive
     }
 
     @Override
+    public int getLenght()
+    {
+        return 0;
+    }
+
+    @Override
     public int getGaugeSize()
     {
         return 1435;

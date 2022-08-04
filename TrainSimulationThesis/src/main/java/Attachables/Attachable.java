@@ -1,8 +1,16 @@
 package Attachables;
 
-public interface Attachable
+import Factories.BaseTrain;
+
+public abstract class Attachable extends BaseTrain
 {
-    public int getCapacity();
-    public int maxAllowedSpeed();
-    public int getgaugeSize();
+    int a;
+    public abstract int getCapacity();
+    public abstract int maxAllowedSpeed();
+    public abstract int getGaugeSize();
+
+    public abstract int getLength();
+
+    public abstract void load(int num);
+    public abstract int getLoad();
 }

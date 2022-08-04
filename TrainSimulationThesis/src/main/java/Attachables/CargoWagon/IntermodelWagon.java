@@ -1,14 +1,13 @@
-package Attachables.PassengerCar;
+package Attachables.CargoWagon;
 
 import Attachables.Attachable;
 
-public class Mark3 extends Car
+public class IntermodelWagon extends Attachable
 {
-
     @Override
     public int getCapacity()
     {
-        return 0;
+        return 2;
     }
 
     @Override
@@ -26,7 +25,7 @@ public class Mark3 extends Car
     @Override
     public int getLength()
     {
-        return 23;
+        return 0;
     }
 
     @Override

@@ -34,6 +34,12 @@ public class SD70M extends SD70Family
     }
 
     @Override
+    public int getLenght()
+    {
+        return 0;
+    }
+
+    @Override
     public int getGaugeSize()
     {
         return 1435;
