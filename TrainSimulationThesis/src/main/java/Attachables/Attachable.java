@@ -12,5 +12,6 @@ public abstract class Attachable extends BaseTrain
     public abstract int getLength();
 
     public abstract void load(int num);
+    public abstract void unload(int num);
     public abstract int getLoad();
 }

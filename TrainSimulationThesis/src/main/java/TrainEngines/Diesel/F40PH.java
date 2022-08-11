@@ -1,5 +1,8 @@
 package TrainEngines.Diesel;
 
+import Annotation.Findable;
+
+@Findable(name = "TrainEngine")
 public class F40PH extends DieselLocomotive
 {
     @Override
@@ -43,5 +46,4 @@ public class F40PH extends DieselLocomotive
     {
         return 1435;
     }
-
 }

@@ -1,6 +1,9 @@
 package Factories;
 
 import Attachables.Attachable;
+import Attachables.Cargo.IntermodelContainer;
+import Attachables.Cargo.TankContainer;
+import Attachables.CargoWagon.RLMMPS651FlatWagon;
 import Attachables.PassengerCar.Car;
 import Exceptions.NoEngineException;
 import Exceptions.PassengerNegativeException;
@@ -13,7 +16,6 @@ import java.util.Arrays;
 public class CompoundTrain extends BaseTrain
 {
     protected ArrayList<Train> trains =new ArrayList<>();
-    private int passengerCount;
     private final int maxlength=750;
 
     public void add(Train component)
@@ -62,6 +64,11 @@ public class CompoundTrain extends BaseTrain
         }
     }
 
+    public int getTrainLenght()
+    {
+        return trains.size();
+    }
+
     public int getNumbersOfCars()
     {
         int szamlalo=0;
@@ -88,19 +95,53 @@ public class CompoundTrain extends BaseTrain
         return szamlalo;
     }
 
-    public int getPassengerCount()
+    public int getTankCapacityCount()
     {
-        return passengerCount;
+        int szamlalo=0;
+        for (int i = 0; i < trains.size(); i++)
+        {
+            if (trains.get(i) instanceof RLMMPS651FlatWagon)
+            {
+                if (((RLMMPS651FlatWagon) trains.get(i)).getCargo() instanceof TankContainer)
+                {
+                    szamlalo=szamlalo+((RLMMPS651FlatWagon) trains.get(i)).getCapacity();
+                }
+            }
+        }
+        return szamlalo;
+    }
+    public int getIntermodelCapacityCount()
+    {
+        int szamlalo=0;
+        for (int i = 0; i < trains.size(); i++)
+        {
+            if (trains.get(i) instanceof RLMMPS651FlatWagon)
+            {
+                if (((RLMMPS651FlatWagon) trains.get(i)).getCargo() instanceof IntermodelContainer)
+                {
+                    szamlalo=szamlalo+((RLMMPS651FlatWagon) trains.get(i)).getCapacity();
+                }
+            }
+        }
+        return szamlalo;
     }
 
-    public void altLoad(int i,int num)
+    public void loadCar(int i, int num)
     {
         if (trains.get(i) instanceof Attachable)
         {
             ((Attachable) trains.get(i)).load(num);
         }
     }
-    public int getLoad(int i)
+
+    public void unloadCar(int i, int num)
+    {
+        if (trains.get(i) instanceof Attachable)
+        {
+            ((Attachable) trains.get(i)).unload(num);
+        }
+    }
+    public int getLoadOfCar(int i)
     {
         if (trains.get(i) instanceof Attachable)
         {
@@ -109,33 +150,23 @@ public class CompoundTrain extends BaseTrain
         return 0;
     }
 
-    public void loadPassengers(int passCount)
+    public int getCapacityOfCar(int i)
     {
-        if (passengerCount+passCount<getPassengerCapacityCount())
+        if (trains.get(i) instanceof Attachable)
         {
-            passengerCount+=passCount;
+            return ((Attachable) trains.get(i)).getCapacity();
         }
-        else
-        {
-            throw new PassengerOverloadException();
-        }
+        return 0;
     }
 
-    /**
-     * Unload the passenger from the train.
-     * @param passCount The number of passengers to be unloaded.
-     * @throws PassengerNegativeException If the passenger count would be a negative number.
-     */
-    public void unloadPassengers(int passCount) throws PassengerNegativeException
+    public void createTankFlatBed()
     {
-        if (passengerCount-passCount>0)
-        {
-            passengerCount=passengerCount-passCount;
-        }
-        else
-        {
-            throw new PassengerNegativeException();
-        }
+        trains.add(new RLMMPS651FlatWagon(new TankContainer()));
+    }
+
+    public void createIntermodelFlatBed()
+    {
+        trains.add(new RLMMPS651FlatWagon(new IntermodelContainer()));
     }
 
     @Override

@@ -10,10 +10,20 @@ public class RLMMPS651FlatWagon extends Attachable
 {
     //https://www.dybas.de/dybas/gw/gw_r_6/g651.html
     private Cargo cargo;
+
+    public RLMMPS651FlatWagon()
+    {
+    }
+
+    public RLMMPS651FlatWagon(Cargo cargo)
+    {
+        this.cargo = cargo;
+    }
+
     @Override
     public int getCapacity()
     {
-        return 0;
+        return cargo.getCapacity();
     }
 
     @Override
@@ -39,15 +49,31 @@ public class RLMMPS651FlatWagon extends Attachable
         this.cargo=cargo;
     }
 
+    public Cargo getCargo()
+    {
+        return cargo;
+    }
+
     @Override
     public void load(int num)
     {
+        cargo.load(num);
+    }
 
+    public void unload(int num)
+    {
+        cargo.unload(num);
     }
 
     @Override
     public int getLoad()
     {
-        return 0;
+        return cargo.getLoad();
+    }
+
+    @Override
+    public String toString()
+    {
+        return "RLMMPS651FlatWagon{}";
     }
 }

@@ -41,6 +41,12 @@ public class InterCityPlus extends Car
     }
 
     @Override
+    public void unload(int num)
+    {
+
+    }
+
+    @Override
     public int getLoad()
     {
         return load;

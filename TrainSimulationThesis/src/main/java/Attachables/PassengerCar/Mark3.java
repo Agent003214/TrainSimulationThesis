@@ -36,6 +36,12 @@ public class Mark3 extends Car
     }
 
     @Override
+    public void unload(int num)
+    {
+
+    }
+
+    @Override
     public int getLoad()
     {
         return 0;
