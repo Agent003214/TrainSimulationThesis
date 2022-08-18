@@ -2,14 +2,30 @@ package Attachables.CargoWagon;
 
 import Attachables.Attachable;
 import Attachables.Cargo.Cargo;
+import Attachables.Cargo.IntermodelContainer;
+import Attachables.Cargo.TankContainer;
 
 /**
  * The flatbed train wagon.
  */
-public class RLMMPS651FlatWagon extends Attachable
+public class RLMMPS651FlatWagon extends Wagon
 {
     //https://www.dybas.de/dybas/gw/gw_r_6/g651.html
     private Cargo cargo;
+
+    @Override
+    public String getName()
+    {
+        try
+        {
+            return "Flat Wagon with "+getCargo().getName();
+        }
+        catch (NullPointerException e)
+        {
+            return "Flat Wagon";
+        }
+
+    }
 
     public RLMMPS651FlatWagon()
     {

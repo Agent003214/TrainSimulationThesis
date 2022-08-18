@@ -4,6 +4,13 @@ package Attachables.Cargo;
 public class IntermodelContainer extends Cargo
 {
     private int load;
+
+    @Override
+    public String getName()
+    {
+        return "Intermodel container";
+    }
+
     /**
      * Returns the capacity in kilograms.
      * @return

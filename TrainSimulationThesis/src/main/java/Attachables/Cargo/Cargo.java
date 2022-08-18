@@ -6,6 +6,7 @@ import Factories.BaseTrain;
 public abstract class Cargo extends BaseTrain
 {
     int load;
+    public abstract String getName();
     public abstract int getCapacity();
     public void load(int num)
     {

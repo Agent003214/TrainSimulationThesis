@@ -8,6 +8,12 @@ public class InterCityPlus extends Car
 
 
     @Override
+    public String getName()
+    {
+        return "Inter City+";
+    }
+
+    @Override
     public int getCapacity()
     {
         return 80;

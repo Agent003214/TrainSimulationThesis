@@ -1,38 +1,38 @@
-package Attachables.PassengerCar;
+package Attachables.CargoWagon;
 
-import Attachables.Attachable;
-
-public class Mark3 extends Car
+public class OpenTopGondola extends Wagon
 {
+    //https://www.gbrx.com/wp-content/uploads/2021/06/1800-gondola.pdf
+    private int load;
 
     @Override
     public String getName()
     {
-        return "British Rail Mark 3";
+        return "1800 Gondola open top wagon";
     }
 
     @Override
     public int getCapacity()
     {
-        return 74;
+        return 106000;
     }
 
     @Override
     public int maxAllowedSpeed()
     {
-        return 200;
+        return 0;
     }
 
     @Override
     public int getGaugeSize()
     {
-        return 1435;
+        return 1425;
     }
 
     @Override
     public int getLength()
     {
-        return 23;
+        return 10;
     }
 
     @Override
@@ -50,6 +50,6 @@ public class Mark3 extends Car
     @Override
     public int getLoad()
     {
-        return 0;
+        return load;
     }
 }

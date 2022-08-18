@@ -4,6 +4,12 @@ public class TankContainer extends Cargo
 {
     private int load;
 
+    @Override
+    public String getName()
+    {
+        return "Tank container";
+    }
+
     /**
      * Returns the capacity in liters
      * @return

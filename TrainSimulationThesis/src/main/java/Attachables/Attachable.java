@@ -5,6 +5,7 @@ import Factories.BaseTrain;
 public abstract class Attachable extends BaseTrain
 {
     int a;
+    public abstract String getName();
     public abstract int getCapacity();
     public abstract int maxAllowedSpeed();
     public abstract int getGaugeSize();
