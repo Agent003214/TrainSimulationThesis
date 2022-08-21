@@ -1,20 +1,23 @@
 package TrainEngines.Diesel;
 
-import Annotation.Findable;
-
-@Findable(name = "TrainEngine")
 public class F40PH extends DieselLocomotive
 {
-    @Override
+
     public String getModelName()
     {
         return "F40PH";
     }
 
-    @Override
+
     public String getMakerName()
     {
         return "General-Motors";
+    }
+
+    @Override
+    public String getType()
+    {
+        return "Diesel";
     }
 
     @Override
@@ -23,25 +26,25 @@ public class F40PH extends DieselLocomotive
         return 3000;
     }
 
-    @Override
+
     public int getMaxSpeed()
     {
         return 170;
     }
 
-    @Override
+
     public int getWeight()
     {
         return 120000;
     }
 
-    @Override
+
     public int getLenght()
     {
         return 0;
     }
 
-    @Override
+
     public int getGaugeSize()
     {
         return 1435;

@@ -1,10 +1,5 @@
 package TrainEngines.Electric;
 
-import Annotation.Findable;
-
-import java.lang.annotation.Target;
-
-@Findable(name = "TrainEngine")
 public class V63 extends ElectricLocomotive
 {
     @Override
@@ -17,6 +12,12 @@ public class V63 extends ElectricLocomotive
     public String getMakerName()
     {
         return "Ganz";
+    }
+
+    @Override
+    public String getType()
+    {
+        return "Electric";
     }
 
     @Override

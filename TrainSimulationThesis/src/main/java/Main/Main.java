@@ -1,13 +1,8 @@
 package Main;
 
-import Annotation.Findable;
 import Factories.CompoundTrain;
 
 import GUI.TrainGUI;
-import GUI.gui2;
-import TrainEngines.Electric.Osztaly;
-import TrainEngines.Electric.V63;
-import org.reflections.Reflections;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -39,7 +34,6 @@ public class Main
             throw new RuntimeException(e);
         }
         new TrainGUI();
-        //new gui2();
         /*SwingUtilities.invokeLater(new Runnable()
         {
             @Override
@@ -50,16 +44,7 @@ public class Main
         });*/
         ArrayList<CompoundTrain> train=new ArrayList<>();
 
-        /*Reflections ref=new Reflections("TrainEngines");
-        for(Class<?> cl:ref.getTypesAnnotatedWith(Findable.class))
-        {
-            Findable findable=cl.getAnnotation(Findable.class);
-            String[] vagott=cl.getName().split("\\.");
-            if (vagott[1].equals("Electric"))
-            {
-                System.out.println(vagott[2]);
-            }
-        }*/
+
 
         /*train.add(new CompoundTrain());
         train.get(0).add(new V63());

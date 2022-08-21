@@ -1,27 +1,26 @@
 package Attachables.CargoWagon;
 
-import Attachables.Attachable;
-
-public class HopperWagon extends Wagon
+public class BoxWagon extends Wagon
 {
-    //https://www.greenbrier-europe.com/products/product/tagnpps-130-m3/
-    private int load;
+    //https://www.greenbrier-europe.com/products/product/eamnos-72-m3-e04e/
+    private int load=0;
+
     @Override
     public String getName()
     {
-        return "Tagnpps 130m³";
+        return "Eamnos E04E";
     }
 
     @Override
     public String getType()
     {
-        return "Grain hopper wagon";
+        return "Box wagon";
     }
 
     @Override
     public int getCapacity()
     {
-        return 68000;
+        return 71000;
     }
 
     @Override
@@ -33,13 +32,13 @@ public class HopperWagon extends Wagon
     @Override
     public int getGaugeSize()
     {
-        return 1435;
+        return 1425;
     }
 
     @Override
     public int getLength()
     {
-        return 20;
+        return 13;
     }
 
     @Override

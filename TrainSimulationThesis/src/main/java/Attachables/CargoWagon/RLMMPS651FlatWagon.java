@@ -18,13 +18,19 @@ public class RLMMPS651FlatWagon extends Wagon
     {
         try
         {
-            return "Flat Wagon with "+getCargo().getName();
+            return "RLMMPS651 with "+getCargo().getName();
         }
         catch (NullPointerException e)
         {
-            return "Flat Wagon";
+            return "RLMMPS651";
         }
 
+    }
+
+    @Override
+    public String getType()
+    {
+        return "Flat wagon";
     }
 
     public RLMMPS651FlatWagon()
@@ -39,11 +45,19 @@ public class RLMMPS651FlatWagon extends Wagon
     @Override
     public int getCapacity()
     {
-        return cargo.getCapacity();
+        try
+        {
+            return cargo.getCapacity();
+        }
+        catch (NullPointerException e)
+        {
+            return 0;
+        }
+
     }
 
     @Override
-    public int maxAllowedSpeed()
+    public int getMaxSpeed()
     {
         return 120;
     }

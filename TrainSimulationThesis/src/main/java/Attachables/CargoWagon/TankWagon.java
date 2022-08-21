@@ -1,38 +1,44 @@
 package Attachables.CargoWagon;
 
-public class OpenTopGondola extends Wagon
-{
-    //https://www.gbrx.com/wp-content/uploads/2021/06/1800-gondola.pdf
-    private int load;
+import Attachables.Attachable;
 
+public class TankWagon extends Wagon
+{
+    private int load=0;
     @Override
     public String getName()
     {
-        return "1800 Gondola open top wagon";
+        return "Zags 53m³";
+    }
+
+    @Override
+    public String getType()
+    {
+        return "Fluid tank wagon";
     }
 
     @Override
     public int getCapacity()
     {
-        return 106000;
+        return 66000;
     }
 
     @Override
-    public int maxAllowedSpeed()
+    public int getMaxSpeed()
     {
-        return 0;
+        return 100;
     }
 
     @Override
     public int getGaugeSize()
     {
-        return 1425;
+        return 1435;
     }
 
     @Override
     public int getLength()
     {
-        return 10;
+        return 13;
     }
 
     @Override

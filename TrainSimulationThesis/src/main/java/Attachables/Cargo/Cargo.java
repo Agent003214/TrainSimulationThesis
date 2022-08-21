@@ -7,6 +7,11 @@ public abstract class Cargo extends BaseTrain
 {
     int load;
     public abstract String getName();
+
+    /**
+     * Return the capacity in kilogramms.
+     * @return
+     */
     public abstract int getCapacity();
     public void load(int num)
     {

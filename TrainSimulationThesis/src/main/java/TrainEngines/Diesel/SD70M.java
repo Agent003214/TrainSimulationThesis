@@ -1,8 +1,8 @@
 package TrainEngines.Diesel;
 
-public class SD70M extends SD70Family
+public class SD70M extends DieselLocomotive
 {
-
+    //https://www.thedieselshop.us/Data%20EMD%20SD70M.HTML
     @Override
     public String getModelName()
     {
@@ -12,7 +12,13 @@ public class SD70M extends SD70Family
     @Override
     public String getMakerName()
     {
-        return "General Motors";
+        return "General-Motors";
+    }
+
+    @Override
+    public String getType()
+    {
+        return "Diesel";
     }
 
     @Override
@@ -24,7 +30,7 @@ public class SD70M extends SD70Family
     @Override
     public int getMaxSpeed()
     {
-        return 0;
+        return 110;
     }
 
     @Override

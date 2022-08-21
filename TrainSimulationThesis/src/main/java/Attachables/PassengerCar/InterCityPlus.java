@@ -4,7 +4,7 @@ import Attachables.Attachable;
 
 public class InterCityPlus extends Car
 {
-    private int load=0;
+    private int load = 0;
 
 
     @Override
@@ -14,16 +14,23 @@ public class InterCityPlus extends Car
     }
 
     @Override
+    public String getType()
+    {
+        return "Passenger car";
+    }
+
+    @Override
     public int getCapacity()
     {
         return 80;
     }
 
     @Override
-    public int maxAllowedSpeed()
+    public int getMaxSpeed()
     {
         return 200;
     }
+
 
     @Override
     public int getGaugeSize()
@@ -40,9 +47,9 @@ public class InterCityPlus extends Car
     @Override
     public void load(int num)
     {
-        if (num+load<getCapacity())
+        if (num + load < getCapacity())
         {
-            load=load+num;
+            load = load + num;
         }
     }
 
