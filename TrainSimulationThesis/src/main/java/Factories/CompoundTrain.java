@@ -17,6 +17,17 @@ public class CompoundTrain extends BaseTrain
 {
     protected ArrayList<Train> trains =new ArrayList<>();
     private final int maxlength=750;
+    private String trainName;
+
+    public void setTrainName(String trainName)
+    {
+        this.trainName = trainName;
+    }
+
+    public String getTrainName()
+    {
+        return trainName;
+    }
 
     public void add(Train component)
     {
@@ -58,6 +69,13 @@ public class CompoundTrain extends BaseTrain
                 counter++;
             }
         }
+        for (int i = 0; i < trains.size(); i++)
+        {
+            if (trains.get(i) instanceof Locomotive)
+            {
+                counter++;
+            }
+        }
         if (counter==0)
         {
             throw new NoEngineException();
@@ -67,6 +85,19 @@ public class CompoundTrain extends BaseTrain
     public int getTrainLenght()
     {
         return trains.size();
+    }
+
+    public int getCombinedPower()
+    {
+        int szamlalo=0;
+        for (int i = 0; i < trains.size(); i++)
+        {
+            if (trains.get(i) instanceof Locomotive)
+            {
+                szamlalo+=((Locomotive) trains.get(i)).getPower();
+            }
+        }
+        return szamlalo;
     }
 
     public int getNumbersOfCars()
@@ -173,6 +204,16 @@ public class CompoundTrain extends BaseTrain
     public int getLength()
     {
         return super.getLength();
+    }
+
+    public String[] trainCars()
+    {
+        String[] trainCars=new String[trains.size()];
+        for (int i = 0; i < trains.size(); i++)
+        {
+            trainCars[i]=trains.get(i).toString();
+        }
+        return trainCars;
     }
 
     @Override

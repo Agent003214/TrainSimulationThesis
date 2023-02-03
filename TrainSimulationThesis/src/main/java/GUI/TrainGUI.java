@@ -18,7 +18,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class TrainGUI extends JFrame implements ActionListener
+public class TrainGUI extends JFrame
 {
     private final CardLayout cardLayout;
     private GridBagLayout gridBagLayout;
@@ -58,13 +58,13 @@ public class TrainGUI extends JFrame implements ActionListener
 
 
         //Create the train creation page
-        JPanel createTrainPage = new JPanel();
-        createTrainPage.setBackground(Color.RED);
+        //JPanel createTrainPage = new JPanel();
+        /*createTrainPage.setBackground(Color.RED);
         gridBagLayout = new GridBagLayout();
-        createTrainPage.setLayout(gridBagLayout);
+        createTrainPage.setLayout(gridBagLayout);*/
 
         //Create top panel
-        GridBagConstraints c = new GridBagConstraints();
+        /*GridBagConstraints c = new GridBagConstraints();
         JPanel createTrainPageTopPanel = new JPanel();
         createTrainPageTopPanel.setPreferredSize(new Dimension(dim.width, ((dim.height / 3) * 2) - 20));
         createTrainPageTopPanel.setBackground(Color.WHITE);
@@ -74,16 +74,16 @@ public class TrainGUI extends JFrame implements ActionListener
         c.gridheight = 1;
         c.gridwidth = 1;
         c.fill = GridBagConstraints.BOTH;
-        createTrainPage.add(createTrainPageTopPanel, c);
+        createTrainPage.add(createTrainPageTopPanel, c);*/
 
         //Create add locomotive panels
         //Top left panel
-        JPanel addSelectorTopPanel = new JPanel();
+        /*JPanel addSelectorTopPanel = new JPanel();
         addSelectorTopPanel.setLayout(cardLayout);
         JPanel addLocomotivePanel = new JPanel();
-        addLocomotivePanel.setLayout(new BorderLayout());
+        addLocomotivePanel.setLayout(new BorderLayout());*/
         /*JList<String>*/
-        locomotiveList = new JList<>(locomotives());
+       /* locomotiveList = new JList<>(locomotives());
         JButton addLocomotiveButton = new JButton("Add locomotive");
         addLocomotivePanel.add(locomotiveList, BorderLayout.CENTER);
         addLocomotivePanel.add(addLocomotiveButton, BorderLayout.SOUTH);
@@ -209,7 +209,7 @@ public class TrainGUI extends JFrame implements ActionListener
         c.gridy = 2;
         c.gridheight = 1;
         c.gridwidth = 1;
-        createTrainPage.add(createTrainPageBottomPanel, c);
+        createTrainPage.add(createTrainPageBottomPanel, c);*/
 
 
         JPanel p2 = new JPanel();
@@ -217,19 +217,23 @@ public class TrainGUI extends JFrame implements ActionListener
         JPanel p3 = new JPanel();
         p3.setBackground(Color.BLUE);
 
-        mainPane.add("createTrainPage", createTrainPage);
-        mainPane.add("p2", p2);
-        mainPane.add("p3", p3);
+        Map trainMap=new Map();
+
+        mainPane.add("createTrainPage", new CreateTrainPage());
+        mainPane.add("p2", new ViewTrainsPage());
+        mainPane.add("p3", trainMap);
+        trainMap.startGameThread();
+
 
         Container pane = this.getContentPane();
         pane.add(mainPane, BorderLayout.CENTER);
-        JButton button1 = new JButton("gomb1");
+        JButton button1 = new JButton("Create train");
         button1.addActionListener(e -> cardLayout.show(mainPane, "createTrainPage"));
-        JButton button2 = new JButton("gomb2");
+        JButton button2 = new JButton("View trains");
         button2.addActionListener(e -> cardLayout.show(mainPane, "p2"));
-        JButton button3 = new JButton("gomb3");
+        JButton button3 = new JButton("Map");
         button3.addActionListener(e -> cardLayout.show(mainPane, "p3"));
-        JButton button4 = new JButton("quit");
+        JButton button4 = new JButton("Quit");
         button4.addActionListener(e -> System.exit(0));
 
         JPanel buttonPanel = new JPanel();
@@ -244,7 +248,7 @@ public class TrainGUI extends JFrame implements ActionListener
         setVisible(true);
     }
 
-    private void showLocomotiveList(JPanel listPanel, JPanel buttonPanel)
+    /*private void showLocomotiveList(JPanel listPanel, JPanel buttonPanel)
     {
         cardLayout.show(listPanel, "locomotiveSelect");
         cardLayout.show(buttonPanel, "locomotiveFilter");
@@ -493,7 +497,7 @@ public class TrainGUI extends JFrame implements ActionListener
         return locoDefaultList;
     }
 
-    private static ArrayList<Locomotive> getLocomotivesArrayList()
+    private ArrayList<Locomotive> getLocomotivesArrayList()
     {
         ArrayList<Locomotive> locomotiveList = new ArrayList<>();
         locomotiveList.add(new V63());
@@ -513,7 +517,7 @@ public class TrainGUI extends JFrame implements ActionListener
         return locoDefaultList;
     }
 
-    private static ArrayList<Attachable> getAttachableArrayList()
+    protected ArrayList<Attachable> getAttachableArrayList()
     {
         ArrayList<Attachable> attachableList = new ArrayList<>();
         attachableList.add(new InterCityPlus());
@@ -539,5 +543,5 @@ public class TrainGUI extends JFrame implements ActionListener
     public void actionPerformed(ActionEvent e)
     {
 
-    }
+    }*/
 }

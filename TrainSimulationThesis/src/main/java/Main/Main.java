@@ -2,6 +2,7 @@ package Main;
 
 import Factories.CompoundTrain;
 
+import GUI.MethodClass;
 import GUI.TrainGUI;
 
 import javax.swing.*;
