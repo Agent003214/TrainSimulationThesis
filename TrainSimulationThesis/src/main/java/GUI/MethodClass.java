@@ -1,10 +1,10 @@
 package GUI;
 
 import Attachables.Attachable;
-import Attachables.Cargo.Cargo;
-import Attachables.Cargo.LongContainer;
-import Attachables.Cargo.ShortContainer;
-import Attachables.Cargo.TankContainer;
+import Attachables.CargoContainer.CargoContainer;
+import Attachables.CargoContainer.LongContainer;
+import Attachables.CargoContainer.ShortContainer;
+import Attachables.CargoContainer.TankContainer;
 import Attachables.CargoWagon.BoxWagon;
 import Attachables.CargoWagon.HopperWagon;
 import Attachables.CargoWagon.RLMMPS651FlatWagon;
@@ -29,6 +29,11 @@ public class MethodClass
     {
         return train;
     }
+
+    /**
+     * All available locomotives.
+     * @return
+     */
     protected ArrayList<Locomotive> getLocomotivesArrayList()
     {
         ArrayList<Locomotive> locomotiveList = new ArrayList<>();
@@ -50,13 +55,13 @@ public class MethodClass
         return attachableList;
     }
 
-    protected ArrayList<Cargo> getCargoArrayList()
+    protected ArrayList<CargoContainer> getCargoArrayList()
     {
-        ArrayList<Cargo> cargoArrayList=new ArrayList<>();
-        cargoArrayList.add(new ShortContainer());
-        cargoArrayList.add(new LongContainer());
-        cargoArrayList.add(new TankContainer());
-        return cargoArrayList;
+        ArrayList<CargoContainer> cargoContainerArrayList =new ArrayList<>();
+        cargoContainerArrayList.add(new ShortContainer());
+        cargoContainerArrayList.add(new LongContainer());
+        cargoContainerArrayList.add(new TankContainer());
+        return cargoContainerArrayList;
     }
     protected CompoundTrain getLatestTrain()
     {
@@ -97,6 +102,7 @@ public class MethodClass
     protected void printTest()
     {
         ViewTrainsPage valami=new ViewTrainsPage();
+        valami.trainList();
         //valami.trainList();
         //valami.DLMtest();
     }

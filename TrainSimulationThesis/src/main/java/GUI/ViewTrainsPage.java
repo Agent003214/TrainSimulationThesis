@@ -9,13 +9,14 @@ import java.awt.event.MouseEvent;
 public class ViewTrainsPage extends JPanel
 {
     private MethodClass GUIMethods=new MethodClass();
-    GridBagLayout gridBagLayout;
-    GridBagConstraints c;
+    private GridBagLayout gridBagLayout;
+    private GridBagConstraints c;
     private final CardLayout cardLayout;
     private JList<String> trainListInfoPanel;
     private static DefaultListModel<String> test;
-    private JTextArea trainStatsInfoPanel;
+    private static JTextArea trainStatsInfoPanel;
     private JTextArea trainElementsInfoPanel;
+    protected static String[] refreshArray;
     public ViewTrainsPage()
     {
         setBackground(Color.YELLOW);
@@ -118,6 +119,10 @@ public class ViewTrainsPage extends JPanel
         trainStatsInfoPanel.append("Total passenger capacity: "+GUIMethods.getTrain().get(index).getPassengerCapacityCount()+"\n");
     }
 
+    /**
+     * Displays the cars for the selected train.
+     * @param index The selected index for train cars to display
+     */
     private void trainInfoBottom(int index)
     {
         trainElementsInfoPanel.setText("");
@@ -135,15 +140,18 @@ public class ViewTrainsPage extends JPanel
         //test.addElement("aa");
     }
 
+    /**
+     * Updates the list for the created trains.
+     * */
     protected void trainList()
     {
-        String[] tempArray=new String[GUIMethods.getTrain().size()];
+        refreshArray =new String[GUIMethods.getTrain().size()];
         for (int i = 0; i < GUIMethods.getTrain().size(); i++)
         {
-            tempArray[i]=GUIMethods.getTrain().get(i).getTrainName();
+            refreshArray[i]=GUIMethods.getTrain().get(i).getTrainName();
             //System.out.println(tempArray[i]);
         }
-        trainListInfoPanel.setListData(tempArray);
+        trainListInfoPanel.setListData(refreshArray);
         trainListInfoPanel.revalidate();
         trainListInfoPanel.repaint();
     }

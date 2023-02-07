@@ -1,13 +1,11 @@
 package Factories;
 
 import Attachables.Attachable;
-import Attachables.Cargo.IntermodelContainer;
-import Attachables.Cargo.TankContainer;
+import Attachables.CargoContainer.IntermodelContainer;
+import Attachables.CargoContainer.TankContainer;
 import Attachables.CargoWagon.RLMMPS651FlatWagon;
 import Attachables.PassengerCar.Car;
 import Exceptions.NoEngineException;
-import Exceptions.PassengerNegativeException;
-import Exceptions.PassengerOverloadException;
 import TrainEngines.Locomotive;
 
 import java.util.ArrayList;
@@ -81,6 +79,7 @@ public class CompoundTrain extends BaseTrain
             throw new NoEngineException();
         }
     }
+
 
     public int getTrainLenght()
     {

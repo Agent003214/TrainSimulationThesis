@@ -1,7 +1,7 @@
-package Attachables.Cargo;
+package Attachables.CargoContainer;
 
 
-public class IntermodelContainer extends Cargo
+public class IntermodelContainer extends CargoContainer
 {
     private int load;
 

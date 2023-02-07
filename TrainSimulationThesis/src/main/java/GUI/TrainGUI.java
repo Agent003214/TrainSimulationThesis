@@ -1,22 +1,7 @@
 package GUI;
 
-import Attachables.Attachable;
-import Attachables.Cargo.*;
-import Attachables.CargoWagon.*;
-import Attachables.PassengerCar.Car;
-import Attachables.PassengerCar.InterCityPlus;
-import Attachables.PassengerCar.Mark3;
-import TrainEngines.Diesel.DieselLocomotive;
-import TrainEngines.Diesel.F40PH;
-import TrainEngines.Diesel.SD70M;
-import TrainEngines.Electric.ElectricLocomotive;
-import TrainEngines.Electric.V63;
-import TrainEngines.Locomotive;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
-import java.util.ArrayList;
 
 public class TrainGUI extends JFrame
 {
@@ -222,7 +207,7 @@ public class TrainGUI extends JFrame
         mainPane.add("createTrainPage", new CreateTrainPage());
         mainPane.add("p2", new ViewTrainsPage());
         mainPane.add("p3", trainMap);
-        trainMap.startGameThread();
+        //trainMap.startGameThread();
 
 
         Container pane = this.getContentPane();

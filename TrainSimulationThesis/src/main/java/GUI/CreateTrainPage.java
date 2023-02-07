@@ -1,13 +1,11 @@
 package GUI;
 
 import Attachables.Attachable;
-import Attachables.Cargo.LongContainer;
-import Attachables.Cargo.ShortContainer;
-import Attachables.Cargo.TankContainer;
+import Attachables.CargoContainer.LongContainer;
+import Attachables.CargoContainer.ShortContainer;
+import Attachables.CargoContainer.TankContainer;
 import Attachables.CargoWagon.*;
 import Attachables.PassengerCar.Car;
-import Attachables.PassengerCar.InterCityPlus;
-import Attachables.PassengerCar.Mark3;
 import Factories.CompoundTrain;
 import Factories.Train;
 import TrainEngines.Diesel.DieselLocomotive;

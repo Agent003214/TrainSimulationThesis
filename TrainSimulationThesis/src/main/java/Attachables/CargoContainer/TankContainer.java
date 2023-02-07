@@ -1,6 +1,6 @@
-package Attachables.Cargo;
+package Attachables.CargoContainer;
 
-public class TankContainer extends Cargo
+public class TankContainer extends CargoContainer
 {
     private int load;
 

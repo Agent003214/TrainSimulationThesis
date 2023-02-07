@@ -8,7 +8,7 @@ public class BoxWagon extends Wagon
     @Override
     public String getName()
     {
-        return "Eamnos E04E";
+        return "Eamnos 72 m³ - E04E";
     }
 
     @Override

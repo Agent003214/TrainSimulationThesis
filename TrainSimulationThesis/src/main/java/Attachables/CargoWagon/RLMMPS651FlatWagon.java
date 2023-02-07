@@ -1,9 +1,6 @@
 package Attachables.CargoWagon;
 
-import Attachables.Attachable;
-import Attachables.Cargo.Cargo;
-import Attachables.Cargo.IntermodelContainer;
-import Attachables.Cargo.TankContainer;
+import Attachables.CargoContainer.CargoContainer;
 
 /**
  * The flatbed train wagon.
@@ -11,7 +8,7 @@ import Attachables.Cargo.TankContainer;
 public class RLMMPS651FlatWagon extends Wagon
 {
     //https://www.dybas.de/dybas/gw/gw_r_6/g651.html
-    private Cargo cargo;
+    private CargoContainer cargoContainer;
 
     @Override
     public String getName()
@@ -37,9 +34,9 @@ public class RLMMPS651FlatWagon extends Wagon
     {
     }
 
-    public RLMMPS651FlatWagon(Cargo cargo)
+    public RLMMPS651FlatWagon(CargoContainer cargoContainer)
     {
-        this.cargo = cargo;
+        this.cargoContainer = cargoContainer;
     }
 
     @Override
@@ -47,7 +44,7 @@ public class RLMMPS651FlatWagon extends Wagon
     {
         try
         {
-            return cargo.getCapacity();
+            return cargoContainer.getCapacity();
         }
         catch (NullPointerException e)
         {
@@ -74,31 +71,31 @@ public class RLMMPS651FlatWagon extends Wagon
         return 11;
     }
 
-    public void loadCargo(Cargo cargo)
+    public void loadCargo(CargoContainer cargoContainer)
     {
-        this.cargo=cargo;
+        this.cargoContainer = cargoContainer;
     }
 
-    public Cargo getCargo()
+    public CargoContainer getCargo()
     {
-        return cargo;
+        return cargoContainer;
     }
 
     @Override
     public void load(int num)
     {
-        cargo.load(num);
+        cargoContainer.load(num);
     }
 
     public void unload(int num)
     {
-        cargo.unload(num);
+        cargoContainer.unload(num);
     }
 
     @Override
     public int getLoad()
     {
-        return cargo.getLoad();
+        return cargoContainer.getLoad();
     }
 
     @Override

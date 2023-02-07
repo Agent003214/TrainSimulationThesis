@@ -1,6 +1,6 @@
-package Attachables.Cargo;
+package Attachables.CargoContainer;
 
-public class LongContainer extends Cargo
+public class LongContainer extends CargoContainer
 {
     //https://www.icontainers.com/help/40-foot-container/
     @Override
