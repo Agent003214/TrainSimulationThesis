@@ -2,9 +2,55 @@ package Attachables.CargoWagon;
 
 import Attachables.Attachable;
 
+import java.awt.image.BufferedImage;
+
 public class TankWagon extends Wagon
 {
+    //https://www.greenbrier-europe.com/2022/10/08/zags-53-m%c2%b3-4-axle-tank-wagon/
+    //https://www.greenbrier-europe.com/2022/10/08/zags-103-m%c2%b3-4-axle-tank-wagon-for-ammonia/
     private int load=0;
+
+    public TankWagon()
+    {
+        filePaths = new String[]
+                {
+                        "./src/main/resources/Attachables/Cargo/TankWagon/TankWagonFront.png",
+                        "./src/main/resources/Attachables/Cargo/TankWagon/TankWagonFront.png",
+                        "./src/main/resources/Attachables/Cargo/TankWagon/TankWagonSide.png",
+                        "./src/main/resources/Attachables/Cargo/TankWagon/TankWagon.png"
+                };
+    }
+
+    @Override
+    public BufferedImage getFrontPixelArt()
+    {
+        return imageFront;
+    }
+
+    @Override
+    public BufferedImage getBackPixelArt()
+    {
+        return imageBack;
+    }
+
+    @Override
+    public BufferedImage getRightSidePixelArt()
+    {
+        return imageRightSide;
+    }
+
+    @Override
+    public BufferedImage getImageLarge()
+    {
+        return imageLarge;
+    }
+
+    @Override
+    protected String errorMessage()
+    {
+        return "Tank wagon images not found";
+    }
+
     @Override
     public String getName()
     {
@@ -42,13 +88,13 @@ public class TankWagon extends Wagon
     }
 
     @Override
-    public void load(int num)
+    public void loadCargo(int num)
     {
 
     }
 
     @Override
-    public void unload(int num)
+    public void unloadCargo(int num)
     {
 
     }

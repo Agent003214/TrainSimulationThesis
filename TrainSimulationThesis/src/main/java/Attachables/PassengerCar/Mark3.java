@@ -1,9 +1,21 @@
 package Attachables.PassengerCar;
 
 
+import java.awt.image.BufferedImage;
+
 public class Mark3 extends Car
 {
 
+    public Mark3()
+    {
+        filePaths = new String[]
+                {
+                        "./src/main/resources/Attachables/Passenger/Mk3/Mk3Front.png",
+                        "./src/main/resources/Attachables/Passenger/Mk3/Mk3Front.png",
+                        "./src/main/resources/Attachables/Passenger/Mk3/Mk3Side.png",
+                        "./src/main/resources/Attachables/Passenger/Mk3/Mk3.png"
+                };
+    }
     public String getName()
     {
         return "British Rail Mark 3";
@@ -35,12 +47,12 @@ public class Mark3 extends Car
         return 23;
     }
 
-    public void load(int num)
+    public void loadCargo(int num)
     {
 
     }
 
-    public void unload(int num)
+    public void unloadCargo(int num)
     {
 
     }
@@ -48,5 +60,35 @@ public class Mark3 extends Car
     public int getLoad()
     {
         return 0;
+    }
+
+    @Override
+    public BufferedImage getFrontPixelArt()
+    {
+        return imageFront;
+    }
+
+    @Override
+    public BufferedImage getBackPixelArt()
+    {
+        return imageBack;
+    }
+
+    @Override
+    public BufferedImage getRightSidePixelArt()
+    {
+        return imageRightSide;
+    }
+
+    @Override
+    public BufferedImage getImageLarge()
+    {
+        return imageLarge;
+    }
+
+    @Override
+    protected String errorMessage()
+    {
+        return "Mark 3 images not found";
     }
 }

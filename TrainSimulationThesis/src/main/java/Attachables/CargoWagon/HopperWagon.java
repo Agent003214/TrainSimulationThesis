@@ -2,10 +2,38 @@ package Attachables.CargoWagon;
 
 import Attachables.Attachable;
 
+import java.awt.image.BufferedImage;
+
 public class HopperWagon extends Wagon
 {
     //https://www.greenbrier-europe.com/products/product/tagnpps-130-m3/
+    //https://www.greenbrier-europe.com/2022/10/07/tagnpps-130-m%c2%b3-4-axle-grain-hopper-wagon/
     private int load;
+
+    @Override
+    public BufferedImage getFrontPixelArt()
+    {
+        return null;
+    }
+
+    @Override
+    public BufferedImage getBackPixelArt()
+    {
+        return null;
+    }
+
+    @Override
+    public BufferedImage getRightSidePixelArt()
+    {
+        return null;
+    }
+
+    @Override
+    public BufferedImage getImageLarge()
+    {
+        return null;
+    }
+
     @Override
     public String getName()
     {
@@ -43,13 +71,13 @@ public class HopperWagon extends Wagon
     }
 
     @Override
-    public void load(int num)
+    public void loadCargo(int num)
     {
 
     }
 
     @Override
-    public void unload(int num)
+    public void unloadCargo(int num)
     {
 
     }
@@ -58,5 +86,11 @@ public class HopperWagon extends Wagon
     public int getLoad()
     {
         return load;
+    }
+
+    @Override
+    protected String errorMessage()
+    {
+        return null;
     }
 }

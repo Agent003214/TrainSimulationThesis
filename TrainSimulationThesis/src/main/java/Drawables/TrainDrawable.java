@@ -2,8 +2,13 @@ package Drawables;
 
 import GUI.MapPanel;
 import Tiles.*;
+import Tiles.RailTiles.NonElectrified.*;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class TrainDrawable
 {
@@ -13,12 +18,33 @@ public class TrainDrawable
     private int ySpeed = 0;
     MapPanel mp;
     TileManager tm;
+    BufferedImage imageUpDown, imageLeftRight;
 
 
     public TrainDrawable(MapPanel mapPanel)
     {
         this.mp = mapPanel;
         tm = new TileManager(mp);
+        try
+        {
+            File file = new File("./src/main/resources/Locomotives/Electric/V63/V63Front.png");
+            imageUpDown = ImageIO.read(file);
+            file=new File("./src/main/resources/Locomotives/Electric/V63/V63Side.png");
+            imageLeftRight=ImageIO.read(file);
+        }
+        catch (IOException e)
+        {
+            System.out.println("V63Front tile image not found");
+            e.printStackTrace();
+        }
+    }
+
+    public TrainDrawable(MapPanel mapPanel, BufferedImage imageLeftRight, BufferedImage imageUpDown)
+    {
+        this.mp=mapPanel;
+        tm=new TileManager(mp);
+        this.imageLeftRight=imageLeftRight;
+        this.imageUpDown=imageUpDown;
     }
 
     public void update()
@@ -122,7 +148,20 @@ public class TrainDrawable
 
     public void draw(Graphics2D g2D)
     {
-        g2D.setColor(Color.YELLOW);
-        g2D.fillRect(xCoord, yCoord, mp.getScaledTileSize(), mp.getScaledTileSize());
+        /*g2D.setColor(Color.YELLOW);
+        g2D.fillRect(xCoord, yCoord, mp.getScaledTileSize(), mp.getScaledTileSize());*/
+        //g2D.drawImage(image,xCoord,yCoord-10,mp.getScaledTileSize(), mp.getScaledTileSize(),null);
+        if (xSpeed==1)
+        {
+            g2D.drawImage(imageLeftRight,xCoord,yCoord-10,mp.getScaledTileSize(), mp.getScaledTileSize(),null);
+        }
+        if (xSpeed==-1)
+        {
+            g2D.drawImage(imageLeftRight,xCoord+mp.getScaledTileSize(),yCoord-10,-mp.getScaledTileSize(), mp.getScaledTileSize(),null);
+        }
+        if (Math.abs(ySpeed)==1)
+        {
+            g2D.drawImage(imageUpDown,xCoord,yCoord-10,mp.getScaledTileSize(), mp.getScaledTileSize(),null);
+        }
     }
 }

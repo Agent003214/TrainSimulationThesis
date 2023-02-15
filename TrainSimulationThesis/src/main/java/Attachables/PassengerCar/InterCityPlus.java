@@ -2,10 +2,22 @@ package Attachables.PassengerCar;
 
 import Attachables.Attachable;
 
+import java.awt.image.BufferedImage;
+
 public class InterCityPlus extends Car
 {
     private int load = 0;
 
+    public InterCityPlus()
+    {
+        filePaths = new String[]
+                {
+                        "./src/main/resources/Attachables/Passenger/IC/InterCityFront.png",
+                        "./src/main/resources/Attachables/Passenger/IC/InterCityFront.png",
+                        "./src/main/resources/Attachables/Passenger/IC/InterCitySide.png",
+                        "./src/main/resources/Attachables/Passenger/IC/InterCity.png"
+                };
+    }
 
     @Override
     public String getName()
@@ -45,7 +57,7 @@ public class InterCityPlus extends Car
     }
 
     @Override
-    public void load(int num)
+    public void loadCargo(int num)
     {
         if (num + load < getCapacity())
         {
@@ -54,7 +66,7 @@ public class InterCityPlus extends Car
     }
 
     @Override
-    public void unload(int num)
+    public void unloadCargo(int num)
     {
 
     }
@@ -66,8 +78,38 @@ public class InterCityPlus extends Car
     }
 
     @Override
+    public BufferedImage getFrontPixelArt()
+    {
+        return imageFront;
+    }
+
+    @Override
+    public BufferedImage getBackPixelArt()
+    {
+        return imageBack;
+    }
+
+    @Override
+    public BufferedImage getRightSidePixelArt()
+    {
+        return imageRightSide;
+    }
+
+    @Override
+    public BufferedImage getImageLarge()
+    {
+        return imageLarge;
+    }
+
+    @Override
     public String toString()
     {
         return "InterCityPlus{}";
+    }
+
+    @Override
+    protected String errorMessage()
+    {
+        return "IC+ images not found";
     }
 }

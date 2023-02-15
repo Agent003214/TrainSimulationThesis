@@ -40,6 +40,8 @@ public class TrainGUI extends JFrame
         mainPane.setLayout(cardLayout);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        ImageIcon icon=new ImageIcon("./src/main/resources/Locomotives/V63Side.png");
+        setIconImage(icon.getImage());
 
 
         //Create the train creation page

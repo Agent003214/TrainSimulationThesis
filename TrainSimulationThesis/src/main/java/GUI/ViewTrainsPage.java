@@ -16,7 +16,7 @@ public class ViewTrainsPage extends JPanel
     private static DefaultListModel<String> test;
     private static JTextArea trainStatsInfoPanel;
     private JTextArea trainElementsInfoPanel;
-    protected static String[] refreshArray;
+    protected  String[] refreshArray;
     public ViewTrainsPage()
     {
         setBackground(Color.YELLOW);
@@ -43,7 +43,7 @@ public class ViewTrainsPage extends JPanel
         trainListPanel.setLayout(new BorderLayout());
         //trainListInfoPanel=new JList<>(DLMtest());
         //trainListInfoPanel=new JList<>(new DefaultListModel<>());
-        trainListInfoPanel=new JList<>(test=new DefaultListModel<>());
+        trainListInfoPanel=new JList<>(new DefaultListModel<>());
         trainListPanel.add(trainListInfoPanel,BorderLayout.CENTER);
         trainListInfoPanel.setFont(GUIMethods.font);
         topPanel.add(trainListPanel);

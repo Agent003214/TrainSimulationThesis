@@ -1,6 +1,6 @@
 package TrainEngines;
 
-import Factories.BaseTrain;
+import java.awt.image.BufferedImage;
 
 public interface Locomotive
 {
@@ -29,4 +29,10 @@ public interface Locomotive
     int getLenght();
 
     int getGaugeSize();
+    BufferedImage getFrontPixelArt();
+    BufferedImage getBackPixelArt();
+    BufferedImage getRightSidePixelArt();
+    BufferedImage getLeftSidePixelArt();
+    BufferedImage getImageLarge();
+    void load();
 }

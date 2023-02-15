@@ -1,34 +1,43 @@
 package Tiles;
 
 import GUI.MapPanel;
+import Tiles.RailTiles.NonElectrified.*;
+import Tiles.RailTiles.RailPlatformTileEW;
+import Tiles.RailTiles.RailPlatformTileNS;
+import Tiles.Scenery.*;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class TileManager
 {
     MapPanel mapPanel;
-    //Tile[] tiles;
-    //private int[][] mapTiles;
     private Tile[][] map = new Tile[][]
             {
                     {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
                     {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                    {new GrassTile(),new RailPlatformTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailPlatformTileEW(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                    {new GrassTile(),new WaterTile(),new WaterTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                    {new GrassTile(),new WaterTile(),new WaterTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()}
+            };
+
+    /*private Tile[][] map = new Tile[][]
+            {
+                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
                     {new GrassTile(),new RailTileSE(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileSW(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new RailTileNS(),new GrassTile(),new GrassTile(),new GrassTile(),new RailTileNS(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new RailTileNS(),new GrassTile(),new GrassTile(),new GrassTile(),new RailTileNS(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new RailTileNS(),new GrassTile(),new GrassTile(),new GrassTile(),new RailTileNS(),new GrassTile(),new GrassTile(),new BuildingRoofTile(),new BuildingRoofTile()},
-                    {new GrassTile(),new RailTileNE(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileNW(),new GrassTile(),new BuildingRoofTile(),new BuildingBlueMiddleBottomTile(),new BuildingWhiteMiddleTile()},
+                    {new GrassTile(),new RailTileNS(),new GrassTile(),new GrassTile(),new WireBNS(),new RailTileNS(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                    {new GrassTile(),new RailTileNS(),new GrassTile(),new GrassTile(),new WireANS(),new RailTileNS(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                    {new GrassTile(),new RailTileNS(),new WireA(),new WireB(),new WireNW(),new RailTileNS(),new GrassTile(),new GrassTile(),new BuildingRoofTile(),new BuildingRoofTile()},
+                    {new GrassTile(),new RailTileNE(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileNW(),new GrassTile(),new BuildingRoofTile(),new BuildingBlueMiddleTile(),new BuildingWhiteMiddleTile()},
                     {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new BuildingRedBottomTile(),new BuildingBlueBottomTile(),new BuildingWhiteBottomTile()},
                     {new GrassTile(),new WaterTile(),new WaterTile(),new GrassTile(),new GrassTile(),new RailPlatformTileEW(),new RailPlatformTileNS(),new RoadTileEW(),new RoadTileEW(),new RoadTileEW()},
                     {new GrassTile(),new WaterTile(),new WaterTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()}
-            };
+            };*/
 
     public TileManager(MapPanel map)
     {

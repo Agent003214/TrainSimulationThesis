@@ -38,8 +38,12 @@ public class MethodClass
     {
         ArrayList<Locomotive> locomotiveList = new ArrayList<>();
         locomotiveList.add(new V63());
-        locomotiveList.add(new F40PH());
+        //locomotiveList.add(new F40PH());
         locomotiveList.add(new SD70M());
+        for (int i = 0; i < locomotiveList.size(); i++)
+        {
+            locomotiveList.get(i).load();
+        }
         return locomotiveList;
     }
 
@@ -49,9 +53,13 @@ public class MethodClass
         attachableList.add(new InterCityPlus());
         attachableList.add(new Mark3());
         attachableList.add(new BoxWagon());
-        attachableList.add(new HopperWagon());
+        //attachableList.add(new HopperWagon());
         attachableList.add(new TankWagon());
-        attachableList.add(new RLMMPS651FlatWagon());
+        //attachableList.add(new RLMMPS651FlatWagon());
+        for (int i = 0; i < attachableList.size(); i++)
+        {
+            attachableList.get(i).loadImg();
+        }
         return attachableList;
     }
 

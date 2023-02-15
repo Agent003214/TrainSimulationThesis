@@ -1,9 +1,14 @@
 package Attachables;
 
-import Factories.BaseTrain;
+import java.awt.image.BufferedImage;
 
 public interface Attachable
 {
+    BufferedImage getFrontPixelArt();
+    BufferedImage getBackPixelArt();
+    BufferedImage getRightSidePixelArt();
+    BufferedImage getImageLarge();
+    void loadImg();
     String getName();
     String getType();
     int getCapacity();
@@ -12,7 +17,8 @@ public interface Attachable
 
     int getLength();
 
-    void load(int num);
-    void unload(int num);
+    void loadCargo(int num);
+    void unloadCargo(int num);
     int getLoad();
+
 }

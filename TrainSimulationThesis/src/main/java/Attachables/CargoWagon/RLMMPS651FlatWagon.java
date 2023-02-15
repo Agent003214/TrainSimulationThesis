@@ -2,6 +2,8 @@ package Attachables.CargoWagon;
 
 import Attachables.CargoContainer.CargoContainer;
 
+import java.awt.image.BufferedImage;
+
 /**
  * The flatbed train wagon.
  */
@@ -9,6 +11,30 @@ public class RLMMPS651FlatWagon extends Wagon
 {
     //https://www.dybas.de/dybas/gw/gw_r_6/g651.html
     private CargoContainer cargoContainer;
+
+    @Override
+    public BufferedImage getFrontPixelArt()
+    {
+        return null;
+    }
+
+    @Override
+    public BufferedImage getBackPixelArt()
+    {
+        return null;
+    }
+
+    @Override
+    public BufferedImage getRightSidePixelArt()
+    {
+        return null;
+    }
+
+    @Override
+    public BufferedImage getImageLarge()
+    {
+        return null;
+    }
 
     @Override
     public String getName()
@@ -82,12 +108,12 @@ public class RLMMPS651FlatWagon extends Wagon
     }
 
     @Override
-    public void load(int num)
+    public void loadCargo(int num)
     {
         cargoContainer.load(num);
     }
 
-    public void unload(int num)
+    public void unloadCargo(int num)
     {
         cargoContainer.unload(num);
     }
@@ -102,5 +128,11 @@ public class RLMMPS651FlatWagon extends Wagon
     public String toString()
     {
         return "RLMMPS651FlatWagon{}";
+    }
+
+    @Override
+    protected String errorMessage()
+    {
+        return null;
     }
 }

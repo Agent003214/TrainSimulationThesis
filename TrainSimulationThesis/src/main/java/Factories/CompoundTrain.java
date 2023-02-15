@@ -8,6 +8,7 @@ import Attachables.PassengerCar.Car;
 import Exceptions.NoEngineException;
 import TrainEngines.Locomotive;
 
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -160,7 +161,7 @@ public class CompoundTrain extends BaseTrain
     {
         if (trains.get(i) instanceof Attachable)
         {
-            ((Attachable) trains.get(i)).load(num);
+            ((Attachable) trains.get(i)).loadCargo(num);
         }
     }
 
@@ -168,7 +169,7 @@ public class CompoundTrain extends BaseTrain
     {
         if (trains.get(i) instanceof Attachable)
         {
-            ((Attachable) trains.get(i)).unload(num);
+            ((Attachable) trains.get(i)).unloadCargo(num);
         }
     }
     public int getLoadOfCar(int i)
@@ -213,6 +214,21 @@ public class CompoundTrain extends BaseTrain
             trainCars[i]=trains.get(i).toString();
         }
         return trainCars;
+    }
+
+    public BufferedImage drawImage(int i)
+    {
+        if (trains.get(i) instanceof Locomotive)
+        {
+            return ((Locomotive) trains.get(i)).getImageLarge();
+        }
+
+        if (trains.get(i) instanceof Attachable)
+        {
+            return ((Attachable) trains.get(i)).getImageLarge();
+        }
+
+        return null;
     }
 
     @Override

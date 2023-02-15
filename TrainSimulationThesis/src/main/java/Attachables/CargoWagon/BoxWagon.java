@@ -1,9 +1,53 @@
 package Attachables.CargoWagon;
 
+import java.awt.image.BufferedImage;
+
 public class BoxWagon extends Wagon
 {
     //https://www.greenbrier-europe.com/products/product/eamnos-72-m3-e04e/
+    //https://www.greenbrier-europe.com/2022/10/07/eamnos-72-m%c2%b3-e04e-4-axle-open-box-wagon/
     private int load=0;
+
+    public BoxWagon()
+    {
+        filePaths = new String[]
+                {
+                        "./src/main/resources/Attachables/Cargo/BoxWagon/BoxWagonFront.png",
+                        "./src/main/resources/Attachables/Cargo/BoxWagon/BoxWagonFront.png",
+                        "./src/main/resources/Attachables/Cargo/BoxWagon/BoxWagonSide.png",
+                        "./src/main/resources/Attachables/Cargo/BoxWagon/BoxWagon.png"
+                };
+    }
+
+    @Override
+    public BufferedImage getFrontPixelArt()
+    {
+        return imageFront;
+    }
+
+    @Override
+    public BufferedImage getBackPixelArt()
+    {
+        return imageBack;
+    }
+
+    @Override
+    public BufferedImage getRightSidePixelArt()
+    {
+        return imageRightSide;
+    }
+
+    @Override
+    public BufferedImage getImageLarge()
+    {
+        return imageLarge;
+    }
+
+    @Override
+    protected String errorMessage()
+    {
+        return "Box wagon images not found";
+    }
 
     @Override
     public String getName()
@@ -42,13 +86,13 @@ public class BoxWagon extends Wagon
     }
 
     @Override
-    public void load(int num)
+    public void loadCargo(int num)
     {
 
     }
 
     @Override
-    public void unload(int num)
+    public void unloadCargo(int num)
     {
 
     }

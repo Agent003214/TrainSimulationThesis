@@ -32,9 +32,12 @@ public class CreateTrainPage extends JPanel
     private JButton showAttachableButton;
     private JTextArea trainInfoPanel;
     private JTextField setNameTextField;
-    private ArrayList<CompoundTrain> tempTrain=new ArrayList<>();
+    private static ArrayList<CompoundTrain> tempTrain=new ArrayList<>();
     private JButton addLocomotiveButton;
     private JButton addAttachableButton;
+    private CTPImageDraw drawBottomImage=new CTPImageDraw();
+    private JScrollPane drawSP;
+
 
     private enum locoFilter
     {
@@ -106,11 +109,12 @@ public class CreateTrainPage extends JPanel
         JPanel selectorButtonPanel = new JPanel();
         selectorButtonPanel.setLayout(new GridBagLayout());
         selectorButtonPanel.setBackground(Color.BLUE);
-        JButton createNewTrainButton=new JButton("Create new train");
+        JButton createNewTrainButton=new JButton("Create new train / Reset current train");
         modifierPanel.add(createNewTrainButton,BorderLayout.NORTH);
         createNewTrainButton.addActionListener(e -> createNewTrain());
 
         setNameTextField=new JTextField();
+        setNameTextField.setPreferredSize(new Dimension(100,20));
         modifierPanel.add(modifierMiddlePanel,BorderLayout.CENTER);
         modifierMiddlePanel.add(setNameTextField);
 
@@ -159,6 +163,7 @@ public class CreateTrainPage extends JPanel
         attachableFilterButtonPanel.add(looseBulkFilterButton);
         attachableFilterButtonPanel.add(attachableRemoveFilterButton);
 
+
         filterButtonPanel.add("locomotiveFilter", locomotiveFilterButtonPanel);
         filterButtonPanel.add("attachableFilter", attachableFilterButtonPanel);
         c = new GridBagConstraints();
@@ -189,11 +194,12 @@ public class CreateTrainPage extends JPanel
         infoPanel.setLayout(new GridLayout(2,1));
         locoAttachableInfoPanel = new JTextArea();
         locoAttachableInfoPanel.setFont(listFont);
-        locoAttachableInfoPanel.setEnabled(false);
+        locoAttachableInfoPanel.setEditable(false);
         JScrollPane locoAttachableInfoPanelSP=new JScrollPane(locoAttachableInfoPanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
         trainInfoPanel=new JTextArea();
         trainInfoPanel.setFont(listFont);
+        trainInfoPanel.setEditable(false);
         Border border=BorderFactory.createMatteBorder(1,0,0,0,Color.BLACK);
         trainInfoPanel.setBorder(border);
         JScrollPane trainInfoPanelSP=new JScrollPane(trainInfoPanel,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -220,9 +226,18 @@ public class CreateTrainPage extends JPanel
         });
 
         //Create bottom panel
-        JPanel createTrainPageBottomPanel = new JPanel();
+        JPanel createTrainPageBottomPanel=new JPanel();
         createTrainPageBottomPanel.setBackground(Color.YELLOW);
         createTrainPageBottomPanel.setPreferredSize(new Dimension(dim.width, ((dim.height) / 3) - 20));
+
+        JPanel imageDrawPanel=drawBottomImage;
+        imageDrawPanel.setPreferredSize(new Dimension(30000, ((dim.height) / 3) - 20));
+        drawSP=new JScrollPane(imageDrawPanel);
+        drawSP.setPreferredSize(new Dimension(dim.width, ((dim.height) / 3) - 20));
+        drawSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        drawSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        createTrainPageBottomPanel.add(drawSP);
+
         c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 2;
@@ -230,10 +245,25 @@ public class CreateTrainPage extends JPanel
         c.gridwidth = 1;
         add(createTrainPageBottomPanel, c);
 
-        /*GUIMethods.createTrain();
-        GUIMethods.getLatestTrain().setTrainName("Train 0.");
-        updateNameTextField();*/
-        setNameTextField.setText("asdasd");
+
+
+        /*JPanel createTrainPageBottomPanel = drawBottomImage;
+        //createTrainPageBottomPanel.setBackground(Color.YELLOW);
+        //createTrainPageBottomPanel.setPreferredSize(new Dimension(dim.width, ((dim.height) / 3) - 20));
+        drawSP=new JScrollPane(createTrainPageBottomPanel);
+        //drawSP.setPreferredSize(new Dimension(800,600));
+        drawSP.setPreferredSize(new Dimension(dim.width, ((dim.height) / 3) - 20));
+        c = new GridBagConstraints();
+        c.gridx = 0;
+        c.gridy = 2;
+        c.gridheight = 1;
+        c.gridwidth = 1;
+        //add(createTrainPageBottomPanel, c);
+        drawSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        drawSP.setViewportView(createTrainPageBottomPanel);
+        add(drawSP,c);*/
+
+
     }
 
     private void createNewTrain()
@@ -242,15 +272,21 @@ public class CreateTrainPage extends JPanel
         tempTrain.add(new CompoundTrain());
         addLocomotiveButton.setEnabled(true);
         addAttachableButton.setEnabled(true);
+        trainInfoPanel.setText("");
         updateNameTextField();
+        drawBottomImage.resetImages();
+        drawSP.repaint();
     }
 
     private void saveTrain()
     {
-        tempTrain.get(tempTrain.size()-1).setTrainName(setNameTextField.getText());
-        GUIMethods.createTrain(tempTrain.get(tempTrain.size()-1));
-        System.out.println(tempTrain.toString());
+        if (tempTrain.get(0).getTrainLenght()!=0)
+        {
+            tempTrain.get(tempTrain.size()-1).setTrainName(setNameTextField.getText());
+            GUIMethods.createTrain(tempTrain.get(tempTrain.size()-1));
+        }
     }
+
 
     private void updateNameTextField()
     {
@@ -284,7 +320,11 @@ public class CreateTrainPage extends JPanel
 
     private void addLoco()
     {
-        try
+        //GUIMethods.getLocomotivesArrayList().get(locomotiveList.getSelectedIndex()).getImageLarge();
+        tempTrain.get(0).add((Train) GUIMethods.getLocomotivesArrayList().get(locomotiveList.getSelectedIndex()));
+        drawBottomImage.addTrainImage(tempTrain.get(0).drawImage(tempTrain.get(0).getTrainLenght()-1));
+        drawSP.repaint();
+        /*try
         {
             for (int i = 0; i < GUIMethods.getLocomotivesArrayList().size(); i++)
             {
@@ -294,7 +334,9 @@ public class CreateTrainPage extends JPanel
                     {
                         //GUIMethods.train.get(GUIMethods.train.size()-1).add((Train) GUIMethods.getLocomotivesArrayList().get(i));
                         //GUIMethods.getLatestTrain().add((Train) GUIMethods.getLocomotivesArrayList().get(i));
-                        tempTrain.get(tempTrain.size()-1).add((Train) GUIMethods.getLocomotivesArrayList().get(i));
+                        tempTrain.get(0).add((Train) GUIMethods.getLocomotivesArrayList().get(i));
+                        drawBottomImage.addTrainImage(tempTrain.size()-1,tempTrain.get(0).drawImage(tempTrain.get(0).getTrainLenght()-1));
+                        drawSP.repaint();
                     }
                 }
             }
@@ -303,7 +345,7 @@ public class CreateTrainPage extends JPanel
         catch (NullPointerException e)
         {
 
-        }
+        }*/
         printCurrentTrain();
         /*GUIMethods.printCurrentTrain();
         GUIMethods.printTest();*/
@@ -311,7 +353,10 @@ public class CreateTrainPage extends JPanel
 
     private void addAttachable()
     {
-        try
+        tempTrain.get(tempTrain.size()-1).add((Train) GUIMethods.getAttachableArrayList().get(attachableList.getSelectedIndex()));
+        drawBottomImage.addTrainImage(tempTrain.get(0).drawImage(tempTrain.get(0).getTrainLenght()-1));
+        drawSP.repaint();
+        /*try
         {
             for (int i = 0; i < GUIMethods.getAttachableArrayList().size(); i++)
             {
@@ -326,7 +371,7 @@ public class CreateTrainPage extends JPanel
         catch (NullPointerException e)
         {
 
-        }
+        }*/
         printCurrentTrain();
         //GUIMethods.printCurrentTrain();
     }

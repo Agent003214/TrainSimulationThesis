@@ -158,8 +158,6 @@ public class MapPanel extends JPanel implements Runnable
         tileManager.draw(g2D);
         testTrain.draw(g2D);
 
-        /*g2D.setColor(Color.YELLOW);
-        g2D.fillRect(xCoord*scaledTileSize,0,scaledTileSize,scaledTileSize);*/
         g2D.dispose();
     }
 
