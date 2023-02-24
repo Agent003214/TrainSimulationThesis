@@ -2,6 +2,7 @@ package GUI;
 
 import Drawables.TrainDrawable;
 import Tiles.TileManager;
+import Routes.Routes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +20,9 @@ public class MapPanel extends JPanel implements Runnable
     private TileManager tileManager = new TileManager(this);
     private final int mapTileColumn = 10;
     private final int mapTileRow = 10;
-    private TrainDrawable testTrain=new TrainDrawable(this);
+    private MethodClass GUIMethods=new MethodClass();
+    private int glowPlatform=0;
+    private TrainDispatcher dispatcher=new TrainDispatcher();
 
 
     public MapPanel()
@@ -29,6 +32,32 @@ public class MapPanel extends JPanel implements Runnable
         setDoubleBuffered(true);
 
 
+    }
+
+    protected void send(Routes route,int i,Thread thread)
+    {
+        //try
+        //{
+        //MapPanel mp=this;
+        thread=new Thread(() ->
+        {
+            if (GUIMethods.getTrain().get(i).checkElectrified()==route.isElectrified())
+            {
+                dispatcher.sendTrain(this,route,GUIMethods.getTrain().get(i));
+            } else if (!GUIMethods.getTrain().get(i).checkElectrified())
+            {
+                dispatcher.sendTrain(this,route,GUIMethods.getTrain().get(i));
+            }
+        });
+        thread.start();
+
+
+        /*}
+        catch (IndexOutOfBoundsException e)
+        {
+            JOptionPane.showMessageDialog(this,"Please select train","Error",JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }*/
     }
 
     protected void startGameThread()
@@ -147,8 +176,9 @@ public class MapPanel extends JPanel implements Runnable
 
     private void update()
     {
-        testTrain.update();
+        dispatcher.update();
     }
+
 
     public void paintComponent(Graphics g)
     {
@@ -156,11 +186,49 @@ public class MapPanel extends JPanel implements Runnable
         Graphics2D g2D = (Graphics2D) g;
 
         tileManager.draw(g2D);
-        testTrain.draw(g2D);
+        dispatcher.draw(g2D);
+
+        g2D.setColor(Color.WHITE);
+        g2D.fillRect(1*scaledTileSize,6*scaledTileSize,30,10);
+        g2D.setColor(Color.BLACK);
+        g2D.setFont(GUIMethods.getFont());
+        g2D.drawString("A",1*scaledTileSize,6*scaledTileSize+9);
+
+        g2D.setColor(Color.WHITE);
+        g2D.fillRect(5*scaledTileSize,6*scaledTileSize,30,10);
+        g2D.setColor(Color.BLACK);
+        g2D.drawString("B",5*scaledTileSize,6*scaledTileSize+9);
+
+        g2D.setColor(Color.WHITE);
+        g2D.fillRect(5*scaledTileSize,4*scaledTileSize,30,10);
+        g2D.setColor(Color.BLACK);
+        g2D.drawString("C",5*scaledTileSize,4*scaledTileSize+9);
+
+        float thickness=2;
+        Stroke oldStroke=g2D.getStroke();
+        g2D.setStroke(new BasicStroke(thickness));
+
+        switch (glowPlatform)
+        {
+            case 0 ->
+            {
+                g2D.drawRect(1*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);
+                g2D.drawRect(5*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);
+            }
+            case 1 ->
+            {
+                g2D.drawRect(1*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);
+                g2D.drawRect(5*scaledTileSize,3*scaledTileSize,scaledTileSize,scaledTileSize);
+            }
+        }
 
         g2D.dispose();
     }
 
+    public void setGlowPlatform(int glowPlatform)
+    {
+        this.glowPlatform = glowPlatform;
+    }
 
     public int getMapTileColumn()
     {

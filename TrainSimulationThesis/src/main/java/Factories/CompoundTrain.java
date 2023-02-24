@@ -6,6 +6,7 @@ import Attachables.CargoContainer.TankContainer;
 import Attachables.CargoWagon.RLMMPS651FlatWagon;
 import Attachables.PassengerCar.Car;
 import Exceptions.NoEngineException;
+import TrainEngines.Electric.ElectricLocomotive;
 import TrainEngines.Locomotive;
 
 import java.awt.image.BufferedImage;
@@ -190,15 +191,15 @@ public class CompoundTrain extends BaseTrain
         return 0;
     }
 
-    public void createTankFlatBed()
+    /*public void createTankFlatBed()
     {
         trains.add(new RLMMPS651FlatWagon(new TankContainer()));
-    }
+    }*/
 
-    public void createIntermodelFlatBed()
+    /*public void createIntermodelFlatBed()
     {
         trains.add(new RLMMPS651FlatWagon(new IntermodelContainer()));
-    }
+    }*/
 
     @Override
     public int getLength()
@@ -229,6 +230,63 @@ public class CompoundTrain extends BaseTrain
         }
 
         return null;
+    }
+
+    public BufferedImage getRightImage(int i)
+    {
+        if (trains.get(i) instanceof Locomotive)
+        {
+            return ((Locomotive) trains.get(i)).getRightSidePixelArt();
+        }
+
+        if (trains.get(i) instanceof Attachable)
+        {
+            return ((Attachable) trains.get(i)).getRightSidePixelArt();
+        }
+
+        return null;
+    }
+
+    public BufferedImage getFrontImage(int i)
+    {
+        if (trains.get(i) instanceof Locomotive)
+        {
+            return ((Locomotive) trains.get(i)).getFrontPixelArt();
+        }
+
+        if (trains.get(i) instanceof Attachable)
+        {
+            return ((Attachable) trains.get(i)).getFrontPixelArt();
+        }
+
+        return null;
+    }
+
+    public BufferedImage getBackImage(int i)
+    {
+        if (trains.get(i) instanceof Locomotive)
+        {
+            return ((Locomotive) trains.get(i)).getBackPixelArt();
+        }
+
+        if (trains.get(i) instanceof Attachable)
+        {
+            return ((Attachable) trains.get(i)).getBackPixelArt();
+        }
+
+        return null;
+    }
+
+    public boolean checkElectrified()
+    {
+        for (int i = 0; i < trains.size(); i++)
+        {
+            if (trains.get(i) instanceof ElectricLocomotive)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

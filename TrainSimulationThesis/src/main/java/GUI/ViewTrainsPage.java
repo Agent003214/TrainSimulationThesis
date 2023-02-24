@@ -45,7 +45,7 @@ public class ViewTrainsPage extends JPanel
         //trainListInfoPanel=new JList<>(new DefaultListModel<>());
         trainListInfoPanel=new JList<>(new DefaultListModel<>());
         trainListPanel.add(trainListInfoPanel,BorderLayout.CENTER);
-        trainListInfoPanel.setFont(GUIMethods.font);
+        trainListInfoPanel.setFont(GUIMethods.getFont());
         topPanel.add(trainListPanel);
         trainListPanel.setBackground(Color.magenta);
         JButton deleteButton=new JButton("Delete train");
@@ -89,9 +89,9 @@ public class ViewTrainsPage extends JPanel
         Border border=BorderFactory.createMatteBorder(0,0,1,0,Color.BLACK);
         trainStatsInfoPanel=new JTextArea();
         trainStatsInfoPanel.setBorder(border);
-        trainStatsInfoPanel.setFont(GUIMethods.font);
+        trainStatsInfoPanel.setFont(GUIMethods.getFont());
         trainElementsInfoPanel=new JTextArea();
-        trainElementsInfoPanel.setFont(GUIMethods.font);
+        trainElementsInfoPanel.setFont(GUIMethods.getFont());
         trainInfoPanel.add(trainStatsInfoPanel);
         trainInfoPanel.add(trainElementsInfoPanel);
         trainInfoPanel.setBackground(Color.CYAN);

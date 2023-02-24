@@ -23,7 +23,7 @@ import java.util.ArrayList;
 public class MethodClass
 {
     private static ArrayList<CompoundTrain> train=new ArrayList<>();
-    protected Font font = new Font("Tahoma",0,22);
+    private Font font = new Font("Tahoma",0,22);
 
     protected ArrayList<CompoundTrain> getTrain()
     {
@@ -105,6 +105,11 @@ public class MethodClass
     protected void printCurrentTrain()
     {
         System.out.println(train.size());
+    }
+
+    protected Font getFont()
+    {
+        return font;
     }
 
     protected void printTest()

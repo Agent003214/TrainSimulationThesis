@@ -204,7 +204,7 @@ public class TrainGUI extends JFrame
         JPanel p3 = new JPanel();
         p3.setBackground(Color.BLUE);
 
-        Map trainMap=new Map();
+        MapPage trainMap=new MapPage();
 
         mainPane.add("createTrainPage", new CreateTrainPage());
         mainPane.add("p2", new ViewTrainsPage());

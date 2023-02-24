@@ -91,8 +91,8 @@ public class CreateTrainPage extends JPanel
         addAttachablePanel.add(attachableList, BorderLayout.CENTER);
         addAttachablePanel.add(addAttachableButton, BorderLayout.SOUTH);
         Font listFont = new Font(locomotiveList.getFont().getFontName(), locomotiveList.getFont().getStyle(), 22);
-        locomotiveList.setFont(GUIMethods.font);
-        attachableList.setFont(GUIMethods.font);
+        locomotiveList.setFont(GUIMethods.getFont());
+        attachableList.setFont(GUIMethods.getFont());
         addAttachableButton.setEnabled(false);
         addAttachableButton.addActionListener(e -> addAttachable());
 
