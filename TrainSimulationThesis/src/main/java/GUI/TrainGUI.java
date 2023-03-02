@@ -207,8 +207,8 @@ public class TrainGUI extends JFrame
         MapPage trainMap=new MapPage();
 
         mainPane.add("createTrainPage", new CreateTrainPage());
-        mainPane.add("p2", new ViewTrainsPage());
-        mainPane.add("p3", trainMap);
+        mainPane.add("viewTrainPage", new ViewTrainsPage());
+        mainPane.add("mapPage", trainMap);
         //trainMap.startGameThread();
 
 
@@ -217,9 +217,9 @@ public class TrainGUI extends JFrame
         JButton button1 = new JButton("Create train");
         button1.addActionListener(e -> cardLayout.show(mainPane, "createTrainPage"));
         JButton button2 = new JButton("View trains");
-        button2.addActionListener(e -> cardLayout.show(mainPane, "p2"));
+        button2.addActionListener(e -> cardLayout.show(mainPane, "viewTrainPage"));
         JButton button3 = new JButton("Map");
-        button3.addActionListener(e -> cardLayout.show(mainPane, "p3"));
+        button3.addActionListener(e -> cardLayout.show(mainPane, "mapPage"));
         JButton button4 = new JButton("Quit");
         button4.addActionListener(e -> System.exit(0));
 

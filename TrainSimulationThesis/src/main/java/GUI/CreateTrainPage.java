@@ -454,13 +454,15 @@ public class CreateTrainPage extends JPanel
         ArrayList<String> tempArray = new ArrayList<>();
         switch (locoFilterVar)
         {
-            case ALL:
+            case ALL ->
+            {
                 for (int i = 0; i < GUIMethods.getLocomotivesArrayList().size(); i++)
                 {
                     tempArray.add(GUIMethods.getLocomotivesArrayList().get(i).getModelName());
                 }
-                break;
-            case DIESEL:
+            }
+            case DIESEL ->
+            {
                 for (int i = 0; i < GUIMethods.getLocomotivesArrayList().size(); i++)
                 {
                     if (GUIMethods.getLocomotivesArrayList().get(i) instanceof DieselLocomotive)
@@ -468,8 +470,9 @@ public class CreateTrainPage extends JPanel
                         tempArray.add(GUIMethods.getLocomotivesArrayList().get(i).getModelName());
                     }
                 }
-                break;
-            case ELECTRIC:
+            }
+            case ELECTRIC ->
+            {
                 for (int i = 0; i < GUIMethods.getLocomotivesArrayList().size(); i++)
                 {
                     if (GUIMethods.getLocomotivesArrayList().get(i) instanceof ElectricLocomotive)
@@ -477,7 +480,7 @@ public class CreateTrainPage extends JPanel
                         tempArray.add(GUIMethods.getLocomotivesArrayList().get(i).getModelName());
                     }
                 }
-                break;
+            }
         }
         String[] filteredArray = new String[tempArray.size()];
         for (int i = 0; i < tempArray.size(); i++)

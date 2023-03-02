@@ -1,18 +1,17 @@
 package Drawables;
 
+import Attachables.Attachable;
+import Attachables.Cargo.Cargo;
+import Factories.Train;
 import GUI.MapPanel;
-import Tiles.*;
 import Routes.Routes;
 import Tiles.RailTiles.Electrified.*;
 import Tiles.RailTiles.NonElectrified.*;
 import Tiles.RailTiles.RailPlatformTileEW;
-import Tiles.RailTiles.RailTile;
+import TrainEngines.Locomotive;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 
 public class TrainDrawable
 {
@@ -23,8 +22,9 @@ public class TrainDrawable
     private MapPanel mp;
     private BufferedImage imageRight, imageUp, imageDown;
     private Routes route;
+    private Train trainPiece;
 
-    public TrainDrawable(MapPanel mp, Routes route, BufferedImage imageRight, BufferedImage imageUp, BufferedImage imageDown, int xSpeed, int ySpeed)
+    /*public TrainDrawable(MapPanel mp, Routes route, BufferedImage imageRight, BufferedImage imageUp, BufferedImage imageDown, int xSpeed, int ySpeed)
     {
         this.mp = mp;
         this.route = route;
@@ -36,6 +36,73 @@ public class TrainDrawable
 
         this.xCoord = route.getStart()[0] * mp.getScaledTileSize();
         this.yCoord = route.getStart()[1] * mp.getScaledTileSize();
+    }*/
+
+    public TrainDrawable(MapPanel mp, Routes route, Train trainPiece)
+    {
+        this.mp = mp;
+        this.route = route;
+        this.trainPiece = trainPiece;
+        if (trainPiece instanceof Attachable)
+        {
+            this.imageRight = ((Attachable) trainPiece).getRightSidePixelArt();
+            this.imageUp = ((Attachable) trainPiece).getBackPixelArt();
+            this.imageDown = ((Attachable) trainPiece).getFrontPixelArt();
+        }
+        if (trainPiece instanceof Locomotive)
+        {
+            this.imageRight=((Locomotive) trainPiece).getRightSidePixelArt();
+            this.imageUp =((Locomotive) trainPiece).getBackPixelArt();
+            this.imageDown=((Locomotive) trainPiece).getFrontPixelArt();
+        }
+        this.xSpeed=route.getxSpeed();
+        this.ySpeed=route.getySpeed();
+
+        this.xCoord = route.getStart()[0] * mp.getScaledTileSize();
+        this.yCoord = route.getStart()[1] * mp.getScaledTileSize();
+    }
+
+
+    public int[] getStartStation()
+    {
+        return route.getStart();
+    }
+
+    public int[] getStopLocation()
+    {
+        return route.getStop();
+    }
+
+    /**
+     *Loads the cargo with the type and amount of cargo
+     * @param type The type of cargo wished to being loaded
+     * @param load The amount of cargo being loaded
+     * @return The amount of cargo capacity of station after the attachable being loaded <br>
+     *  -1 If the current trainpiece being loaded is a locomotive
+     */
+    public int load(Cargo type,int load)
+    {
+
+        if(trainPiece instanceof Attachable)
+        {
+            ((Attachable) trainPiece).loadCargoType(type);
+            return ((Attachable) trainPiece).loadCargo(load);
+        }
+        return -1;
+    }
+
+    /**
+     *Unloads the cargo from the train piece
+     * @param load The amount of free space the station has
+     * @return
+     */
+    public int unload(int load)
+    {
+        if (trainPiece instanceof Attachable)
+        {
+            return ((Attachable)trainPiece).unloadCargo(load);
+        }
+        return -1;
     }
 
     public boolean isOccupied(int[] coord)
@@ -48,14 +115,15 @@ public class TrainDrawable
     }
 
     /**
-     * @throws RuntimeException When the train reaches its end station and needs to be removed
+     *
+     * @return 0 if nothing needs to be done. <br>
+     * -1 When the train piece is on the start station and needs to be loaded. <br>
+     * -2 When the train piece reaches its end station and needs to be unloaded and removed.
      */
-    public void update() throws RuntimeException
+    public int update()
     {
         if (xSpeed == 1)
         {
-            //System.out.println(route.getLine()[xCoord/ mp.getScaledTileSize()+1][yCoord / mp.getScaledTileSize()].getClass());
-            //System.out.println(xCoord/ mp.getScaledTileSize()+1+" "+yCoord / mp.getScaledTileSize());
             if (route.getTile(xCoord / mp.getScaledTileSize() + 1, yCoord / mp.getScaledTileSize()).getClass() == RailTileEW.class)
             {
                 xCoord += 1;
@@ -166,10 +234,17 @@ public class TrainDrawable
                 }
             }
         }
+        if (xCoord / mp.getScaledTileSize() == route.getStart()[0] && yCoord / mp.getScaledTileSize() == route.getStart()[1])
+        {
+            return -1;
+            //throw new StationLoadException();
+        }
         if (xCoord / mp.getScaledTileSize() == route.getStop()[0] && yCoord / mp.getScaledTileSize() == route.getStop()[1])
         {
-            throw new RuntimeException();
+            return -2;
+            //throw new RuntimeException();
         }
+        return 0;
     }
 
     private void updateElectric()

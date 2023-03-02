@@ -1,6 +1,7 @@
 package Attachables.CargoWagon;
 
 import Attachables.Attachable;
+import Attachables.Cargo.Cargo;
 
 import java.awt.image.BufferedImage;
 
@@ -54,7 +55,7 @@ public class TankWagon extends Wagon
     @Override
     public String getName()
     {
-        return "Zags 53m³";
+        return "Zags 103 m³";
     }
 
     @Override
@@ -66,7 +67,7 @@ public class TankWagon extends Wagon
     @Override
     public int getCapacity()
     {
-        return 66000;
+        return 55100;
     }
 
     @Override
@@ -88,13 +89,7 @@ public class TankWagon extends Wagon
     }
 
     @Override
-    public void loadCargo(int num)
-    {
-
-    }
-
-    @Override
-    public void unloadCargo(int num)
+    public void loadCargoType(Cargo cargo)
     {
 
     }

@@ -1,6 +1,7 @@
 package Attachables.CargoWagon;
 
 import Attachables.Attachable;
+import Attachables.Cargo.Cargo;
 
 import java.awt.image.BufferedImage;
 
@@ -71,13 +72,7 @@ public class HopperWagon extends Wagon
     }
 
     @Override
-    public void loadCargo(int num)
-    {
-
-    }
-
-    @Override
-    public void unloadCargo(int num)
+    public void loadCargoType(Cargo cargo)
     {
 
     }

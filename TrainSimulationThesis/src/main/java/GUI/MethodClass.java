@@ -1,18 +1,16 @@
 package GUI;
 
 import Attachables.Attachable;
+import Attachables.Cargo.Cargo;
 import Attachables.CargoContainer.CargoContainer;
 import Attachables.CargoContainer.LongContainer;
 import Attachables.CargoContainer.ShortContainer;
 import Attachables.CargoContainer.TankContainer;
 import Attachables.CargoWagon.BoxWagon;
-import Attachables.CargoWagon.HopperWagon;
-import Attachables.CargoWagon.RLMMPS651FlatWagon;
 import Attachables.CargoWagon.TankWagon;
 import Attachables.PassengerCar.InterCityPlus;
 import Attachables.PassengerCar.Mark3;
 import Factories.CompoundTrain;
-import TrainEngines.Diesel.F40PH;
 import TrainEngines.Diesel.SD70M;
 import TrainEngines.Electric.V63;
 import TrainEngines.Locomotive;
@@ -23,6 +21,7 @@ import java.util.ArrayList;
 public class MethodClass
 {
     private static ArrayList<CompoundTrain> train=new ArrayList<>();
+    private static ArrayList<Station> stations=new ArrayList<>();
     private Font font = new Font("Tahoma",0,22);
 
     protected ArrayList<CompoundTrain> getTrain()
@@ -79,6 +78,17 @@ public class MethodClass
         }
         return train.get(0);
     }
+
+    protected void addStation(int[] location, String name, int currentLoad, Cargo cargoType)
+    {
+        stations.add(new Station(location,name,currentLoad,cargoType));
+    }
+
+    protected ArrayList<Station> getStations()
+    {
+        return stations;
+    }
+
     protected void setTrainName(String name)
     {
         getLatestTrain().setTrainName(name);
@@ -92,14 +102,12 @@ public class MethodClass
     protected void createTrain()
     {
         train.add(new CompoundTrain());
-        printTest();
     }
 
     protected void createTrain(CompoundTrain createdTrain)
     {
         train.add(new CompoundTrain());
         train.set(train.size()-1,createdTrain);
-        printTest();
     }
 
     protected void printCurrentTrain()
@@ -112,11 +120,5 @@ public class MethodClass
         return font;
     }
 
-    protected void printTest()
-    {
-        ViewTrainsPage valami=new ViewTrainsPage();
-        valami.trainList();
-        //valami.trainList();
-        //valami.DLMtest();
-    }
+
 }

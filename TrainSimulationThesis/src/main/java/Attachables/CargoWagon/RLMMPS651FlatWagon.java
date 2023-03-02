@@ -1,5 +1,6 @@
 package Attachables.CargoWagon;
 
+import Attachables.Cargo.Cargo;
 import Attachables.CargoContainer.CargoContainer;
 
 import java.awt.image.BufferedImage;
@@ -97,6 +98,12 @@ public class RLMMPS651FlatWagon extends Wagon
         return 11;
     }
 
+    @Override
+    public void loadCargoType(Cargo cargo)
+    {
+
+    }
+
     public void loadCargo(CargoContainer cargoContainer)
     {
         this.cargoContainer = cargoContainer;
@@ -105,17 +112,6 @@ public class RLMMPS651FlatWagon extends Wagon
     public CargoContainer getCargo()
     {
         return cargoContainer;
-    }
-
-    @Override
-    public void loadCargo(int num)
-    {
-        cargoContainer.load(num);
-    }
-
-    public void unloadCargo(int num)
-    {
-        cargoContainer.unload(num);
     }
 
     @Override

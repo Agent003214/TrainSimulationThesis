@@ -1,12 +1,15 @@
 package Attachables.CargoWagon;
 
+import Attachables.Cargo.Cargo;
+import Attachables.Cargo.Coal;
+import Attachables.Cargo.IronOre;
+
 import java.awt.image.BufferedImage;
 
 public class BoxWagon extends Wagon
 {
     //https://www.greenbrier-europe.com/products/product/eamnos-72-m3-e04e/
     //https://www.greenbrier-europe.com/2022/10/07/eamnos-72-m%c2%b3-e04e-4-axle-open-box-wagon/
-    private int load=0;
 
     public BoxWagon()
     {
@@ -86,15 +89,12 @@ public class BoxWagon extends Wagon
     }
 
     @Override
-    public void loadCargo(int num)
+    public void loadCargoType(Cargo cargo)
     {
-
-    }
-
-    @Override
-    public void unloadCargo(int num)
-    {
-
+        if(cargo instanceof IronOre || cargo instanceof Coal)
+        {
+            this.cargo=cargo;
+        }
     }
 
     @Override

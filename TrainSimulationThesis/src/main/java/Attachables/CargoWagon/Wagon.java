@@ -1,6 +1,7 @@
 package Attachables.CargoWagon;
 
 import Attachables.Attachable;
+import Attachables.Cargo.Cargo;
 import Factories.BaseTrain;
 
 import javax.imageio.ImageIO;
@@ -13,6 +14,8 @@ public abstract class Wagon extends BaseTrain implements Attachable
     //https://www.greenbrier-europe.com/home/
     protected BufferedImage imageFront, imageBack, imageRightSide,imageLarge;
     protected String[] filePaths;
+    protected Cargo cargo;
+    protected int load;
     public void loadImg()
     {
         try
@@ -34,4 +37,35 @@ public abstract class Wagon extends BaseTrain implements Attachable
     }
 
     protected abstract String errorMessage();
+
+    @Override
+    public int loadCargo(int num)
+    {
+        int emptySpace=getCapacity()-getLoad();
+        if (num<=emptySpace)
+        {
+            load+=num;
+            return 0;
+        }
+        else
+        {
+            load+=emptySpace;
+            return num-emptySpace;
+        }
+    }
+
+    @Override
+    public int unloadCargo(int num)
+    {
+        if (load-num>=0)
+        {
+            load-=num;
+            return num;
+        }
+        else
+        {
+            load=0;
+            return Math.abs(load-num);
+        }
+    }
 }

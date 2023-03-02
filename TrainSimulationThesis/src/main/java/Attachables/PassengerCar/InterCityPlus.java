@@ -1,13 +1,13 @@
 package Attachables.PassengerCar;
 
 import Attachables.Attachable;
+import Attachables.Cargo.Cargo;
+import Attachables.Cargo.Passenger;
 
 import java.awt.image.BufferedImage;
 
 public class InterCityPlus extends Car
 {
-    private int load = 0;
-
     public InterCityPlus()
     {
         filePaths = new String[]
@@ -54,27 +54,6 @@ public class InterCityPlus extends Car
     public int getLength()
     {
         return 26;
-    }
-
-    @Override
-    public void loadCargo(int num)
-    {
-        if (num + load < getCapacity())
-        {
-            load = load + num;
-        }
-    }
-
-    @Override
-    public void unloadCargo(int num)
-    {
-
-    }
-
-    @Override
-    public int getLoad()
-    {
-        return load;
     }
 
     @Override

@@ -191,6 +191,11 @@ public class CompoundTrain extends BaseTrain
         return 0;
     }
 
+    public Train getCar(int i)
+    {
+        return trains.get(i);
+    }
+
     /*public void createTankFlatBed()
     {
         trains.add(new RLMMPS651FlatWagon(new TankContainer()));

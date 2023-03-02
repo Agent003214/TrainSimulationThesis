@@ -47,21 +47,6 @@ public class Mark3 extends Car
         return 23;
     }
 
-    public void loadCargo(int num)
-    {
-
-    }
-
-    public void unloadCargo(int num)
-    {
-
-    }
-
-    public int getLoad()
-    {
-        return 0;
-    }
-
     @Override
     public BufferedImage getFrontPixelArt()
     {

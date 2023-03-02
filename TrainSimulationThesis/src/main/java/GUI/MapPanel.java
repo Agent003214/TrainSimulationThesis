@@ -192,17 +192,20 @@ public class MapPanel extends JPanel implements Runnable
         g2D.fillRect(1*scaledTileSize,6*scaledTileSize,30,10);
         g2D.setColor(Color.BLACK);
         g2D.setFont(GUIMethods.getFont());
-        g2D.drawString("A",1*scaledTileSize,6*scaledTileSize+9);
+        g2D.drawString(GUIMethods.getStations().get(0).getName(),1*scaledTileSize,6*scaledTileSize+9);
+        g2D.drawString(GUIMethods.getStations().get(0).getCurrentLoad()+"",scaledTileSize,7*scaledTileSize);
 
         g2D.setColor(Color.WHITE);
         g2D.fillRect(5*scaledTileSize,6*scaledTileSize,30,10);
         g2D.setColor(Color.BLACK);
-        g2D.drawString("B",5*scaledTileSize,6*scaledTileSize+9);
+        g2D.drawString(GUIMethods.getStations().get(1).getName(),5*scaledTileSize,6*scaledTileSize+9);
+        g2D.drawString(GUIMethods.getStations().get(1).getCurrentLoad()+"",5*scaledTileSize,7*scaledTileSize);
 
         g2D.setColor(Color.WHITE);
         g2D.fillRect(5*scaledTileSize,4*scaledTileSize,30,10);
         g2D.setColor(Color.BLACK);
-        g2D.drawString("C",5*scaledTileSize,4*scaledTileSize+9);
+        g2D.drawString(GUIMethods.getStations().get(2).getName(),5*scaledTileSize,4*scaledTileSize+9);
+        g2D.drawString(GUIMethods.getStations().get(2).getCurrentLoad()+"",5*scaledTileSize,5*scaledTileSize);
 
         float thickness=2;
         Stroke oldStroke=g2D.getStroke();
@@ -212,13 +215,17 @@ public class MapPanel extends JPanel implements Runnable
         {
             case 0 ->
             {
-                g2D.drawRect(1*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);
-                g2D.drawRect(5*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);
+                g2D.drawRect(GUIMethods.getStations().get(0).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(0).getLocation()[1]*scaledTileSize,scaledTileSize,scaledTileSize);
+                g2D.drawRect(GUIMethods.getStations().get(1).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(1).getLocation()[1]*scaledTileSize,scaledTileSize,scaledTileSize);
+                /*g2D.drawRect(1*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);
+                g2D.drawRect(5*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);*/
             }
             case 1 ->
             {
-                g2D.drawRect(1*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);
-                g2D.drawRect(5*scaledTileSize,3*scaledTileSize,scaledTileSize,scaledTileSize);
+                g2D.drawRect(GUIMethods.getStations().get(0).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(0).getLocation()[1]*scaledTileSize,scaledTileSize,scaledTileSize);
+                g2D.drawRect(GUIMethods.getStations().get(2).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(2).getLocation()[1]*scaledTileSize,scaledTileSize,scaledTileSize);
+                /*g2D.drawRect(1*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);
+                g2D.drawRect(5*scaledTileSize,3*scaledTileSize,scaledTileSize,scaledTileSize);*/
             }
         }
 
