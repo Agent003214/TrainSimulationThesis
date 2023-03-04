@@ -71,24 +71,6 @@ public class BoxWagon extends Wagon
     }
 
     @Override
-    public int getMaxSpeed()
-    {
-        return 100;
-    }
-
-    @Override
-    public int getGaugeSize()
-    {
-        return 1425;
-    }
-
-    @Override
-    public int getLength()
-    {
-        return 13;
-    }
-
-    @Override
     public void loadCargoType(Cargo cargo)
     {
         if(cargo instanceof IronOre || cargo instanceof Coal)

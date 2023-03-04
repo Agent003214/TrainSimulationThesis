@@ -53,7 +53,7 @@ public class MethodClass
         attachableList.add(new Mark3());
         attachableList.add(new BoxWagon());
         //attachableList.add(new HopperWagon());
-        attachableList.add(new TankWagon());
+        //attachableList.add(new TankWagon());
         //attachableList.add(new RLMMPS651FlatWagon());
         for (int i = 0; i < attachableList.size(); i++)
         {

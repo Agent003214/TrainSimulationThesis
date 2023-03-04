@@ -19,9 +19,6 @@ public interface Attachable
      * @return The capacity in tonnes for cargo, passenger count for passenger cars
      */
     int getCapacity();
-    int getMaxSpeed();
-    int getGaugeSize();
-    int getLength();
     void loadCargoType(Cargo cargo);
     int loadCargo(int num);
     int unloadCargo(int num);

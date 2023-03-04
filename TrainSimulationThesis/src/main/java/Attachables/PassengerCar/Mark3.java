@@ -16,35 +16,22 @@ public class Mark3 extends Car
                         "./src/main/resources/Attachables/Passenger/Mk3/Mk3.png"
                 };
     }
+    @Override
     public String getName()
     {
         return "British Rail Mark 3";
     }
 
+    @Override
     public String getType()
     {
         return "Passenger car";
     }
 
+    @Override
     public int getCapacity()
     {
         return 74;
-    }
-
-
-    public int getMaxSpeed()
-    {
-        return 200;
-    }
-
-    public int getGaugeSize()
-    {
-        return 1435;
-    }
-
-    public int getLength()
-    {
-        return 23;
     }
 
     @Override

@@ -38,25 +38,6 @@ public class InterCityPlus extends Car
     }
 
     @Override
-    public int getMaxSpeed()
-    {
-        return 200;
-    }
-
-
-    @Override
-    public int getGaugeSize()
-    {
-        return 1435;
-    }
-
-    @Override
-    public int getLength()
-    {
-        return 26;
-    }
-
-    @Override
     public BufferedImage getFrontPixelArt()
     {
         return imageFront;

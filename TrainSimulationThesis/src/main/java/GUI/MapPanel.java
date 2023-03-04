@@ -17,7 +17,8 @@ public class MapPanel extends JPanel implements Runnable
     private final int originalTileSize = 11; //11x11 pixel
     private final int scale = 3;
     private final int scaledTileSize = originalTileSize * scale; //33x33 pixel
-    private TileManager tileManager = new TileManager(this);
+    private TileManager tileManager = new TileManager(this,true);
+    private TileManager overlay=new TileManager(this,false);
     private final int mapTileColumn = 10;
     private final int mapTileRow = 10;
     private MethodClass GUIMethods=new MethodClass();
@@ -187,6 +188,14 @@ public class MapPanel extends JPanel implements Runnable
 
         tileManager.draw(g2D);
         dispatcher.draw(g2D);
+        try
+        {
+            overlay.draw(g2D);
+        }
+        catch (NullPointerException e)
+        {
+
+        }
 
         g2D.setColor(Color.WHITE);
         g2D.fillRect(1*scaledTileSize,6*scaledTileSize,30,10);

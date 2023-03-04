@@ -230,7 +230,7 @@ public class MapPage extends JPanel
         {
             stationsInfo.append("Station name: "+GUIMethods.getStations().get(i).getName());
             stationsInfo.append("\n    Cargo type: "+GUIMethods.getStations().get(i).getCargoType().getName());
-            stationsInfo.append("\n    Cargo waiting: "+GUIMethods.getStations().get(i).getCurrentLoad());
+            stationsInfo.append("\n    Max capacity: "+GUIMethods.getStations().get(i).getMaxCapacity());
             stationsInfo.append("\n");
         }
     }

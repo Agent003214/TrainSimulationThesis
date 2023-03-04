@@ -71,18 +71,6 @@ public class TankWagon extends Wagon
     }
 
     @Override
-    public int getMaxSpeed()
-    {
-        return 100;
-    }
-
-    @Override
-    public int getGaugeSize()
-    {
-        return 1435;
-    }
-
-    @Override
     public int getLength()
     {
         return 13;

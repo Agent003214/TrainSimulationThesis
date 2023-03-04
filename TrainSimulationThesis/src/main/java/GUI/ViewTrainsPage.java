@@ -116,7 +116,7 @@ public class ViewTrainsPage extends JPanel
         trainStatsInfoPanel.setText("");
         trainStatsInfoPanel.append("Combined locomotive power: "+GUIMethods.getTrain().get(index).getCombinedPower()+"\n");
         trainStatsInfoPanel.append("Number of cars: "+GUIMethods.getTrain().get(index).getNumbersOfCars()+"\n");
-        trainStatsInfoPanel.append("Total passenger capacity: "+GUIMethods.getTrain().get(index).getPassengerCapacityCount()+"\n");
+        trainStatsInfoPanel.append("Total passenger capacity: "+GUIMethods.getTrain().get(index).getPassengerCapacity()+"\n");
     }
 
     /**

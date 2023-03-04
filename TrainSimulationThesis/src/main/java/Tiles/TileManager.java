@@ -3,27 +3,16 @@ package Tiles;
 import GUI.MapPanel;
 import Tiles.RailTiles.NonElectrified.*;
 import Tiles.RailTiles.RailPlatformTileEW;
-import Tiles.RailTiles.RailPlatformTileNS;
 import Tiles.Scenery.*;
+import Tiles.Scenery.Wires.*;
 
 import java.awt.*;
 
 public class TileManager
 {
-    MapPanel mapPanel;
-    private Tile[][] map = new Tile[][]
-            {
-                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new GrassTile(),new GrassTile(),new RailTileSE(),new RailTileEW(),new RailPlatformTileEW(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new GrassTile(),new GrassTile(),new RailTileNS(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new RailPlatformTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailPlatformTileEW(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new WaterTile(),new WaterTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
-                    {new GrassTile(),new WaterTile(),new WaterTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()}
-            };
+    private MapPanel mapPanel;
+    private boolean background;
+    private Tile[][] map;
 
     /*private Tile[][] map = new Tile[][]
             {
@@ -39,10 +28,52 @@ public class TileManager
                     {new GrassTile(),new WaterTile(),new WaterTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()}
             };*/
 
-    public TileManager(MapPanel map)
+    public TileManager(MapPanel map,Boolean background)
     {
         mapPanel = map;
+        if (background)
+        {
+            setBackground();
+        }
+        else
+        {
+            setOverlay();
+        }
         initTileImages();
+    }
+
+    private void setBackground()
+    {
+        map = new Tile[][]
+                {
+                        {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {new GrassTile(),new GrassTile(),new GrassTile(),new RailTileSE(),new RailTileEW(),new RailPlatformTileEW(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {new GrassTile(),new GrassTile(),new GrassTile(),new RailTileNS(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {new GrassTile(),new RailPlatformTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailPlatformTileEW(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {new GrassTile(),new WaterTile(),new WaterTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {new GrassTile(),new WaterTile(),new WaterTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()}
+                };
+    }
+
+    private void setOverlay()
+    {
+        map = new Tile[][]
+                {
+                        {null,null,new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {null,null,new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {null,null,new GrassTile(),new WirePoleSE(),new WireEW(),new WirePoleEW(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {null,null,new GrassTile(),new WireNS(),null,null,new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {null,new WirePoleEW(),new WireEW(),new WirePoleNW(),new WireEW(),new WirePoleEW(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {null,null,null,null,null,null,null,new GrassTile(),new GrassTile(),new GrassTile()},
+                        {null,null,new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {null,null,new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {null,null,new WaterTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()},
+                        {null,null,new WaterTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile(),new GrassTile()}
+                };
     }
 
     /**
@@ -54,42 +85,17 @@ public class TileManager
         {
             for (Tile tile : tiles)
             {
-                tile.load();
+                try
+                {
+                    tile.load();
+                }
+                catch (NullPointerException e)
+                {
+
+                }
             }
         }
     }
-
-    /*private void loadMap()
-    {
-        ArrayList<String> fileString = new ArrayList<>();
-        File file = new File("./src/main/java/GUI/map.txt");
-        try
-        {
-            Scanner sc = new Scanner(file);
-            while (sc.hasNextLine())
-            {
-                fileString.add(sc.nextLine());
-            }
-            int col = 0;
-            for (int i = 0; i < fileString.size(); i++)
-            {
-                String[] splitFile = fileString.get(i).split(" ");
-                while (col < mapPanel.getMapTileColumn())
-                {
-                    mapTiles[i][col] = Integer.parseInt(splitFile[col]);
-                    col++;
-                }
-                col = 0;
-            }
-        } catch (FileNotFoundException e)
-        {
-
-        }
-        for (int i = 0; i < fileString.size(); i++)
-        {
-            System.out.println(fileString.get(i));
-        }
-    }*/
 
     public Tile getMapTiles(int col, int row)
     {
@@ -98,7 +104,6 @@ public class TileManager
 
     public void draw(Graphics2D g2D)
     {
-        //g2D.drawImage(tiles[1].image,0,0,mapPanel.getScaledTileSize(),mapPanel.getScaledTileSize(),null);
         int col = 0;
         int row = 0;
         int x = 0;
@@ -106,7 +111,14 @@ public class TileManager
         while (col < mapPanel.getMapTileColumn() && row < mapPanel.getMapTileRow())
         {
             Tile tile = map[row][col];
-            g2D.drawImage(tile.image, x, y, mapPanel.getScaledTileSize(), mapPanel.getScaledTileSize(), null);
+            try
+            {
+                g2D.drawImage(tile.image, x, y, mapPanel.getScaledTileSize(), mapPanel.getScaledTileSize(), null);
+            }
+            catch (NullPointerException e)
+            {
+
+            }
             col++;
             x += mapPanel.getScaledTileSize();
             if (col == mapPanel.getMapTileColumn())

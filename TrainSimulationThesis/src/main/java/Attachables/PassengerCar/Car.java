@@ -85,22 +85,4 @@ public abstract class Car extends BaseTrain implements Attachable
     {
         return load;
     }
-
-/*@Override
-    public void loadCargo(int num)
-    {
-        if (load+num<getCapacity())
-        {
-            load += num;
-        }
-    }*/
-
-    /*@Override
-    public void unloadCargo(int num)
-    {
-        if (load-num>0)
-        {
-            load -= num;
-        }
-    }*/
 }

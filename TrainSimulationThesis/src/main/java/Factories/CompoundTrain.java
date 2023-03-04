@@ -3,7 +3,9 @@ package Factories;
 import Attachables.Attachable;
 import Attachables.CargoContainer.IntermodelContainer;
 import Attachables.CargoContainer.TankContainer;
+import Attachables.CargoWagon.BoxWagon;
 import Attachables.CargoWagon.RLMMPS651FlatWagon;
+import Attachables.CargoWagon.Wagon;
 import Attachables.PassengerCar.Car;
 import Exceptions.NoEngineException;
 import TrainEngines.Electric.ElectricLocomotive;
@@ -16,7 +18,7 @@ import java.util.Arrays;
 public class CompoundTrain extends BaseTrain
 {
     protected ArrayList<Train> trains =new ArrayList<>();
-    private final int maxlength=750;
+    private final int maxlength=10;
     private String trainName;
 
     public void setTrainName(String trainName)
@@ -29,28 +31,39 @@ public class CompoundTrain extends BaseTrain
         return trainName;
     }
 
-    public void add(Train component)
+    public String addComponent(Train component)
     {
+
         try
         {
-            checkEngine(component);
-            trains.add(component);
+            if (trains.size()<maxlength)
+            {
+                checkEngine(component);
+                trains.add(component);
+                return "";
+            }
+            else
+            {
+                return "The train length is limited to "+maxlength;
+            }
+
         }
         catch (NoEngineException e)
         {
-            System.out.println("The train requires at least one locomotive");
+            return "The train requires at least one locomotive";
         }
     }
-    public void add(Train ... component)
+    public String addComponent(Train ... component)
     {
         try
         {
             checkEngine(component);
             trains.addAll(Arrays.asList(component));
+            return "";
         }
         catch (NoEngineException e)
         {
-            System.out.println("The train requires at least one locomotive");
+            return "The train requires at least one locomotive";
         }
     }
 
@@ -114,7 +127,7 @@ public class CompoundTrain extends BaseTrain
         return szamlalo;
     }
 
-    public int getPassengerCapacityCount()
+    public int getPassengerCapacity()
     {
         int szamlalo=0;
         for (int i = 0; i < trains.size(); i++)
@@ -122,6 +135,19 @@ public class CompoundTrain extends BaseTrain
             if (trains.get(i) instanceof Car)
             {
                 szamlalo=szamlalo+((Car) trains.get(i)).getCapacity();
+            }
+        }
+        return szamlalo;
+    }
+
+    public int getCargoCapacity()
+    {
+        int szamlalo=0;
+        for (int i = 0; i < trains.size(); i++)
+        {
+            if (trains.get(i) instanceof BoxWagon)
+            {
+                szamlalo=szamlalo+((Wagon) trains.get(i)).getCapacity();
             }
         }
         return szamlalo;

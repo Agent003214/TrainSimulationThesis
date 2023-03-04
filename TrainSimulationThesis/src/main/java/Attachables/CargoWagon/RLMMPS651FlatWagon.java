@@ -79,19 +79,6 @@ public class RLMMPS651FlatWagon extends Wagon
         }
 
     }
-
-    @Override
-    public int getMaxSpeed()
-    {
-        return 120;
-    }
-
-    @Override
-    public int getGaugeSize()
-    {
-        return 1435;
-    }
-
     @Override
     public int getLength()
     {
