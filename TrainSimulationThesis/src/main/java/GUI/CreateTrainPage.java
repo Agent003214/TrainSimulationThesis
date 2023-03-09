@@ -340,6 +340,7 @@ public class CreateTrainPage extends JPanel
         trainInfoPanel.setText("");
         updateNameTextField();
         drawBottomImage.resetImages();
+
         drawSP.repaint();
     }
 
@@ -349,6 +350,7 @@ public class CreateTrainPage extends JPanel
         {
             tempTrain.get(tempTrain.size() - 1).setTrainName(setNameTextField.getText());
             GUIMethods.createTrain(tempTrain.get(0));
+            errorLabel.setText("Train saved!");
         }
     }
 

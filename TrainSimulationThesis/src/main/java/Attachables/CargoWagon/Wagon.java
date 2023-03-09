@@ -1,15 +1,16 @@
 package Attachables.CargoWagon;
 
 import Attachables.Attachable;
-import Attachables.Cargo.Cargo;
+import Attachables.Cargo.*;
 import Factories.BaseTrain;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
-public abstract class Wagon extends BaseTrain implements Attachable
+public abstract class Wagon extends BaseTrain implements Attachable,Cloneable
 {
     //https://www.greenbrier-europe.com/home/
     protected BufferedImage imageFront, imageBack, imageRightSide,imageLarge;
@@ -39,19 +40,26 @@ public abstract class Wagon extends BaseTrain implements Attachable
     protected abstract String errorMessage();
 
     @Override
-    public int loadCargo(int num)
+    public int loadCargo(int num,Cargo type)
     {
-        int emptySpace=getCapacity()-getLoad();
-        if (num<=emptySpace)
+        for (int i = 0; i < getCargoCompatibility().length; i++)
         {
-            load+=num;
-            return 0;
+            if (Objects.equals(getCargoCompatibility()[i].getName(), type.getName()))
+            {
+                int emptySpace=getCapacity()-getLoad();
+                if (num<=emptySpace)
+                {
+                    load+=num;
+                    return 0;
+                }
+                else
+                {
+                    load+=emptySpace;
+                    return num-emptySpace;
+                }
+            }
         }
-        else
-        {
-            load+=emptySpace;
-            return num-emptySpace;
-        }
+        return -1;
     }
 
     @Override
@@ -67,5 +75,29 @@ public abstract class Wagon extends BaseTrain implements Attachable
             load=0;
             return Math.abs(load-num);
         }
+    }
+
+    @Override
+    public Cargo[] getCargoCompatibility()
+    {
+        Cargo[] cargo=new Cargo[3];
+        cargo[0]=new Coal();
+        cargo[1]=new IronOre();
+        cargo[2]=new Steel();
+        return cargo;
+    }
+
+    @Override
+    public Object clone()
+    {
+        try
+        {
+            return super.clone();
+        }
+        catch (CloneNotSupportedException e)
+        {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

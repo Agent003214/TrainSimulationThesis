@@ -8,7 +8,7 @@ public class Station
      * The X and Y coordinates of the station
      */
     private final int[] location;
-    private final int maxCapacity=1500;
+    private final int maxCapacity=150000;
     private int currentLoad;
     private final String name;
     private final Cargo cargoType;
@@ -59,5 +59,10 @@ public class Station
     public int getFreeSpace()
     {
         return maxCapacity-currentLoad;
+    }
+
+    private void steelMill()
+    {
+
     }
 }

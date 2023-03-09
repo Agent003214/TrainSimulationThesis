@@ -8,6 +8,7 @@ import Routes.Routes;
 import Tiles.RailTiles.Electrified.*;
 import Tiles.RailTiles.NonElectrified.*;
 import Tiles.RailTiles.RailPlatformTileEW;
+import Tiles.RailTiles.RailPlatformTileNS;
 import TrainEngines.Locomotive;
 
 import java.awt.*;
@@ -86,7 +87,7 @@ public class TrainDrawable
         if(trainPiece instanceof Attachable)
         {
             ((Attachable) trainPiece).loadCargoType(type);
-            return ((Attachable) trainPiece).loadCargo(load);
+            return ((Attachable) trainPiece).loadCargo(load,type);
         }
         return -1;
     }
@@ -151,6 +152,16 @@ public class TrainDrawable
             {
                 xCoord += 1;
             }
+            if (xCoord / mp.getScaledTileSize() == route.getStart()[0] && yCoord / mp.getScaledTileSize() == route.getStart()[1])
+            {
+                return -1;
+                //throw new StationLoadException();
+            }
+            if (xCoord / mp.getScaledTileSize() == route.getStop()[0] && yCoord / mp.getScaledTileSize() == route.getStop()[1])
+            {
+                return -2;
+                //throw new RuntimeException();
+            }
         }
         else if (xSpeed == -1)
         {
@@ -181,6 +192,16 @@ public class TrainDrawable
             {
                 xCoord -= 1;
             }
+            if (xCoord / mp.getScaledTileSize()+1 == route.getStart()[0] && yCoord / mp.getScaledTileSize() == route.getStart()[1])
+            {
+                return -1;
+                //throw new StationLoadException();
+            }
+            if (xCoord / mp.getScaledTileSize()+1 == route.getStop()[0] && yCoord / mp.getScaledTileSize() == route.getStop()[1])
+            {
+                return -2;
+                //throw new RuntimeException();
+            }
         }
         else if (ySpeed == 1)
         {
@@ -206,6 +227,20 @@ public class TrainDrawable
                     ySpeed = 0;
                     xSpeed = 1;
                 }
+            }
+            else if (route.getTile(xCoord / mp.getScaledTileSize(), yCoord / mp.getScaledTileSize()+1).getClass() == RailPlatformTileNS.class)
+            {
+                yCoord+=1;
+            }
+            if (xCoord / mp.getScaledTileSize() == route.getStart()[0] && yCoord / mp.getScaledTileSize() == route.getStart()[1])
+            {
+                return -1;
+                //throw new StationLoadException();
+            }
+            if (xCoord / mp.getScaledTileSize() == route.getStop()[0] && yCoord / mp.getScaledTileSize() == route.getStop()[1])
+            {
+                return -2;
+                //throw new RuntimeException();
             }
         }
         else if (ySpeed == -1)
@@ -233,8 +268,22 @@ public class TrainDrawable
                     xSpeed = 1;
                 }
             }
+            else if (route.getTile(xCoord / mp.getScaledTileSize(), yCoord / mp.getScaledTileSize()).getClass() == RailPlatformTileNS.class)
+            {
+                yCoord-=1;
+            }
+            if (xCoord / mp.getScaledTileSize() == route.getStart()[0] && yCoord / mp.getScaledTileSize()+1 == route.getStart()[1])
+            {
+                return -1;
+                //throw new StationLoadException();
+            }
+            if (xCoord / mp.getScaledTileSize() == route.getStop()[0] && yCoord / mp.getScaledTileSize()+1 == route.getStop()[1])
+            {
+                return -2;
+                //throw new RuntimeException();
+            }
         }
-        if (xCoord / mp.getScaledTileSize() == route.getStart()[0] && yCoord / mp.getScaledTileSize() == route.getStart()[1])
+        /*if (xCoord / mp.getScaledTileSize() == route.getStart()[0] && yCoord / mp.getScaledTileSize() == route.getStart()[1])
         {
             return -1;
             //throw new StationLoadException();
@@ -243,8 +292,13 @@ public class TrainDrawable
         {
             return -2;
             //throw new RuntimeException();
-        }
+        }*/
         return 0;
+    }
+
+    public Train getTrainPiece()
+    {
+        return trainPiece;
     }
 
     private void updateElectric()

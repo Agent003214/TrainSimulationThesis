@@ -6,7 +6,7 @@ public class RailTileNSW extends RailTile
 {
     public RailTileNSW()
     {
-        filePaths=new String[]{"./src/main/resources/Tiles/railTileNSW.png"};
+        filePaths=new String[]{"./src/main/resources/Tiles/RailTile/railTileNSW.png"};
     }
 
     @Override

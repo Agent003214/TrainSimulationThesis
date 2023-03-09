@@ -61,11 +61,11 @@ public class InterCityPlus extends Car
         return imageLarge;
     }
 
-    @Override
+    /*@Override
     public String toString()
     {
         return "InterCityPlus{}";
-    }
+    }*/
 
     @Override
     protected String errorMessage()

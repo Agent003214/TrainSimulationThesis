@@ -19,10 +19,10 @@ public class MapPanel extends JPanel implements Runnable
     private final int scaledTileSize = originalTileSize * scale; //33x33 pixel
     private TileManager tileManager = new TileManager(this,true);
     private TileManager overlay=new TileManager(this,false);
-    private final int mapTileColumn = 10;
-    private final int mapTileRow = 10;
+    private final int mapTileColumn = 40;
+    private final int mapTileRow = 31;
     private MethodClass GUIMethods=new MethodClass();
-    private int glowPlatform=0;
+    private int glowPlatform=-1;
     private TrainDispatcher dispatcher=new TrainDispatcher();
 
 
@@ -32,7 +32,7 @@ public class MapPanel extends JPanel implements Runnable
         setBackground(Color.red);
         setDoubleBuffered(true);
 
-
+        setPreferredSize(new Dimension(mapTileColumn*scaledTileSize,mapTileRow*scaledTileSize));
     }
 
     protected void send(Routes route,int i,Thread thread)
@@ -196,8 +196,31 @@ public class MapPanel extends JPanel implements Runnable
         {
 
         }
+        g2D.setFont(GUIMethods.getFont());
+        for (int i = 0; i < GUIMethods.getStations().size(); i++)
+        {
+            //g2D.setColor(Color.WHITE);
+            //g2D.fillRect(GUIMethods.getStations().get(i).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(i).getLocation()[1]*scaledTileSize+(scaledTileSize*1),30,30);
+            g2D.setColor(Color.BLACK);
+            g2D.drawString(GUIMethods.getStations().get(i).getName(),GUIMethods.getStations().get(i).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(i).getLocation()[1]*scaledTileSize+(scaledTileSize*1)+15);
+            g2D.drawString(GUIMethods.getStations().get(i).getCurrentLoad()+"",GUIMethods.getStations().get(i).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(i).getLocation()[1]*scaledTileSize+(scaledTileSize*2)+3);
+        }
 
+        g2D.setColor(Color.RED);
+        g2D.fillRect(31*scaledTileSize,2*scaledTileSize,scaledTileSize,scaledTileSize);
         g2D.setColor(Color.WHITE);
+        g2D.fillRect(32*scaledTileSize,2*scaledTileSize,scaledTileSize+20,20);
+        g2D.setColor(Color.BLACK);
+        g2D.drawString("Start",32*scaledTileSize,3*scaledTileSize-15);
+
+        g2D.setColor(Color.ORANGE);
+        g2D.fillRect(31*scaledTileSize,4*scaledTileSize,scaledTileSize,scaledTileSize);
+        g2D.setColor(Color.WHITE);
+        g2D.fillRect(32*scaledTileSize,4*scaledTileSize,scaledTileSize+20,20);
+        g2D.setColor(Color.BLACK);
+        g2D.drawString("Stop",32*scaledTileSize,5*scaledTileSize-15);
+
+        /*g2D.setColor(Color.WHITE);
         g2D.fillRect(1*scaledTileSize,6*scaledTileSize,30,10);
         g2D.setColor(Color.BLACK);
         g2D.setFont(GUIMethods.getFont());
@@ -214,31 +237,82 @@ public class MapPanel extends JPanel implements Runnable
         g2D.fillRect(5*scaledTileSize,4*scaledTileSize,30,10);
         g2D.setColor(Color.BLACK);
         g2D.drawString(GUIMethods.getStations().get(2).getName(),5*scaledTileSize,4*scaledTileSize+9);
-        g2D.drawString(GUIMethods.getStations().get(2).getCurrentLoad()+"",5*scaledTileSize,5*scaledTileSize);
+        g2D.drawString(GUIMethods.getStations().get(2).getCurrentLoad()+"",5*scaledTileSize,5*scaledTileSize);*/
 
         float thickness=2;
-        Stroke oldStroke=g2D.getStroke();
+        //Stroke oldStroke=g2D.getStroke();
         g2D.setStroke(new BasicStroke(thickness));
 
         switch (glowPlatform)
         {
             case 0 ->
             {
-                g2D.drawRect(GUIMethods.getStations().get(0).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(0).getLocation()[1]*scaledTileSize,scaledTileSize,scaledTileSize);
-                g2D.drawRect(GUIMethods.getStations().get(1).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(1).getLocation()[1]*scaledTileSize,scaledTileSize,scaledTileSize);
-                /*g2D.drawRect(1*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);
-                g2D.drawRect(5*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);*/
+                drawGlowStations(GUIMethods.getStations().get(0),GUIMethods.getStations().get(1),g2D);
             }
             case 1 ->
             {
-                g2D.drawRect(GUIMethods.getStations().get(0).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(0).getLocation()[1]*scaledTileSize,scaledTileSize,scaledTileSize);
-                g2D.drawRect(GUIMethods.getStations().get(2).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(2).getLocation()[1]*scaledTileSize,scaledTileSize,scaledTileSize);
-                /*g2D.drawRect(1*scaledTileSize,5*scaledTileSize,scaledTileSize,scaledTileSize);
-                g2D.drawRect(5*scaledTileSize,3*scaledTileSize,scaledTileSize,scaledTileSize);*/
+                drawGlowStations(GUIMethods.getStations().get(1),GUIMethods.getStations().get(0),g2D);
             }
+            case 2 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(0),GUIMethods.getStations().get(2),g2D);
+            }
+            case 3 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(2),GUIMethods.getStations().get(0),g2D);
+            }
+            case 4 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(0),GUIMethods.getStations().get(3),g2D);
+            }
+            case 5 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(3),GUIMethods.getStations().get(0),g2D);
+            }
+            case 6,8 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(1),GUIMethods.getStations().get(2),g2D);
+            }
+            case 7,9 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(2),GUIMethods.getStations().get(1),g2D);
+            }
+            case 10,12 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(1),GUIMethods.getStations().get(3),g2D);
+            }
+            case 11,13 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(3),GUIMethods.getStations().get(1),g2D);
+            }
+            case 14 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(2),GUIMethods.getStations().get(3),g2D);
+            }
+            case 15 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(3),GUIMethods.getStations().get(2),g2D);
+            }
+            case 16 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(4),GUIMethods.getStations().get(5),g2D);
+            }
+            case 17 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(6),GUIMethods.getStations().get(7),g2D);
+            }
+
         }
 
         g2D.dispose();
+    }
+
+    private void drawGlowStations(Station start, Station end, Graphics2D g2D)
+    {
+        g2D.setColor(Color.RED);
+        g2D.drawRect(start.getLocation()[0]*scaledTileSize,start.getLocation()[1]*scaledTileSize,scaledTileSize,scaledTileSize);
+        g2D.setColor(Color.ORANGE);
+        g2D.drawRect(end.getLocation()[0]*scaledTileSize,end.getLocation()[1]*scaledTileSize,scaledTileSize,scaledTileSize);
     }
 
     public void setGlowPlatform(int glowPlatform)

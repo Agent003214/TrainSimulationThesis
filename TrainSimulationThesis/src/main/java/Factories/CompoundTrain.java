@@ -184,21 +184,6 @@ public class CompoundTrain extends BaseTrain
         return szamlalo;
     }
 
-    public void loadCar(int i, int num)
-    {
-        if (trains.get(i) instanceof Attachable)
-        {
-            ((Attachable) trains.get(i)).loadCargo(num);
-        }
-    }
-
-    public void unloadCar(int i, int num)
-    {
-        if (trains.get(i) instanceof Attachable)
-        {
-            ((Attachable) trains.get(i)).unloadCargo(num);
-        }
-    }
     public int getLoadOfCar(int i)
     {
         if (trains.get(i) instanceof Attachable)

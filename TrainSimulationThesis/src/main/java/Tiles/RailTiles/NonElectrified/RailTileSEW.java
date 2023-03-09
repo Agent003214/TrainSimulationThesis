@@ -6,7 +6,7 @@ public class RailTileSEW extends RailTile
 {
     public RailTileSEW()
     {
-        filePaths=new String[]{"./src/main/resources/Tiles/railTileSEW.png"};
+        filePaths=new String[]{"./src/main/resources/Tiles/RailTile/railTileSEW.png"};
     }
 
     @Override

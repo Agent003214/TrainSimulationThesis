@@ -1,4 +1,4 @@
-package Tiles.Scenery;
+package Tiles.Scenery.RoadTiles;
 
 import Tiles.Tile;
 
@@ -10,7 +10,7 @@ public class RoadTileEW extends Tile
 {
     public RoadTileEW()
     {
-        filePaths=new String[]{"./src/main/resources/Tiles/roadTileEW.png"};
+        filePaths=new String[]{"./src/main/resources/Tiles/RoadTile/roadTileEW.png"};
     }
 
     @Override

@@ -20,8 +20,10 @@ public interface Attachable
      */
     int getCapacity();
     void loadCargoType(Cargo cargo);
-    int loadCargo(int num);
+    int loadCargo(int num,Cargo type);
     int unloadCargo(int num);
     int getLoad();
+    Cargo[] getCargoCompatibility();
+    Object clone();
 
 }

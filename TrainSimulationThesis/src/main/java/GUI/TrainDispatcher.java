@@ -1,7 +1,9 @@
 package GUI;
 
+import Attachables.Attachable;
 import Drawables.TrainDrawable;
 import Factories.CompoundTrain;
+import Factories.Train;
 import Routes.Routes;
 
 import java.awt.*;
@@ -16,7 +18,7 @@ public class TrainDispatcher
 
     public void sendTrain(MapPanel mp, Routes route, CompoundTrain train)
     {
-        startedTrains.add(train);
+        //startedTrains.add(train);
 
         double drawInterval = 1000 / 30;
         double delta = 0;
@@ -43,7 +45,20 @@ public class TrainDispatcher
             {
                 //System.out.println("FPS: "+drawCount);
                 //trainsOnTrack.add(new TrainDrawable(mp,route,train.getRightImage(i),train.getBackImage(i),train.getFrontImage(i),1,0));
-                trainsOnTrack.add(new TrainDrawable(mp, route, train.getCar(i)));
+                if (train.getCar(i) instanceof Attachable)
+                {
+
+
+                        //((Car) train.getCar(i)).clone();
+                        trainsOnTrack.add(new TrainDrawable(mp, route, (Train) ((Attachable) train.getCar(i)).clone()));
+
+                }
+                else
+                {
+                    trainsOnTrack.add(new TrainDrawable(mp, route, train.getCar(i)));
+                }
+
+                //trainsOnTrack.add(new TrainDrawable(mp, route, new InterCityPlus()));
                 i++;
                 timer = 0;
             }
@@ -68,6 +83,7 @@ public class TrainDispatcher
                     {
                         if (GUIMethods.getStations().get(j).getLocation() == trainsOnTrack.get(i).getStartStation())
                         {
+                            System.out.println(trainsOnTrack.get(i).getTrainPiece().toString());
                             int newStationLoad = trainsOnTrack.get(i).load(GUIMethods.getStations().get(j).getCargoType(), GUIMethods.getStations().get(j).getCurrentLoad());
                             if (newStationLoad != -1)
                             {

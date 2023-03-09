@@ -1,8 +1,9 @@
 package Factories;
 
 import Attachables.Attachable;
+import Attachables.Cargo.Cargo;
 
-public class BaseTrain implements Train
+public abstract class BaseTrain implements Train
 {
 
     @Override

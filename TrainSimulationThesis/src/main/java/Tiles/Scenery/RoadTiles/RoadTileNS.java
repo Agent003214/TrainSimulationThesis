@@ -1,4 +1,4 @@
-package Tiles.Scenery;
+package Tiles.Scenery.RoadTiles;
 
 import Tiles.Tile;
 
@@ -10,12 +10,12 @@ public class RoadTileNS extends Tile
 {
     public RoadTileNS()
     {
-        filePaths=new String[]{"./src/main/resources/Tiles/roadTileEW.png"};
+        filePaths=new String[]{"./src/main/resources/Tiles/RoadTile/roadTileNS.png"};
     }
 
     @Override
     protected String errorMessage()
     {
-        return "East-west road tile image not found";
+        return "North south road tile image not found";
     }
 }
