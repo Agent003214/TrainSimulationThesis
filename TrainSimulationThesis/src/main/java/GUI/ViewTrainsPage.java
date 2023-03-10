@@ -22,13 +22,13 @@ public class ViewTrainsPage extends JPanel
         setBackground(Color.YELLOW);
         gridBagLayout = new GridBagLayout();
         setLayout(gridBagLayout);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        //Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         cardLayout = new CardLayout();
 
         //Create top panel
         GridBagConstraints c = new GridBagConstraints();
         JPanel topPanel = new JPanel();
-        topPanel.setPreferredSize(new Dimension(dim.width, ((dim.height / 3) * 2) - 20));
+        topPanel.setPreferredSize(new Dimension(GUIMethods.getDim().width, ((GUIMethods.getDim().height / 3) * 2) - 20));
         topPanel.setBackground(Color.WHITE);
         topPanel.setLayout(new GridLayout(1, 3));
         c.gridx = 0;
@@ -102,7 +102,7 @@ public class ViewTrainsPage extends JPanel
         //Create bottom panel
         JPanel createTrainPageBottomPanel = new JPanel();
         createTrainPageBottomPanel.setBackground(Color.YELLOW);
-        createTrainPageBottomPanel.setPreferredSize(new Dimension(dim.width, ((dim.height) / 3) - 20));
+        createTrainPageBottomPanel.setPreferredSize(new Dimension(GUIMethods.getDim().width, ((GUIMethods.getDim().height) / 3) - 20));
         c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 2;
@@ -150,7 +150,6 @@ public class ViewTrainsPage extends JPanel
         for (int i = 0; i < GUIMethods.getTrain().size(); i++)
         {
             refreshArray[i]=GUIMethods.getTrain().get(i).getTrainName();
-            //System.out.println(tempArray[i]);
         }
         trainListInfoPanel.setListData(refreshArray);
         trainListInfoPanel.revalidate();

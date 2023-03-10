@@ -57,13 +57,13 @@ public class CreateTrainPage extends JPanel
         setBackground(Color.RED);
         gridBagLayout = new GridBagLayout();
         setLayout(gridBagLayout);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        //Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         cardLayout = new CardLayout();
 
         //Create top panel
         GridBagConstraints c = new GridBagConstraints();
         JPanel topPanel = new JPanel();
-        topPanel.setPreferredSize(new Dimension(dim.width, ((dim.height / 3) * 2) - 20));
+        topPanel.setPreferredSize(new Dimension(GUIMethods.getDim().width, ((GUIMethods.getDim().height / 3) * 2) - 20));
         topPanel.setBackground(Color.WHITE);
         topPanel.setLayout(new GridLayout(1, 3));
         c.gridx = 0;
@@ -312,12 +312,12 @@ public class CreateTrainPage extends JPanel
         //Create bottom panel
         JPanel createTrainPageBottomPanel = new JPanel();
         createTrainPageBottomPanel.setBackground(Color.YELLOW);
-        createTrainPageBottomPanel.setPreferredSize(new Dimension(dim.width, ((dim.height) / 3) - 20));
+        createTrainPageBottomPanel.setPreferredSize(new Dimension(GUIMethods.getDim().width, ((GUIMethods.getDim().height) / 3) - 20));
 
         JPanel imageDrawPanel = drawBottomImage;
-        imageDrawPanel.setPreferredSize(new Dimension(5000, ((dim.height) / 3) - 20));
+        imageDrawPanel.setPreferredSize(new Dimension(5000, ((GUIMethods.getDim().height) / 3) - 20));
         drawSP = new JScrollPane(imageDrawPanel);
-        drawSP.setPreferredSize(new Dimension(dim.width, ((dim.height) / 3) - 20));
+        drawSP.setPreferredSize(new Dimension(GUIMethods.getDim().width, ((GUIMethods.getDim().height) / 3) - 20));
         drawSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         drawSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         createTrainPageBottomPanel.add(drawSP);

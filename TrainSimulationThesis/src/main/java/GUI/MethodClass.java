@@ -23,6 +23,7 @@ public class MethodClass
     private static ArrayList<CompoundTrain> train=new ArrayList<>();
     private static ArrayList<Station> stations=new ArrayList<>();
     private Font font = new Font("Tahoma",0,22);
+    private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
     protected ArrayList<CompoundTrain> getTrain()
     {
@@ -110,15 +111,13 @@ public class MethodClass
         train.set(train.size()-1,createdTrain);
     }
 
-    protected void printCurrentTrain()
-    {
-        System.out.println(train.size());
-    }
-
     protected Font getFont()
     {
         return font;
     }
 
-
+    public Dimension getDim()
+    {
+        return dim;
+    }
 }
