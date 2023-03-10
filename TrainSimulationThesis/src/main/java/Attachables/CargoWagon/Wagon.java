@@ -72,8 +72,10 @@ public abstract class Wagon extends BaseTrain implements Attachable,Cloneable
         }
         else
         {
+            int helper=Math.abs(load-num);
             load=0;
-            return Math.abs(load-num);
+            cargo=null;
+            return helper;
         }
     }
 

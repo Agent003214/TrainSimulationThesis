@@ -457,19 +457,16 @@ public class MapPage extends JPanel
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailPlatformTileEW(),new RailTileEW(),new RailTileSW(),null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileSW(),new RailTileNE(),null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailPlatformTileEW(),new RailTileEW(),new RailTileSW(),null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNW(),new RailTileEW(),new RailPlatformTileEW(),null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileSE(),new RailTileNW(),null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNE(),new RailTileEW(),new RailTileEW(),new RailPlatformTileEW(),null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
@@ -482,7 +479,8 @@ public class MapPage extends JPanel
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null}
                 };
-        routes.add(new Routes(GUIMethods.getStations().get(6), GUIMethods.getStations().get(7), "Route 8",line,1,0,false));
+        routes.add(new Routes(GUIMethods.getStations().get(6), GUIMethods.getStations().get(7), "Route 8",line,-1,0,false));
+        routes.add(new Routes(GUIMethods.getStations().get(7), GUIMethods.getStations().get(6), "Route 8 R",line,1,0,false));
 
         DefaultListModel<String> stopDLM = new DefaultListModel<>();
         for (int i = 0; i < routes.size(); i++)

@@ -177,6 +177,14 @@ public class MapPanel extends JPanel implements Runnable
 
     private void update()
     {
+        try
+        {
+            GUIMethods.getStations().get(8).update();
+        }
+        catch (IndexOutOfBoundsException e)
+        {
+
+        }
         dispatcher.update();
     }
 

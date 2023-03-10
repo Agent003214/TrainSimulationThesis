@@ -19,7 +19,6 @@ public class TrainDispatcher
     public void sendTrain(MapPanel mp, Routes route, CompoundTrain train)
     {
         //startedTrains.add(train);
-
         double drawInterval = 1000 / 30;
         double delta = 0;
         long lastTime = System.currentTimeMillis();
@@ -83,7 +82,6 @@ public class TrainDispatcher
                     {
                         if (GUIMethods.getStations().get(j).getLocation() == trainsOnTrack.get(i).getStartStation())
                         {
-                            System.out.println(trainsOnTrack.get(i).getTrainPiece().toString());
                             int newStationLoad = trainsOnTrack.get(i).load(GUIMethods.getStations().get(j).getCargoType(), GUIMethods.getStations().get(j).getCurrentLoad());
                             if (newStationLoad != -1)
                             {

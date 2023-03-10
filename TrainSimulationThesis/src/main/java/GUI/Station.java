@@ -1,6 +1,7 @@
 package GUI;
 
 import Attachables.Cargo.Cargo;
+import Attachables.Cargo.Steel;
 
 public class Station
 {
@@ -12,6 +13,7 @@ public class Station
     private int currentLoad;
     private final String name;
     private final Cargo cargoType;
+    private MethodClass GUIMethods = new MethodClass();
 
 
     public Station(int[] location,String name, int currentLoad, Cargo cargoType)
@@ -51,6 +53,22 @@ public class Station
         this.currentLoad = currentLoad;
     }
 
+    /*public int unload(int amount)
+    {
+        if (currentLoad-amount>=0)
+        {
+            currentLoad-=amount;
+            return 0;
+        }
+        else
+        {
+            int helper=Math.abs(load-num);
+            load=0;
+            cargo=null;
+            return helper;
+        }
+    }*/
+
     public int getMaxCapacity()
     {
         return maxCapacity;
@@ -61,8 +79,27 @@ public class Station
         return maxCapacity-currentLoad;
     }
 
-    private void steelMill()
+    public void update()
     {
-
+        int iron=GUIMethods.getStations().get(5).getCurrentLoad();
+        int coal=GUIMethods.getStations().get(7).getCurrentLoad();
+        if (iron>coal)
+        {
+            if (coal>0)
+            {
+                GUIMethods.getStations().get(7).setCurrentLoad(0);
+                GUIMethods.getStations().get(5).setCurrentLoad(iron-coal);
+                GUIMethods.getStations().get(8).setCurrentLoad(coal);
+            }
+        }
+        else
+        {
+            if (iron>0)
+            {
+                GUIMethods.getStations().get(7).setCurrentLoad(coal-iron);
+                GUIMethods.getStations().get(5).setCurrentLoad(0);
+                GUIMethods.getStations().get(8).setCurrentLoad(iron);
+            }
+        }
     }
 }
