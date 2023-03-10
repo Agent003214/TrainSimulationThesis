@@ -32,8 +32,6 @@ public class MapPage extends JPanel
 
     public MapPage()
     {
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        System.out.println(dim);
         gridBagLayout = new GridBagLayout();
         setLayout(gridBagLayout);
         c = new GridBagConstraints();
@@ -71,7 +69,7 @@ public class MapPage extends JPanel
         /*trainPanel.add(trainPanelTop);
         trainPanel.add(trainPanelBottom);*/
 
-        trainPanel.setPreferredSize(new Dimension(300, 1040));
+        trainPanel.setPreferredSize(new Dimension((int) (GUIMethods.getDim().getWidth()*0.16), (int) (GUIMethods.getDim().getHeight()-40)));
         c.gridx = 0;
         c.gridy = 0;
         add(trainPanel, c);
@@ -81,7 +79,7 @@ public class MapPage extends JPanel
         JPanel mapPanel = map;
         JScrollPane scrollMap=new JScrollPane(map);
         //mapPanel.setPreferredSize(new Dimension(1920 - 600, 1040));
-        scrollMap.setPreferredSize(new Dimension(1920 - 600, 1040));
+        scrollMap.setPreferredSize(new Dimension((int) (GUIMethods.getDim().getWidth()*0.68), (int) (GUIMethods.getDim().getHeight()-40)));
         c.gridx = 1;
         c.gridy = 0;
         add(scrollMap, c);
@@ -537,7 +535,7 @@ public class MapPage extends JPanel
 
         stopsPanel.add(routePanel);
         stopsPanel.add(stationsPanel);
-        stopsPanel.setPreferredSize(new Dimension(300, 1040));
+        stopsPanel.setPreferredSize(new Dimension((int) (GUIMethods.getDim().getWidth()*0.16), (int) (GUIMethods.getDim().getHeight()-40)));
         stopsPanel.setBackground(Color.orange);
         c.gridx = 2;
         c.gridy = 0;
@@ -555,7 +553,6 @@ public class MapPage extends JPanel
         for (int i = 0; i < GUIMethods.getTrain().size(); i++)
         {
             refreshArray[i] = GUIMethods.getTrain().get(i).getTrainName();
-            //System.out.println(tempArray[i]);
         }
         trainListInfoPanel.setListData(refreshArray);
         trainListInfoPanel.revalidate();
