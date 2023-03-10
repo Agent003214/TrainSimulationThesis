@@ -553,6 +553,7 @@ public class MapPage extends JPanel
         for (int i = 0; i < GUIMethods.getTrain().size(); i++)
         {
             refreshArray[i] = GUIMethods.getTrain().get(i).getTrainName();
+            //System.out.println(tempArray[i]);
         }
         trainListInfoPanel.setListData(refreshArray);
         trainListInfoPanel.revalidate();
