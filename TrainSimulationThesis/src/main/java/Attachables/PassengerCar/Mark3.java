@@ -10,10 +10,10 @@ public class Mark3 extends Car
     {
         filePaths = new String[]
                 {
-                        "./src/main/resources/Attachables/Passenger/Mk3/Mk3Front.png",
-                        "./src/main/resources/Attachables/Passenger/Mk3/Mk3Front.png",
-                        "./src/main/resources/Attachables/Passenger/Mk3/Mk3Side.png",
-                        "./src/main/resources/Attachables/Passenger/Mk3/Mk3.png"
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Passenger/Mk3/Mk3Front.png",
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Passenger/Mk3/Mk3Front.png",
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Passenger/Mk3/Mk3Side.png",
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Passenger/Mk3/Mk3.png"
                 };
     }
     @Override

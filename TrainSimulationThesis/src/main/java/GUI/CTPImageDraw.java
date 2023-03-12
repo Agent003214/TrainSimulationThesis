@@ -14,7 +14,7 @@ public class CTPImageDraw extends JPanel
     private static ArrayList<BufferedImage> imgArray;
     public CTPImageDraw()
     {
-        setBackground(Color.YELLOW);
+        //setBackground(Color.YELLOW);
         imgArray=new ArrayList<>();
     }
 

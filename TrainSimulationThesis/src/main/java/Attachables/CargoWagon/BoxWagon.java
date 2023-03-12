@@ -15,10 +15,10 @@ public class BoxWagon extends Wagon
     {
         filePaths = new String[]
                 {
-                        "./src/main/resources/Attachables/Cargo/BoxWagon/BoxWagonFront.png",
-                        "./src/main/resources/Attachables/Cargo/BoxWagon/BoxWagonFront.png",
-                        "./src/main/resources/Attachables/Cargo/BoxWagon/BoxWagonSide.png",
-                        "./src/main/resources/Attachables/Cargo/BoxWagon/BoxWagon.png"
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Cargo/BoxWagon/BoxWagonFront.png",
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Cargo/BoxWagon/BoxWagonFront.png",
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Cargo/BoxWagon/BoxWagonSide.png",
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Cargo/BoxWagon/BoxWagon.png"
                 };
     }
 

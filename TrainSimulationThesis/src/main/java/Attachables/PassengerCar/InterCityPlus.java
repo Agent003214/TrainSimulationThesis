@@ -12,10 +12,10 @@ public class InterCityPlus extends Car
     {
         filePaths = new String[]
                 {
-                        "./src/main/resources/Attachables/Passenger/IC/InterCityFront.png",
-                        "./src/main/resources/Attachables/Passenger/IC/InterCityFront.png",
-                        "./src/main/resources/Attachables/Passenger/IC/InterCitySide.png",
-                        "./src/main/resources/Attachables/Passenger/IC/InterCity.png"
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Passenger/IC/InterCityFront.png",
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Passenger/IC/InterCityFront.png",
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Passenger/IC/InterCitySide.png",
+                        "./TrainSimulationThesis/src/main/resources/Attachables/Passenger/IC/InterCity.png"
                 };
     }
 

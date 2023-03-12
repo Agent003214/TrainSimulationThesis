@@ -6,7 +6,7 @@ public class RailTileNEW extends RailTile
 {
     public RailTileNEW()
     {
-        filePaths=new String[]{"./src/main/resources/Tiles/RailTile/railTileNEW.png"};
+        filePaths=new String[]{"./TrainSimulationThesis/src/main/resources/Tiles/RailTile/railTileNEW.png"};
     }
 
     @Override

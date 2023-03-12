@@ -42,12 +42,19 @@ public class MapPanel extends JPanel implements Runnable
         //MapPanel mp=this;
         thread=new Thread(() ->
         {
-            if (GUIMethods.getTrain().get(i).checkElectrified()==route.isElectrified())
+            try
             {
-                dispatcher.sendTrain(this,route,GUIMethods.getTrain().get(i));
-            } else if (!GUIMethods.getTrain().get(i).checkElectrified())
+                if (GUIMethods.getTrain().get(i).checkElectrified() == route.isElectrified())
+                {
+                    dispatcher.sendTrain(this, route, GUIMethods.getTrain().get(i));
+                } else if (!GUIMethods.getTrain().get(i).checkElectrified())
+                {
+                    dispatcher.sendTrain(this, route, GUIMethods.getTrain().get(i));
+                }
+            }
+            catch (IndexOutOfBoundsException e)
             {
-                dispatcher.sendTrain(this,route,GUIMethods.getTrain().get(i));
+                JOptionPane.showMessageDialog(this,"Select train");
             }
         });
         thread.start();
@@ -125,6 +132,7 @@ public class MapPanel extends JPanel implements Runnable
             }
             if (timer >= 1000)
             {
+                updateStation();
                 //System.out.println("FPS: "+drawCount);
                 drawCount = 0;
                 timer = 0;
@@ -177,6 +185,11 @@ public class MapPanel extends JPanel implements Runnable
 
     private void update()
     {
+        dispatcher.update();
+    }
+
+    private void updateStation()
+    {
         try
         {
             GUIMethods.getStations().get(8).update();
@@ -185,9 +198,7 @@ public class MapPanel extends JPanel implements Runnable
         {
 
         }
-        dispatcher.update();
     }
-
 
     public void paintComponent(Graphics g)
     {
@@ -228,24 +239,8 @@ public class MapPanel extends JPanel implements Runnable
         g2D.setColor(Color.BLACK);
         g2D.drawString("Stop",32*scaledTileSize,5*scaledTileSize-15);
 
-        /*g2D.setColor(Color.WHITE);
-        g2D.fillRect(1*scaledTileSize,6*scaledTileSize,30,10);
-        g2D.setColor(Color.BLACK);
-        g2D.setFont(GUIMethods.getFont());
-        g2D.drawString(GUIMethods.getStations().get(0).getName(),1*scaledTileSize,6*scaledTileSize+9);
-        g2D.drawString(GUIMethods.getStations().get(0).getCurrentLoad()+"",scaledTileSize,7*scaledTileSize);
-
-        g2D.setColor(Color.WHITE);
-        g2D.fillRect(5*scaledTileSize,6*scaledTileSize,30,10);
-        g2D.setColor(Color.BLACK);
-        g2D.drawString(GUIMethods.getStations().get(1).getName(),5*scaledTileSize,6*scaledTileSize+9);
-        g2D.drawString(GUIMethods.getStations().get(1).getCurrentLoad()+"",5*scaledTileSize,7*scaledTileSize);
-
-        g2D.setColor(Color.WHITE);
-        g2D.fillRect(5*scaledTileSize,4*scaledTileSize,30,10);
-        g2D.setColor(Color.BLACK);
-        g2D.drawString(GUIMethods.getStations().get(2).getName(),5*scaledTileSize,4*scaledTileSize+9);
-        g2D.drawString(GUIMethods.getStations().get(2).getCurrentLoad()+"",5*scaledTileSize,5*scaledTileSize);*/
+        g2D.drawString("Exported steel:",16*scaledTileSize,28*scaledTileSize);
+        g2D.drawString(GUIMethods.getStations().get(9).getCurrentLoad()+"",16*scaledTileSize,29*scaledTileSize);
 
         float thickness=2;
         //Stroke oldStroke=g2D.getStroke();
@@ -308,6 +303,10 @@ public class MapPanel extends JPanel implements Runnable
             case 17 ->
             {
                 drawGlowStations(GUIMethods.getStations().get(6),GUIMethods.getStations().get(7),g2D);
+            }
+            case 18 ->
+            {
+                drawGlowStations(GUIMethods.getStations().get(8),GUIMethods.getStations().get(9),g2D);
             }
 
         }

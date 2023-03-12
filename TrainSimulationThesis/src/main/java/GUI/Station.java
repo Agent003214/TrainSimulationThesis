@@ -81,6 +81,13 @@ public class Station
 
     public void update()
     {
+        updateIron();
+        updateCoal();
+        updateSteel();
+    }
+
+    public void updateSteel()
+    {
         int iron=GUIMethods.getStations().get(5).getCurrentLoad();
         int coal=GUIMethods.getStations().get(7).getCurrentLoad();
         if (iron>coal)
@@ -100,6 +107,22 @@ public class Station
                 GUIMethods.getStations().get(5).setCurrentLoad(0);
                 GUIMethods.getStations().get(8).setCurrentLoad(iron);
             }
+        }
+    }
+
+    private void updateIron()
+    {
+        if (GUIMethods.getStations().get(1).getCurrentLoad()>=300)
+        {
+            GUIMethods.getStations().get(4).setCurrentLoad(GUIMethods.getStations().get(4).getCurrentLoad()+100);
+        }
+    }
+
+    private void updateCoal()
+    {
+        if (GUIMethods.getStations().get(3).getCurrentLoad()>=300)
+        {
+            GUIMethods.getStations().get(6).setCurrentLoad(GUIMethods.getStations().get(6).getCurrentLoad()+100);
         }
     }
 }

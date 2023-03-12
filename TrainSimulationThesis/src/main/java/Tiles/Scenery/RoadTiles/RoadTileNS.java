@@ -10,7 +10,7 @@ public class RoadTileNS extends Tile
 {
     public RoadTileNS()
     {
-        filePaths=new String[]{"./src/main/resources/Tiles/RoadTile/roadTileNS.png"};
+        filePaths=new String[]{"./TrainSimulationThesis/src/main/resources/Tiles/RoadTile/roadTileNS.png"};
     }
 
     @Override

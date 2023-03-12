@@ -228,7 +228,15 @@ public class CompoundTrain extends BaseTrain
         String[] trainCars=new String[trains.size()];
         for (int i = 0; i < trains.size(); i++)
         {
-            trainCars[i]=trains.get(i).toString();
+            if (trains.get(i) instanceof Locomotive)
+            {
+                trainCars[i]=((Locomotive) trains.get(i)).getModelName();
+            }
+            if (trains.get(i) instanceof Attachable)
+            {
+                trainCars[i]=((Attachable) trains.get(i)).getName();
+            }
+            //trainCars[i]=trains.get(i).toString();
         }
         return trainCars;
     }

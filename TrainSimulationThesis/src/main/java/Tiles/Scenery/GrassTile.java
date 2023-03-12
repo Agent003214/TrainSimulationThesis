@@ -8,9 +8,9 @@ public class GrassTile extends Tile
     {
         filePaths = new String[]
                 {
-                        "./src/main/resources/Tiles/grassTile.png",
-                        "./src/main/resources/Tiles/grassTile2.png",
-                        "./src/main/resources/Tiles/grassTile3.png"
+                        "./TrainSimulationThesis/src/main/resources/Tiles/grassTile.png",
+                        "./TrainSimulationThesis/src/main/resources/Tiles/grassTile2.png",
+                        "./TrainSimulationThesis/src/main/resources/Tiles/grassTile3.png"
                 };
 
     }

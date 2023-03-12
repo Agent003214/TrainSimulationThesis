@@ -6,26 +6,7 @@ import java.awt.*;
 public class TrainGUI extends JFrame
 {
     private final CardLayout cardLayout;
-    private GridBagLayout gridBagLayout;
-    private GridBagConstraints c;
-    private JList<String> locomotiveList;
-    private JList<String> attachableList;
-    private JTextArea locoAttachableInfoPanel;
     private final JPanel mainPane;
-    private locoFilter locoFilterVar;
-
-    private enum locoFilter
-    {
-        ALL, ELECTRIC, DIESEL
-    }
-
-    private attachableFilter attachableFilterVar;
-
-    private enum attachableFilter
-    {
-        ALL, CAR, TANK, CONTAINER, BOX
-    }
-
 
     public TrainGUI()
     {
@@ -39,170 +20,8 @@ public class TrainGUI extends JFrame
         cardLayout = new CardLayout();
         mainPane.setLayout(cardLayout);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        ImageIcon icon=new ImageIcon("./src/main/resources/Locomotives/V63Side.png");
+        ImageIcon icon=new ImageIcon("./TrainSimulationThesis/src/main/resources/Locomotives/Electric/V63/V63Side.png");
         setIconImage(icon.getImage());
-
-
-        //Create the train creation page
-        //JPanel createTrainPage = new JPanel();
-        /*createTrainPage.setBackground(Color.RED);
-        gridBagLayout = new GridBagLayout();
-        createTrainPage.setLayout(gridBagLayout);*/
-
-        //Create top panel
-        /*GridBagConstraints c = new GridBagConstraints();
-        JPanel createTrainPageTopPanel = new JPanel();
-        createTrainPageTopPanel.setPreferredSize(new Dimension(dim.width, ((dim.height / 3) * 2) - 20));
-        createTrainPageTopPanel.setBackground(Color.WHITE);
-        createTrainPageTopPanel.setLayout(new GridLayout(1, 3));
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridheight = 1;
-        c.gridwidth = 1;
-        c.fill = GridBagConstraints.BOTH;
-        createTrainPage.add(createTrainPageTopPanel, c);*/
-
-        //Create add locomotive panels
-        //Top left panel
-        /*JPanel addSelectorTopPanel = new JPanel();
-        addSelectorTopPanel.setLayout(cardLayout);
-        JPanel addLocomotivePanel = new JPanel();
-        addLocomotivePanel.setLayout(new BorderLayout());*/
-        /*JList<String>*/
-       /* locomotiveList = new JList<>(locomotives());
-        JButton addLocomotiveButton = new JButton("Add locomotive");
-        addLocomotivePanel.add(locomotiveList, BorderLayout.CENTER);
-        addLocomotivePanel.add(addLocomotiveButton, BorderLayout.SOUTH);
-
-        JPanel addAttachablePanel = new JPanel();
-        addAttachablePanel.setLayout(new BorderLayout());
-        attachableList = new JList<>(attachables());
-        JButton addAttachableButton = new JButton("Add attachable");
-        addAttachablePanel.add(attachableList, BorderLayout.CENTER);
-        addAttachablePanel.add(addAttachableButton, BorderLayout.SOUTH);
-        Font listFont = new Font(locomotiveList.getFont().getFontName(), locomotiveList.getFont().getStyle(), 22);
-        locomotiveList.setFont(listFont);
-        attachableList.setFont(listFont);
-
-        locoFilterVar = locoFilter.ALL;
-
-        addSelectorTopPanel.add("locomotiveSelect", addLocomotivePanel);
-        addSelectorTopPanel.add("attachableSelect", addAttachablePanel);
-
-        createTrainPageTopPanel.add(addSelectorTopPanel);
-
-
-        //Create top middle Panel
-        JPanel selectorButtonPanel = new JPanel();
-        selectorButtonPanel.setLayout(new GridBagLayout());
-        selectorButtonPanel.setBackground(Color.BLUE);
-        c = new GridBagConstraints();
-        JButton showLocoButton = new JButton("Locomotives");
-        JButton showAttachableButton = new JButton("Cars/Wagons");
-        createTrainPageTopPanel.add(selectorButtonPanel);
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 2;
-        c.gridheight = 1;
-        selectorButtonPanel.add(showLocoButton, c);
-        c = new GridBagConstraints();
-        c.gridx = 2;
-        c.gridy = 0;
-        c.gridwidth = 2;
-        c.gridheight = 1;
-        selectorButtonPanel.add(showAttachableButton, c);
-        JPanel filterButtonPanel = new JPanel();
-        filterButtonPanel.setLayout(cardLayout);
-        JPanel locomotiveFilterButtonPanel = new JPanel();
-        locomotiveFilterButtonPanel.setLayout(new GridLayout(2, 2));
-        JButton electricLocomotiveFilterButton = new JButton("Electric");
-        JButton dieselLocomotiveFilterButton = new JButton("Diesel");
-        JButton locomotiveRemoveFilterButton = new JButton("All");
-        locomotiveFilterButtonPanel.add(electricLocomotiveFilterButton);
-        locomotiveFilterButtonPanel.add(dieselLocomotiveFilterButton);
-        locomotiveFilterButtonPanel.add(locomotiveRemoveFilterButton);
-
-        JPanel attachableFilterButtonPanel = new JPanel();
-        attachableFilterButtonPanel.setLayout(new GridLayout(3, 2));
-        JButton carFilterButton = new JButton("Passener cars");
-        JButton fluidTankFilterButton = new JButton("Fluid tank");
-        JButton intermodelContainerFilterButton = new JButton("Container");
-        JButton looseBulkFilterButton = new JButton("Grain/ore");
-        JButton attachableRemoveFilterButton = new JButton("All");
-
-        attachableFilterButtonPanel.add(carFilterButton);
-        attachableFilterButtonPanel.add(fluidTankFilterButton);
-        attachableFilterButtonPanel.add(intermodelContainerFilterButton);
-        attachableFilterButtonPanel.add(looseBulkFilterButton);
-        attachableFilterButtonPanel.add(attachableRemoveFilterButton);
-
-        filterButtonPanel.add("locomotiveFilter", locomotiveFilterButtonPanel);
-        filterButtonPanel.add("attachableFilter", attachableFilterButtonPanel);
-        c = new GridBagConstraints();
-        c.gridx = 0;
-        c.gridy = 1;
-        c.gridwidth = 4;
-        c.gridheight = 2;
-        selectorButtonPanel.add(filterButtonPanel, c);
-
-        showLocoButton.addActionListener(e -> showLocomotiveList(addSelectorTopPanel, filterButtonPanel));
-        showAttachableButton.addActionListener(e -> showAttachableList(addSelectorTopPanel, filterButtonPanel));
-
-        electricLocomotiveFilterButton.addActionListener(e -> setElectricLocomotiveEnum());
-        dieselLocomotiveFilterButton.addActionListener(e -> setDieselLocomotiveEnum());
-        locomotiveRemoveFilterButton.addActionListener(e -> setAllLocomotiveEnum());
-
-        carFilterButton.addActionListener(e -> setCarAttachableEnum());
-        fluidTankFilterButton.addActionListener(e -> setTankAttachableEnum());
-        intermodelContainerFilterButton.addActionListener(e -> setContainerAttachableEnum());
-        looseBulkFilterButton.addActionListener(e -> setBoxAttachableEnum());
-        attachableRemoveFilterButton.addActionListener(e ->setAllAttachableEnum());
-
-        //create top right panel
-        JPanel infoPanel = new JPanel();
-        infoPanel.setBackground(Color.magenta);
-        createTrainPageTopPanel.add(infoPanel);
-        infoPanel.setLayout(new BorderLayout());
-        locoAttachableInfoPanel = new JTextArea();
-        locoAttachableInfoPanel.setFont(listFont);
-        infoPanel.add(locoAttachableInfoPanel, BorderLayout.CENTER);
-
-        locomotiveList.addMouseListener(new MouseAdapter()
-        {
-            @Override
-            public void mouseClicked(MouseEvent e)
-            {
-                locoTextPanel();
-            }
-        });
-
-        attachableList.addMouseListener(new MouseAdapter()
-        {
-            @Override
-            public void mouseClicked(MouseEvent e)
-            {
-                attachableTextPanel();
-            }
-        });
-
-
-        //Create bottom panel
-        JPanel createTrainPageBottomPanel = new JPanel();
-        createTrainPageBottomPanel.setBackground(Color.YELLOW);
-        createTrainPageBottomPanel.setPreferredSize(new Dimension(dim.width, ((dim.height) / 3) - 20));
-        c = new GridBagConstraints();
-        c.gridx = 0;
-        c.gridy = 2;
-        c.gridheight = 1;
-        c.gridwidth = 1;
-        createTrainPage.add(createTrainPageBottomPanel, c);*/
-
-
-        JPanel p2 = new JPanel();
-        p2.setBackground(Color.GREEN);
-        JPanel p3 = new JPanel();
-        p3.setBackground(Color.BLUE);
 
         MapPage trainMap=new MapPage();
 
@@ -228,7 +47,7 @@ public class TrainGUI extends JFrame
         buttonPanel.add(button2);
         buttonPanel.add(button3);
         buttonPanel.add(button4);
-        buttonPanel.setPreferredSize(new Dimension(dim.width, 33));
+        buttonPanel.setPreferredSize(new Dimension(100, 33));
         pane.add(buttonPanel, BorderLayout.SOUTH);
 
         setUndecorated(true);

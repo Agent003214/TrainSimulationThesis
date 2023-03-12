@@ -104,16 +104,17 @@ public class MapPage extends JPanel
         GUIMethods.addStation(new int[]{31,16},"Coal mine",5000,new Coal());
         GUIMethods.addStation(new int[]{27,7},"Coal",0,new Coal());
         GUIMethods.addStation(new int[]{27,4},"Steel mill",0,new Steel());
+        GUIMethods.addStation(new int[]{21,30},"Steel export",0,new Steel());
 
         Tile[][] line=new Tile[][]
                 {
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileSE(),new RailTileEW(),new RailTileEW(),new RailPlatformTileEW(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
@@ -122,22 +123,22 @@ public class MapPage extends JPanel
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileSE(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileNW(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,new RailPlatformTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileNW(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null}
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {}
                 };
         routes.add(new Routes(GUIMethods.getStations().get(0), GUIMethods.getStations().get(1), "Route 1 ϟ",line,-1,0,true));
         routes.add(new Routes(GUIMethods.getStations().get(1), GUIMethods.getStations().get(0), "Route 1 ϟ Reverse",line,1,0,true));
@@ -372,37 +373,30 @@ public class MapPage extends JPanel
 
         line=new Tile[][]
                 {
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileSE(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailPlatformTileEW(),null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileSE(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileNW(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailPlatformTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null}
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailPlatformTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null}
                 };
 
         routes.add(new Routes(GUIMethods.getStations().get(2), GUIMethods.getStations().get(3), "Route 6 ϟ",line,0,-1,true));
@@ -410,15 +404,15 @@ public class MapPage extends JPanel
 
         line=new Tile[][]
                 {
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailPlatformTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null},
@@ -427,34 +421,21 @@ public class MapPage extends JPanel
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,new RailPlatformTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileNW(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null}
+                        {null,null,null,null,null,null,null,null,new RailPlatformTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileNW(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null}
                 };
 
-        routes.add(new Routes(GUIMethods.getStations().get(4), GUIMethods.getStations().get(5), "Route 7 ϟ",line,1,0,true));
+        routes.add(new Routes(GUIMethods.getStations().get(4), GUIMethods.getStations().get(5), "Iron ϟ",line,1,0,true));
         //.add(new Routes(GUIMethods.getStations().get(5), GUIMethods.getStations().get(4), "Route 7 ϟ Reverse",line,0,1,true));
 
         line=new Tile[][]
                 {
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
+                        {},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailPlatformTileEW(),new RailTileEW(),new RailTileSW(),null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
@@ -465,20 +446,46 @@ public class MapPage extends JPanel
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNE(),new RailTileEW(),new RailTileEW(),new RailPlatformTileEW(),null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
-                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
                         {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null}
                 };
-        routes.add(new Routes(GUIMethods.getStations().get(6), GUIMethods.getStations().get(7), "Route 8",line,-1,0,false));
-        routes.add(new Routes(GUIMethods.getStations().get(7), GUIMethods.getStations().get(6), "Route 8 R",line,1,0,false));
+        routes.add(new Routes(GUIMethods.getStations().get(6), GUIMethods.getStations().get(7), "Coal",line,-1,0,false));
+
+        line=new Tile[][]
+                {
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileSE(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileEW(),new RailTileSW(),null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,new RailPlatformTileNS(),null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNE(),new RailTileEW(),new RailTileEW(),new RailTileSW(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null},
+                        {null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,new RailTileNS(),null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null}
+                };
+
+        routes.add(new Routes(GUIMethods.getStations().get(8), GUIMethods.getStations().get(9), "Steel export ϟ",line,0,-1,true));
 
         DefaultListModel<String> stopDLM = new DefaultListModel<>();
         for (int i = 0; i < routes.size(); i++)
@@ -521,15 +528,19 @@ public class MapPage extends JPanel
         {
             try
             {
-                sendTrainButton.setEnabled(false);
+                //sendTrainButton.setEnabled(false);
                 Thread thread = new Thread(() ->{});
                 map.send(routes.get(stopList.getSelectedIndex()), trainListInfoPanel.getSelectedIndex(), thread);
                 thread.join();
-                sendTrainButton.setEnabled(true);
+                //sendTrainButton.setEnabled(true);
             }
             catch (InterruptedException ex)
             {
                 System.out.println(ex.getMessage());
+            }
+            catch (IndexOutOfBoundsException exe)
+            {
+                JOptionPane.showMessageDialog(this,"Route");
             }
         });
 

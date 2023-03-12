@@ -19,7 +19,7 @@ public class ViewTrainsPage extends JPanel
     protected  String[] refreshArray;
     public ViewTrainsPage()
     {
-        setBackground(Color.YELLOW);
+        //setBackground(Color.YELLOW);
         gridBagLayout = new GridBagLayout();
         setLayout(gridBagLayout);
         //Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -47,7 +47,7 @@ public class ViewTrainsPage extends JPanel
         trainListPanel.add(trainListInfoPanel,BorderLayout.CENTER);
         trainListInfoPanel.setFont(GUIMethods.getFont());
         topPanel.add(trainListPanel);
-        trainListPanel.setBackground(Color.magenta);
+        //trainListPanel.setBackground(Color.magenta);
         JButton deleteButton=new JButton("Delete train");
         trainListPanel.add(deleteButton,BorderLayout.SOUTH);
         deleteButton.addActionListener(e -> deleteTrain());
@@ -77,7 +77,7 @@ public class ViewTrainsPage extends JPanel
 
         //Top middle panel
         JPanel middleSeparator=new JPanel();
-        middleSeparator.setBackground(Color.BLUE);
+        //middleSeparator.setBackground(Color.BLUE);
 
         JButton refreshButton=new JButton("Refresh");
         refreshButton.addActionListener(e -> trainList());
@@ -94,14 +94,14 @@ public class ViewTrainsPage extends JPanel
         trainElementsInfoPanel.setFont(GUIMethods.getFont());
         trainInfoPanel.add(trainStatsInfoPanel);
         trainInfoPanel.add(trainElementsInfoPanel);
-        trainInfoPanel.setBackground(Color.CYAN);
+        //trainInfoPanel.setBackground(Color.CYAN);
         topPanel.add(trainInfoPanel);
 
 
 
         //Create bottom panel
         JPanel createTrainPageBottomPanel = new JPanel();
-        createTrainPageBottomPanel.setBackground(Color.YELLOW);
+       // createTrainPageBottomPanel.setBackground(Color.YELLOW);
         createTrainPageBottomPanel.setPreferredSize(new Dimension(GUIMethods.getDim().width, ((GUIMethods.getDim().height) / 3) - 20));
         c = new GridBagConstraints();
         c.gridx = 0;

@@ -54,7 +54,7 @@ public class CreateTrainPage extends JPanel
 
     public CreateTrainPage()
     {
-        setBackground(Color.RED);
+        //setBackground(Color.RED);
         gridBagLayout = new GridBagLayout();
         setLayout(gridBagLayout);
         //Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -143,11 +143,11 @@ public class CreateTrainPage extends JPanel
 
         JPanel modifierMiddlePanel = new JPanel();
         modifierMiddlePanel.setLayout(new GridBagLayout());
-        modifierMiddlePanel.setBackground(Color.ORANGE);
+        //modifierMiddlePanel.setBackground(Color.ORANGE);
 
         JPanel selectorButtonPanel = new JPanel();
         selectorButtonPanel.setLayout(new GridBagLayout());
-        selectorButtonPanel.setBackground(Color.BLUE);
+        //electorButtonPanel.setBackground(Color.BLUE);
         JButton createNewTrainButton = new JButton("Create new train / Reset current train");
         createNewTrainButton.setPreferredSize(new Dimension(100, 30));
         modifierPanel.add(createNewTrainButton, BorderLayout.NORTH);
@@ -189,7 +189,7 @@ public class CreateTrainPage extends JPanel
         c.gridx = 0;
         c.gridy = 1;
         c.gridwidth = 2;
-        c.insets=new Insets(0,0,400,0);
+        c.insets=new Insets(0,0, (int) (GUIMethods.getDim().getHeight()*0.37),0);
         modifierMiddlePanel.add(selectorButtonPanel, c);
 
         c = new GridBagConstraints();
@@ -232,7 +232,7 @@ public class CreateTrainPage extends JPanel
 
         errorLabel = new JLabel();
         errorLabel.setForeground(Color.RED);
-        errorLabel.setText("Error message");
+        //errorLabel.setText("Error message");
         c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 2;
@@ -272,7 +272,7 @@ public class CreateTrainPage extends JPanel
 
         //create top right panel
         JPanel infoPanel = new JPanel();
-        infoPanel.setBackground(Color.magenta);
+        //infoPanel.setBackground(Color.magenta);
         topPanel.add(infoPanel);
         //infoPanel.setLayout(new BorderLayout());
         infoPanel.setLayout(new GridLayout(2, 1));
@@ -311,7 +311,7 @@ public class CreateTrainPage extends JPanel
 
         //Create bottom panel
         JPanel createTrainPageBottomPanel = new JPanel();
-        createTrainPageBottomPanel.setBackground(Color.YELLOW);
+        //createTrainPageBottomPanel.setBackground(Color.YELLOW);
         createTrainPageBottomPanel.setPreferredSize(new Dimension(GUIMethods.getDim().width, ((GUIMethods.getDim().height) / 3) - 20));
 
         JPanel imageDrawPanel = drawBottomImage;
