@@ -373,8 +373,28 @@ public class CreateTrainPage extends JPanel
 
     private void addLoco()
     {
-        //GUIMethods.getLocomotivesArrayList().get(locomotiveList.getSelectedIndex()).getImageLarge();
         try
+        {
+            for (int i = 0; i < GUIMethods.getLocomotivesArrayList().size(); i++)
+            {
+                if (locomotiveList.getSelectedValue().equals(GUIMethods.getLocomotivesArrayList().get(i).getModelName()))
+                {
+                    errorLabel.setText(tempTrain.get(0).addComponent((Train) GUIMethods.getLocomotivesArrayList().get(i)));
+                }
+            }
+            showAttachableButton.setEnabled(true);
+        }
+        catch (NullPointerException e)
+        {
+            errorLabel.setText("Please create the train first");
+        }
+        if (errorLabel.getText().length() == 0)
+        {
+            drawBottomImage.addTrainImage(tempTrain.get(0).drawImage(tempTrain.get(0).getTrainLenght() - 1));
+        }
+
+        //GUIMethods.getLocomotivesArrayList().get(locomotiveList.getSelectedIndex()).getImageLarge();
+        /*try
         {
             errorLabel.setText(tempTrain.get(0).addComponent((Train) GUIMethods.getLocomotivesArrayList().get(locomotiveList.getSelectedIndex())));
         }
@@ -385,7 +405,7 @@ public class CreateTrainPage extends JPanel
         if (errorLabel.getText().length() == 0)
         {
             drawBottomImage.addTrainImage(tempTrain.get(0).drawImage(tempTrain.get(0).getTrainLenght() - 1));
-        }
+        }*/
 
         drawSP.repaint();
         /*try
@@ -417,11 +437,31 @@ public class CreateTrainPage extends JPanel
 
     private void addAttachable()
     {
-        errorLabel.setText(tempTrain.get(tempTrain.size() - 1).addComponent((Train) GUIMethods.getAttachableArrayList().get(attachableList.getSelectedIndex())));
+        try
+        {
+            for (int i = 0; i < GUIMethods.getAttachableArrayList().size(); i++)
+            {
+                if (attachableList.getSelectedValue().equals(GUIMethods.getAttachableArrayList().get(i).getName()))
+                {
+                    errorLabel.setText(tempTrain.get(tempTrain.size() - 1).addComponent((Train) GUIMethods.getAttachableArrayList().get(i)));
+                    if (errorLabel.getText().length() == 0)
+                    {
+                        drawBottomImage.addTrainImage(tempTrain.get(0).drawImage(tempTrain.get(0).getTrainLenght() - 1));
+                    }
+                }
+            }
+        }
+        catch (NullPointerException e)
+        {
+
+        }
+
+
+        /*errorLabel.setText(tempTrain.get(tempTrain.size() - 1).addComponent((Train) GUIMethods.getAttachableArrayList().get(attachableList.getSelectedIndex())));
         if (errorLabel.getText().length() == 0)
         {
             drawBottomImage.addTrainImage(tempTrain.get(0).drawImage(tempTrain.get(0).getTrainLenght() - 1));
-        }
+        }*/
 
         drawSP.repaint();
         /*try
@@ -523,7 +563,7 @@ public class CreateTrainPage extends JPanel
             {
                 for (int i = 0; i < GUIMethods.getLocomotivesArrayList().size(); i++)
                 {
-                    if (GUIMethods.getLocomotivesArrayList().get(i) instanceof DieselLocomotive)
+                    if(GUIMethods.getLocomotivesArrayList().get(i) instanceof DieselLocomotive)
                     {
                         tempArray.add(GUIMethods.getLocomotivesArrayList().get(i).getModelName());
                     }
@@ -533,7 +573,7 @@ public class CreateTrainPage extends JPanel
             {
                 for (int i = 0; i < GUIMethods.getLocomotivesArrayList().size(); i++)
                 {
-                    if (GUIMethods.getLocomotivesArrayList().get(i) instanceof ElectricLocomotive)
+                    if(GUIMethods.getLocomotivesArrayList().get(i) instanceof ElectricLocomotive)
                     {
                         tempArray.add(GUIMethods.getLocomotivesArrayList().get(i).getModelName());
                     }
@@ -656,44 +696,49 @@ public class CreateTrainPage extends JPanel
     private void locoTextPanel()
     {
         locoAttachableInfoPanel.setText("");
-        int i = locomotiveList.getSelectedIndex();
-        locoAttachableInfoPanel.append("Maker name: " + GUIMethods.getLocomotivesArrayList().get(i).getMakerName() + "\n");
-        locoAttachableInfoPanel.append("Model name: " + GUIMethods.getLocomotivesArrayList().get(i).getModelName() + "\n");
-        locoAttachableInfoPanel.append("Type: " + GUIMethods.getLocomotivesArrayList().get(i).getType() + "\n");
-        if (GUIMethods.getLocomotivesArrayList().get(i) instanceof ElectricLocomotive)
+        for (int i = 0; i < GUIMethods.getLocomotivesArrayList().size(); i++)
         {
-            locoAttachableInfoPanel.append("Power: " + GUIMethods.getLocomotivesArrayList().get(i).getPower() + " kW\n");
+            if (locomotiveList.getSelectedValue().equals(GUIMethods.getLocomotivesArrayList().get(i).getModelName()))
+            {
+                locoAttachableInfoPanel.append("Maker name: " + GUIMethods.getLocomotivesArrayList().get(i).getMakerName() + "\n");
+                locoAttachableInfoPanel.append("Model name: " + GUIMethods.getLocomotivesArrayList().get(i).getModelName() + "\n");
+                locoAttachableInfoPanel.append("Type: " + GUIMethods.getLocomotivesArrayList().get(i).getType() + "\n");
+                if (GUIMethods.getLocomotivesArrayList().get(i) instanceof ElectricLocomotive)
+                {
+                    locoAttachableInfoPanel.append("Power: " + GUIMethods.getLocomotivesArrayList().get(i).getPower() + " kW\n");
+                }
+                if (GUIMethods.getLocomotivesArrayList().get(i) instanceof DieselLocomotive)
+                {
+                    locoAttachableInfoPanel.append("Power: " + GUIMethods.getLocomotivesArrayList().get(i).getPower() + " HP\n");
+                }
+                locoAttachableInfoPanel.append("Max speed: " + GUIMethods.getLocomotivesArrayList().get(i).getMaxSpeed() + " KP/H\n");
+                locoAttachableInfoPanel.append("Weight: " + GUIMethods.getLocomotivesArrayList().get(i).getWeight() + " Kg\n");
+            }
         }
-        if (GUIMethods.getLocomotivesArrayList().get(i) instanceof DieselLocomotive)
-        {
-            locoAttachableInfoPanel.append("Power: " + GUIMethods.getLocomotivesArrayList().get(i).getPower() + " HP\n");
-        }
-        locoAttachableInfoPanel.append("Max speed: " + GUIMethods.getLocomotivesArrayList().get(i).getMaxSpeed() + " KP/H\n");
-        locoAttachableInfoPanel.append("Weight: " + GUIMethods.getLocomotivesArrayList().get(i).getWeight() + " Kg\n");
+
     }
 
     private void attachableTextPanel()
     {
         locoAttachableInfoPanel.setText("");
-        int i = attachableList.getSelectedIndex();
-        locoAttachableInfoPanel.append("Name: " + GUIMethods.getAttachableArrayList().get(i).getName() + "\n");
-        locoAttachableInfoPanel.append("Type: " + GUIMethods.getAttachableArrayList().get(i).getType() + "\n");
-        if (GUIMethods.getAttachableArrayList().get(i) instanceof Car)
+        //int i = attachableList.getSelectedIndex();
+        for (int i = 0; i < GUIMethods.getAttachableArrayList().size(); i++)
         {
-            locoAttachableInfoPanel.append("Capacity: " + GUIMethods.getAttachableArrayList().get(i).getCapacity() + " Passenger\n");
-        }
-        if (GUIMethods.getAttachableArrayList().get(i) instanceof Wagon)
-        {
-            locoAttachableInfoPanel.append("Capacity: " + GUIMethods.getAttachableArrayList().get(i).getCapacity() + " kg\n");
-        }
-        if (GUIMethods.getAttachableArrayList().get(i) instanceof RLMMPS651FlatWagon)
-        {
-            locoAttachableInfoPanel.append("Possible cargo: \n");
-            for (int j = 0; j < GUIMethods.getCargoArrayList().size(); j++)
+            if (attachableList.getSelectedValue().equals(GUIMethods.getAttachableArrayList().get(i).getName()))
             {
-                locoAttachableInfoPanel.append("\t" + GUIMethods.getCargoArrayList().get(j).getName() + "\n");
+                locoAttachableInfoPanel.append("Name: " + GUIMethods.getAttachableArrayList().get(i).getName() + "\n");
+                locoAttachableInfoPanel.append("Type: " + GUIMethods.getAttachableArrayList().get(i).getType() + "\n");
+                if (GUIMethods.getAttachableArrayList().get(i) instanceof Car)
+                {
+                    locoAttachableInfoPanel.append("Capacity: " + GUIMethods.getAttachableArrayList().get(i).getCapacity() + " Passenger\n");
+                }
+                if (GUIMethods.getAttachableArrayList().get(i) instanceof Wagon)
+                {
+                    locoAttachableInfoPanel.append("Capacity: " + GUIMethods.getAttachableArrayList().get(i).getCapacity() + " kg\n");
+                }
             }
         }
+
         //locoAttachableInfoPanel.append("Max speed: " + GUIMethods.getAttachableArrayList().get(i).getMaxSpeed() + " KP/H");
     }
 }

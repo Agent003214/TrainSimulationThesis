@@ -2,12 +2,7 @@ package GUI;
 
 import Attachables.Attachable;
 import Attachables.Cargo.Cargo;
-import Attachables.CargoContainer.CargoContainer;
-import Attachables.CargoContainer.LongContainer;
-import Attachables.CargoContainer.ShortContainer;
-import Attachables.CargoContainer.TankContainer;
 import Attachables.CargoWagon.BoxWagon;
-import Attachables.CargoWagon.TankWagon;
 import Attachables.PassengerCar.InterCityPlus;
 import Attachables.PassengerCar.Mark3;
 import Factories.CompoundTrain;
@@ -20,9 +15,9 @@ import java.util.ArrayList;
 
 public class MethodClass
 {
-    private static ArrayList<CompoundTrain> train=new ArrayList<>();
-    private static ArrayList<Station> stations=new ArrayList<>();
-    private Font font = new Font("Tahoma",0,22);
+    private static ArrayList<CompoundTrain> train = new ArrayList<>();
+    private static ArrayList<Station> stations = new ArrayList<>();
+    private Font font = new Font("Tahoma", 0, 22);
     private Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
 
     protected ArrayList<CompoundTrain> getTrain()
@@ -32,6 +27,7 @@ public class MethodClass
 
     /**
      * All available locomotives.
+     *
      * @return
      */
     protected ArrayList<Locomotive> getLocomotivesArrayList()
@@ -53,9 +49,6 @@ public class MethodClass
         attachableList.add(new InterCityPlus());
         attachableList.add(new Mark3());
         attachableList.add(new BoxWagon());
-        //attachableList.add(new HopperWagon());
-        //attachableList.add(new TankWagon());
-        //attachableList.add(new RLMMPS651FlatWagon());
         for (int i = 0; i < attachableList.size(); i++)
         {
             attachableList.get(i).loadImg();
@@ -63,26 +56,18 @@ public class MethodClass
         return attachableList;
     }
 
-    protected ArrayList<CargoContainer> getCargoArrayList()
-    {
-        ArrayList<CargoContainer> cargoContainerArrayList =new ArrayList<>();
-        cargoContainerArrayList.add(new ShortContainer());
-        cargoContainerArrayList.add(new LongContainer());
-        cargoContainerArrayList.add(new TankContainer());
-        return cargoContainerArrayList;
-    }
     protected CompoundTrain getLatestTrain()
     {
-        if (train.size()>0)
+        if (train.size() > 0)
         {
-            return train.get(train.size()-1);
+            return train.get(train.size() - 1);
         }
         return train.get(0);
     }
 
     protected void addStation(int[] location, String name, int currentLoad, Cargo cargoType)
     {
-        stations.add(new Station(location,name,currentLoad,cargoType));
+        stations.add(new Station(location, name, currentLoad, cargoType));
     }
 
     protected ArrayList<Station> getStations()
@@ -108,7 +93,7 @@ public class MethodClass
     protected void createTrain(CompoundTrain createdTrain)
     {
         train.add(new CompoundTrain());
-        train.set(train.size()-1,createdTrain);
+        train.set(train.size() - 1, createdTrain);
     }
 
     protected Font getFont()
