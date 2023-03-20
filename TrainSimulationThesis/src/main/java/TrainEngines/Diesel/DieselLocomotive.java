@@ -17,14 +17,10 @@ public abstract class DieselLocomotive extends BaseTrain implements Locomotive
     {
         try
         {
-            File file=new File(filePaths[0]);
-            imageFront= ImageIO.read(file);
-            file=new File(filePaths[1]);
-            imageBack= ImageIO.read(file);
-            file=new File(filePaths[2]);
-            imageRightSide= ImageIO.read(file);
-            file=new File(filePaths[3]);
-            imageLarge= ImageIO.read(file);
+            imageFront=ImageIO.read(getClass().getClassLoader().getResource(filePaths[0]));
+            imageBack=ImageIO.read(getClass().getClassLoader().getResource(filePaths[1]));
+            imageRightSide=ImageIO.read(getClass().getClassLoader().getResource(filePaths[2]));
+            imageLarge=ImageIO.read(getClass().getClassLoader().getResource(filePaths[3]));
         }
         catch (IOException e)
         {

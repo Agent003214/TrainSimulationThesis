@@ -10,7 +10,7 @@ public class RailPlatformTileNS extends RailTile
 {
     public RailPlatformTileNS()
     {
-        filePaths=new String[]{"./TrainSimulationThesis/src/main/resources/Tiles/RailTile/railPlatformTileNS.png"};
+        filePaths=new String[]{"Tiles/RailTile/railPlatformTileNS.png"};
     }
 
     @Override

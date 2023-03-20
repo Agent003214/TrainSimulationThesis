@@ -10,7 +10,7 @@ public class BuildingRoofTile extends Tile
 {
     public BuildingRoofTile()
     {
-        filePaths=new String[]{"./TrainSimulationThesis/src/main/resources/Tiles/buildingRoofTile.png"};
+        filePaths=new String[]{"Tiles/buildingRoofTile.png"};
     }
 
     @Override

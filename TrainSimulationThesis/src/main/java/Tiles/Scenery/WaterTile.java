@@ -13,8 +13,8 @@ public class WaterTile extends Tile
     {
         filePaths = new String[]
                 {
-                        "./TrainSimulationThesis/src/main/resources/Tiles/waterTile.png",
-                        "./TrainSimulationThesis/src/main/resources/Tiles/waterTile2.png"
+                        "Tiles/waterTile.png",
+                        "Tiles/waterTile2.png"
                 };
     }
 

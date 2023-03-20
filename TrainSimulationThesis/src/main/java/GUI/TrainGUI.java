@@ -20,8 +20,16 @@ public class TrainGUI extends JFrame
         cardLayout = new CardLayout();
         mainPane.setLayout(cardLayout);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        ImageIcon icon=new ImageIcon("./TrainSimulationThesis/src/main/resources/Locomotives/Electric/V63/V63Side.png");
-        setIconImage(icon.getImage());
+        //ImageIcon icon=new ImageIcon("./TrainSimulationThesis/src/main/resources/Locomotives/Electric/V63/V63Side.png");
+        try
+        {
+            ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("Locomotives/Electric/V63/V63Side.png"));
+            setIconImage(icon.getImage());
+        }
+        catch (NullPointerException e)
+        {
+
+        }
 
         MapPage trainMap=new MapPage();
 

@@ -1,9 +1,6 @@
 package GUI;
 
 import Attachables.Attachable;
-import Attachables.CargoContainer.LongContainer;
-import Attachables.CargoContainer.ShortContainer;
-import Attachables.CargoContainer.TankContainer;
 import Attachables.CargoWagon.*;
 import Attachables.PassengerCar.Car;
 import Factories.CompoundTrain;
@@ -626,13 +623,15 @@ public class CreateTrainPage extends JPanel
         ArrayList<String> tempArray = new ArrayList<>();
         switch (attachableFilterVar)
         {
-            case ALL:
+            case ALL ->
+            {
                 for (int i = 0; i < GUIMethods.getAttachableArrayList().size(); i++)
                 {
                     tempArray.add(GUIMethods.getAttachableArrayList().get(i).getName());
                 }
-                break;
-            case CAR:
+            }
+            case CAR ->
+            {
                 for (int i = 0; i < GUIMethods.getAttachableArrayList().size(); i++)
                 {
                     if (GUIMethods.getAttachableArrayList().get(i) instanceof Car)
@@ -640,48 +639,27 @@ public class CreateTrainPage extends JPanel
                         tempArray.add(GUIMethods.getAttachableArrayList().get(i).getName());
                     }
                 }
-                break;
-            case BOX:
+            }
+            case BOX ->
+            {
                 for (int i = 0; i < GUIMethods.getAttachableArrayList().size(); i++)
                 {
-                    if (GUIMethods.getAttachableArrayList().get(i).getType().contains("Box") || GUIMethods.getAttachableArrayList().get(i).getType().contains("Grain"))
+                    if (GUIMethods.getAttachableArrayList().get(i).getType().contains("Box"))
                     {
                         tempArray.add(GUIMethods.getAttachableArrayList().get(i).getName());
                     }
                 }
-                break;
-            case TANK:
+            }
+            case TANK ->
+            {
                 for (int i = 0; i < GUIMethods.getAttachableArrayList().size(); i++)
                 {
                     if (GUIMethods.getAttachableArrayList().get(i).getType().contains("Fluid"))
                     {
                         tempArray.add(GUIMethods.getAttachableArrayList().get(i).getName());
                     }
-                    if (GUIMethods.getAttachableArrayList().get(i) instanceof RLMMPS651FlatWagon)
-                    {
-                        if (((RLMMPS651FlatWagon) GUIMethods.getAttachableArrayList().get(i)).getCargo() instanceof TankContainer)
-                        {
-                            tempArray.add(GUIMethods.getAttachableArrayList().get(i).getName());
-                        }
-                    }
                 }
-                break;
-            case CONTAINER:
-                for (int i = 0; i < GUIMethods.getAttachableArrayList().size(); i++)
-                {
-                    if (GUIMethods.getAttachableArrayList().get(i) instanceof RLMMPS651FlatWagon)
-                    {
-                        if (((RLMMPS651FlatWagon) GUIMethods.getAttachableArrayList().get(i)).getCargo() instanceof LongContainer)
-                        {
-                            tempArray.add(GUIMethods.getAttachableArrayList().get(i).getName());
-                        }
-                        if (((RLMMPS651FlatWagon) GUIMethods.getAttachableArrayList().get(i)).getCargo() instanceof ShortContainer)
-                        {
-                            tempArray.add(GUIMethods.getAttachableArrayList().get(i).getName());
-                        }
-                    }
-                }
-                break;
+            }
         }
         String[] filteredArray = new String[tempArray.size()];
         for (int i = 0; i < tempArray.size(); i++)

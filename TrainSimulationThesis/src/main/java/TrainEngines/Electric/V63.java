@@ -10,10 +10,10 @@ public class V63 extends ElectricLocomotive
     {
         filePaths = new String[]
                 {
-                        "./TrainSimulationThesis/src/main/resources/Locomotives/Electric/V63/V63Front.png",
-                        "./TrainSimulationThesis/src/main/resources/Locomotives/Electric/V63/V63Front.png",
-                        "./TrainSimulationThesis/src/main/resources/Locomotives/Electric/V63/V63Side.png",
-                        "./TrainSimulationThesis/src/main/resources/Locomotives/Electric/V63/V63.png"
+                        "Locomotives/Electric/V63/V63Front.png",
+                        "Locomotives/Electric/V63/V63Front.png",
+                        "Locomotives/Electric/V63/V63Side.png",
+                        "Locomotives/Electric/V63/V63.png"
                 };
     }
 

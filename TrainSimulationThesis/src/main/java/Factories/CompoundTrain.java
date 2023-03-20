@@ -1,10 +1,7 @@
 package Factories;
 
 import Attachables.Attachable;
-import Attachables.CargoContainer.IntermodelContainer;
-import Attachables.CargoContainer.TankContainer;
 import Attachables.CargoWagon.BoxWagon;
-import Attachables.CargoWagon.RLMMPS651FlatWagon;
 import Attachables.CargoWagon.Wagon;
 import Attachables.PassengerCar.Car;
 import Exceptions.NoEngineException;
@@ -153,36 +150,6 @@ public class CompoundTrain extends BaseTrain
         return szamlalo;
     }
 
-    public int getTankCapacityCount()
-    {
-        int szamlalo=0;
-        for (int i = 0; i < trains.size(); i++)
-        {
-            if (trains.get(i) instanceof RLMMPS651FlatWagon)
-            {
-                if (((RLMMPS651FlatWagon) trains.get(i)).getCargo() instanceof TankContainer)
-                {
-                    szamlalo=szamlalo+((RLMMPS651FlatWagon) trains.get(i)).getCapacity();
-                }
-            }
-        }
-        return szamlalo;
-    }
-    public int getIntermodelCapacityCount()
-    {
-        int szamlalo=0;
-        for (int i = 0; i < trains.size(); i++)
-        {
-            if (trains.get(i) instanceof RLMMPS651FlatWagon)
-            {
-                if (((RLMMPS651FlatWagon) trains.get(i)).getCargo() instanceof IntermodelContainer)
-                {
-                    szamlalo=szamlalo+((RLMMPS651FlatWagon) trains.get(i)).getCapacity();
-                }
-            }
-        }
-        return szamlalo;
-    }
 
     public int getLoadOfCar(int i)
     {

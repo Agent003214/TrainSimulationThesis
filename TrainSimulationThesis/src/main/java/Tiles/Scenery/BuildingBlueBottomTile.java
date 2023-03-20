@@ -6,7 +6,7 @@ public class BuildingBlueBottomTile extends Tile
 {
     public BuildingBlueBottomTile()
     {
-        filePaths=new String[]{"./TrainSimulationThesis/src/main/resources/Tiles/buildingBlueBottomTile.png"};
+        filePaths=new String[]{"Tiles/buildingBlueBottomTile.png"};
     }
 
     @Override

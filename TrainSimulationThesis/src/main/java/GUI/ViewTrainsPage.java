@@ -13,7 +13,6 @@ public class ViewTrainsPage extends JPanel
     private GridBagConstraints c;
     private final CardLayout cardLayout;
     private JList<String> trainListInfoPanel;
-    private static DefaultListModel<String> test;
     private static JTextArea trainStatsInfoPanel;
     private JTextArea trainElementsInfoPanel;
     protected  String[] refreshArray;
@@ -22,7 +21,6 @@ public class ViewTrainsPage extends JPanel
         //setBackground(Color.YELLOW);
         gridBagLayout = new GridBagLayout();
         setLayout(gridBagLayout);
-        //Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         cardLayout = new CardLayout();
 
         //Create top panel
@@ -41,8 +39,6 @@ public class ViewTrainsPage extends JPanel
         //Top left panel
         JPanel trainListPanel=new JPanel();
         trainListPanel.setLayout(new BorderLayout());
-        //trainListInfoPanel=new JList<>(DLMtest());
-        //trainListInfoPanel=new JList<>(new DefaultListModel<>());
         trainListInfoPanel=new JList<>(new DefaultListModel<>());
         trainListPanel.add(trainListInfoPanel,BorderLayout.CENTER);
         trainListInfoPanel.setFont(GUIMethods.getFont());
@@ -61,17 +57,6 @@ public class ViewTrainsPage extends JPanel
                 JList list=(JList) e.getSource();
                 trainInfoTop(list.getSelectedIndex());
                 trainInfoBottom(list.getSelectedIndex());
-
-                /*if (e.getClickCount()==2)
-                {
-                    int index=list.locationToIndex(e.getPoint());
-                    //System.out.println(index);
-                }
-                else if (e.getClickCount()==3)
-                {
-                    int index=list.locationToIndex(e.getPoint());
-                }*/
-
             }
         });
 
@@ -138,7 +123,6 @@ public class ViewTrainsPage extends JPanel
     {
         GUIMethods.getTrain().remove(trainListInfoPanel.getSelectedIndex());
         trainList();
-        //test.addElement("aa");
     }
 
     /**
@@ -156,41 +140,4 @@ public class ViewTrainsPage extends JPanel
         trainListInfoPanel.repaint();
     }
 
-  //private DefaultListModel<String> DLMtest()
-  //{
-  //    DefaultListModel<String> test=new DefaultListModel<>();
-  //    /*for (int i = 0; i < GUIMethods.getTrain().size(); i++)
-  //    {
-  //        test.addElement(i+" train");
-  //    }*/
-  //    for (int i = 0; i < GUIMethods.getTrain().size(); i++)
-  //    {
-  //        test.addElement(GUIMethods.getTrain().get(i).getTrainName());
-  //    }
-  //    return test;
-  //}
-
-    protected void DLMtest2()
-    {
-
-        for (int i = 0; i < GUIMethods.getTrain().size(); i++)
-        {
-            test.addElement(GUIMethods.getTrain().get(i).getTrainName());
-        }
-    }
-
-
-    protected void DLMtest()
-    {
-        //test=new DefaultListModel<>();
-        for (int i = 0; i < GUIMethods.getTrain().size(); i++)
-        {
-            test.addElement(GUIMethods.getTrain().get(i).getTrainName());
-        }
-        trainListInfoPanel.setModel(test);
-            //test.addElement("1 train");
-        trainListInfoPanel.revalidate();
-        trainListInfoPanel.repaint();
-        //return test;
-    }
 }

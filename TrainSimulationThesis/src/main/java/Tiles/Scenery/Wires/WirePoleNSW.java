@@ -6,7 +6,7 @@ public class WirePoleNSW extends Tile
 {
     public WirePoleNSW()
     {
-        filePaths=new String[]{"./TrainSimulationThesis/src/main/resources/Tiles/Wires/wirePoleNSW.png"};
+        filePaths=new String[]{"Tiles/Wires/wirePoleNSW.png"};
     }
     @Override
     protected String errorMessage()

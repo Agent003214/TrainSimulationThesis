@@ -10,7 +10,7 @@ public class BuildingWhiteMiddleTile extends Tile
 {
     public BuildingWhiteMiddleTile()
     {
-        filePaths=new String[]{"./TrainSimulationThesis/src/main/resources/Tiles/buildingWhiteMiddleTile.png"};
+        filePaths=new String[]{"Tiles/buildingWhiteMiddleTile.png"};
     }
 
     @Override

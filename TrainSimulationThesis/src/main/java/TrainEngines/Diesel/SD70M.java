@@ -14,10 +14,10 @@ public class SD70M extends DieselLocomotive
     {
         filePaths = new String[]
                 {
-                        "./TrainSimulationThesis/src/main/resources/Locomotives/Diesel/SD70M/SD70MFront.png",
-                        "./TrainSimulationThesis/src/main/resources/Locomotives/Diesel/SD70M/SD70MBack.png",
-                        "./TrainSimulationThesis/src/main/resources/Locomotives/Diesel/SD70M/SD70MRight.png",
-                        "./TrainSimulationThesis/src/main/resources/Locomotives/Diesel/SD70M/SD70M.png"
+                        "Locomotives/Diesel/SD70M/SD70MFront.png",
+                        "Locomotives/Diesel/SD70M/SD70MBack.png",
+                        "Locomotives/Diesel/SD70M/SD70MRight.png",
+                        "Locomotives/Diesel/SD70M/SD70M.png"
                 };
     }
 

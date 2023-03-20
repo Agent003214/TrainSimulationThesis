@@ -34,7 +34,6 @@ public class MethodClass
     {
         ArrayList<Locomotive> locomotiveList = new ArrayList<>();
         locomotiveList.add(new V63());
-        //locomotiveList.add(new F40PH());
         locomotiveList.add(new SD70M());
         for (int i = 0; i < locomotiveList.size(); i++)
         {

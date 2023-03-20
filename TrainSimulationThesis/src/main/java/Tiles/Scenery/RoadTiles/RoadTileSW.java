@@ -6,7 +6,7 @@ public class RoadTileSW extends Tile
 {
     public RoadTileSW()
     {
-        filePaths=new String[]{"./TrainSimulationThesis/src/main/resources/Tiles/RoadTile/roadTileSW.png"};
+        filePaths=new String[]{"Tiles/RoadTile/roadTileSW.png"};
     }
 
     @Override
