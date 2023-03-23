@@ -5,7 +5,6 @@ import Attachables.Cargo.Cargo;
 import Factories.Train;
 import GUI.MapPanel;
 import Routes.Routes;
-import Tiles.RailTiles.Electrified.*;
 import Tiles.RailTiles.NonElectrified.*;
 import Tiles.RailTiles.RailPlatformTileEW;
 import Tiles.RailTiles.RailPlatformTileNS;
@@ -24,20 +23,6 @@ public class TrainDrawable
     private BufferedImage imageRight, imageUp, imageDown;
     private Routes route;
     private Train trainPiece;
-
-    /*public TrainDrawable(MapPanel mp, Routes route, BufferedImage imageRight, BufferedImage imageUp, BufferedImage imageDown, int xSpeed, int ySpeed)
-    {
-        this.mp = mp;
-        this.route = route;
-        this.imageRight = imageRight;
-        this.imageUp = imageUp;
-        this.imageDown = imageDown;
-        this.xSpeed = xSpeed;
-        this.ySpeed = ySpeed;
-
-        this.xCoord = route.getStart()[0] * mp.getScaledTileSize();
-        this.yCoord = route.getStart()[1] * mp.getScaledTileSize();
-    }*/
 
     public TrainDrawable(MapPanel mp, Routes route, Train trainPiece)
     {
@@ -106,15 +91,6 @@ public class TrainDrawable
         return -1;
     }
 
-    public boolean isOccupied(int[] coord)
-    {
-        if (xCoord / mp.getScaledTileSize() == coord[0] && yCoord / mp.getScaledTileSize() == coord[1])
-        {
-            return true;
-        }
-        return false;
-    }
-
     /**
      *
      * @return 0 if nothing needs to be done. <br>
@@ -155,12 +131,10 @@ public class TrainDrawable
             if (xCoord / mp.getScaledTileSize() == route.getStart()[0] && yCoord / mp.getScaledTileSize() == route.getStart()[1])
             {
                 return -1;
-                //throw new StationLoadException();
             }
             if (xCoord / mp.getScaledTileSize() == route.getStop()[0] && yCoord / mp.getScaledTileSize() == route.getStop()[1])
             {
                 return -2;
-                //throw new RuntimeException();
             }
         }
         else if (xSpeed == -1)
@@ -195,12 +169,10 @@ public class TrainDrawable
             if (xCoord / mp.getScaledTileSize()+1 == route.getStart()[0] && yCoord / mp.getScaledTileSize() == route.getStart()[1])
             {
                 return -1;
-                //throw new StationLoadException();
             }
             if (xCoord / mp.getScaledTileSize()+1 == route.getStop()[0] && yCoord / mp.getScaledTileSize() == route.getStop()[1])
             {
                 return -2;
-                //throw new RuntimeException();
             }
         }
         else if (ySpeed == 1)
@@ -275,353 +247,17 @@ public class TrainDrawable
             if (xCoord / mp.getScaledTileSize() == route.getStart()[0] && yCoord / mp.getScaledTileSize()+1 == route.getStart()[1])
             {
                 return -1;
-                //throw new StationLoadException();
             }
             if (xCoord / mp.getScaledTileSize() == route.getStop()[0] && yCoord / mp.getScaledTileSize()+1 == route.getStop()[1])
             {
                 return -2;
-                //throw new RuntimeException();
             }
         }
-        /*if (xCoord / mp.getScaledTileSize() == route.getStart()[0] && yCoord / mp.getScaledTileSize() == route.getStart()[1])
-        {
-            return -1;
-            //throw new StationLoadException();
-        }
-        if (xCoord / mp.getScaledTileSize() == route.getStop()[0] && yCoord / mp.getScaledTileSize() == route.getStop()[1])
-        {
-            return -2;
-            //throw new RuntimeException();
-        }*/
         return 0;
     }
 
-    public Train getTrainPiece()
-    {
-        return trainPiece;
-    }
-
-    private void updateElectric()
-    {
-        if (xSpeed == 1)
-        {
-            if (route.getLine()[xCoord / mp.getScaledTileSize() + 1][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileEW.class)
-            {
-                xCoord += 1;
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize() + 1][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileNW.class)
-            {
-                xCoord += 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = -1;
-                    yCoord -= 1;
-                }
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize() + 1][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileSW.class)
-            {
-                xCoord += 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = 1;
-                }
-            }
-        }
-        else if (xSpeed == -1)
-        {
-            if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileEW.class)
-            {
-                xCoord -= 1;
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileNE.class)
-            {
-                xCoord -= 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = -1;
-                    yCoord -= 1;
-                }
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileSE.class)
-            {
-                xCoord -= 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = 1;
-                }
-            }
-        }
-        else if (ySpeed == 1)
-        {
-            if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize() + 1].getClass() == ElectrifiedRailTileNS.class)
-            {
-                yCoord += 1;
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize() + 1].getClass() == ElectrifiedRailTileNW.class)
-            {
-                yCoord += 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = -1;
-                    xCoord -= 1;
-                }
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize() + 1].getClass() == ElectrifiedRailTileNE.class)
-            {
-                yCoord += 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = 1;
-                }
-            }
-        }
-        else if (ySpeed == -1)
-        {
-            if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileNS.class)
-            {
-                yCoord -= 1;
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileSW.class)
-            {
-                yCoord -= 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = -1;
-                    xCoord -= 1;
-                }
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileSE.class)
-            {
-                yCoord -= 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = 1;
-                }
-            }
-        }
-    }
-
-    private void updateDiesel()
-    {
-        if (xSpeed == 1)
-        {
-            if (route.getLine()[xCoord / mp.getScaledTileSize() + 1][yCoord / mp.getScaledTileSize()].getClass() == RailTileEW.class)
-            {
-                xCoord += 1;
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize() + 1][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileNW.class)
-            {
-                xCoord += 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = -1;
-                    yCoord -= 1;
-                }
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize() + 1][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileSW.class)
-            {
-                xCoord += 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = 1;
-                }
-            }
-        }
-        else if (xSpeed == -1)
-        {
-            if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileEW.class)
-            {
-                xCoord -= 1;
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileNE.class)
-            {
-                xCoord -= 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = -1;
-                    yCoord -= 1;
-                }
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileSE.class)
-            {
-                xCoord -= 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = 1;
-                }
-            }
-        }
-        else if (ySpeed == 1)
-        {
-            if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize() + 1].getClass() == ElectrifiedRailTileNS.class)
-            {
-                yCoord += 1;
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize() + 1].getClass() == ElectrifiedRailTileNW.class)
-            {
-                yCoord += 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = -1;
-                    xCoord -= 1;
-                }
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize() + 1].getClass() == ElectrifiedRailTileNE.class)
-            {
-                yCoord += 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = 1;
-                }
-            }
-        }
-        else if (ySpeed == -1)
-        {
-            if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileNS.class)
-            {
-                yCoord -= 1;
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileSW.class)
-            {
-                yCoord -= 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = -1;
-                    xCoord -= 1;
-                }
-            }
-            else if (route.getLine()[xCoord / mp.getScaledTileSize()][yCoord / mp.getScaledTileSize()].getClass() == ElectrifiedRailTileSE.class)
-            {
-                yCoord -= 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = 1;
-                }
-            }
-        }
-    }
-
-    /*public void update()
-    {
-        xCoord=xCoord+xSpeed;
-        if (xSpeed == 1)
-        {
-            if (tm.getMapTiles(xCoord / mp.getScaledTileSize() + 1, yCoord / mp.getScaledTileSize()).getClass() == RailTileEW.class)
-            {
-                xCoord += 1;
-            } else if (tm.getMapTiles(xCoord / mp.getScaledTileSize() + 1, yCoord / mp.getScaledTileSize()).getClass() == RailTileNW.class)
-            {
-                xCoord += 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = -1;
-                    yCoord -= 1;
-                }
-
-            } else if (tm.getMapTiles(xCoord / mp.getScaledTileSize() + 1, yCoord / mp.getScaledTileSize()).getClass() == RailTileSW.class)
-            {
-                xCoord += 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = 1;
-                }
-
-            }
-        } else if (xSpeed == -1)
-        {
-            if (tm.getMapTiles(xCoord / mp.getScaledTileSize(), yCoord / mp.getScaledTileSize()).getClass() == RailTileEW.class)
-            {
-                xCoord -= 1;
-            } else if (tm.getMapTiles(xCoord / mp.getScaledTileSize(), yCoord / mp.getScaledTileSize()).getClass() == RailTileNE.class)
-            {
-                xCoord -= 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = -1;
-                    yCoord-=1;
-                }
-            } else if (tm.getMapTiles(xCoord / mp.getScaledTileSize(), yCoord / mp.getScaledTileSize()).getClass() == RailTileSE.class)
-            {
-                xCoord -= 1;
-                if (xCoord % mp.getScaledTileSize() == 0)
-                {
-                    xSpeed = 0;
-                    ySpeed = 1;
-                }
-            }
-        } else if (ySpeed == 1)
-        {
-            if (tm.getMapTiles(xCoord / mp.getScaledTileSize(), yCoord / mp.getScaledTileSize() + 1).getClass() == RailTileNS.class)
-            {
-                yCoord += 1;
-            } else if (tm.getMapTiles(xCoord / mp.getScaledTileSize(), yCoord / mp.getScaledTileSize() + 1).getClass() == RailTileNW.class)
-            {
-                yCoord += 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = -1;
-                    xCoord-=1;
-                }
-            } else if (tm.getMapTiles(xCoord / mp.getScaledTileSize(), yCoord / mp.getScaledTileSize() + 1).getClass() == RailTileNE.class)
-            {
-                yCoord += 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = 1;
-                }
-            }
-        } else if (ySpeed == -1)
-        {
-            if (tm.getMapTiles(xCoord / mp.getScaledTileSize(), yCoord / mp.getScaledTileSize()).getClass() == RailTileNS.class)
-            {
-                yCoord -= 1;
-            } else if (tm.getMapTiles(xCoord / mp.getScaledTileSize(), yCoord / mp.getScaledTileSize()).getClass() == RailTileSW.class)
-            {
-                yCoord -= 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = -1;
-                    xCoord-=1;
-                }
-            } else if (tm.getMapTiles(xCoord / mp.getScaledTileSize(), yCoord / mp.getScaledTileSize()).getClass() == RailTileSE.class)
-            {
-                yCoord -= 1;
-                if (yCoord % mp.getScaledTileSize() == 0)
-                {
-                    ySpeed = 0;
-                    xSpeed = 1;
-                }
-            }
-        }
-    }*/
-
     public void draw(Graphics2D g2D)
     {
-        /*g2D.setColor(Color.YELLOW);
-        g2D.fillRect(xCoord, yCoord, mp.getScaledTileSize(), mp.getScaledTileSize());*/
-        //g2D.drawImage(image,xCoord,yCoord-10,mp.getScaledTileSize(), mp.getScaledTileSize(),null);
         if (xSpeed == 1)
         {
             g2D.drawImage(imageRight, xCoord, yCoord - 10, mp.getScaledTileSize(), mp.getScaledTileSize(), null);

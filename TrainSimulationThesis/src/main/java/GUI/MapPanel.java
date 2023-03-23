@@ -51,10 +51,14 @@ public class MapPanel extends JPanel implements Runnable
                 {
                     dispatcher.sendTrain(this, route, GUIMethods.getTrain().get(i));
                 }
+                else if (GUIMethods.getTrain().get(i).checkElectrified() == !route.isElectrified())
+                {
+                    JOptionPane.showMessageDialog(this,"Electrified train on a non electrified railway track!");
+                }
             }
             catch (IndexOutOfBoundsException e)
             {
-                JOptionPane.showMessageDialog(this,"Select train");
+                JOptionPane.showMessageDialog(this,"Please select train");
             }
         });
         thread.start();
@@ -140,48 +144,7 @@ public class MapPanel extends JPanel implements Runnable
 
         }
     }
-
-
-
-    /*private void loadMap()
-    {
-        try
-        {
-            InputStream in=getClass().getResourceAsStream("./src/main/java/GUI/map.txt");
-            BufferedReader br=new BufferedReader(new InputStreamReader(in));
-
-            int col=0;
-            int row=0;
-            while((col< mapTileColumn)&&(row< mapTileRow))
-            {
-                String line= br.readLine();
-                while (col<mapTileColumn)
-                {
-                    String[] tileNum=line.split(" ");
-                    int num=Integer.parseInt(tileNum[col]);
-                    mapTiles[col][row]=num;
-                    col++;
-                }
-                if (col==mapTileColumn)
-                {
-                    col=0;
-                    row++;
-                }
-                br.close();
-            }
-            for (int i = 0; i < mapTiles.length; i++)
-            {
-                for (int j = 0; j < mapTiles[0].length; j++)
-                {
-                    System.out.println(mapTiles[i][j]);
-                }
-            }
-        }
-        catch (Exception e)
-        {
-
-        }
-    }*/
+    
 
     private void update()
     {
