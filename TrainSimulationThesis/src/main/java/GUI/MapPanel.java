@@ -144,7 +144,7 @@ public class MapPanel extends JPanel implements Runnable
 
         }
     }
-    
+
 
     private void update()
     {
@@ -181,8 +181,6 @@ public class MapPanel extends JPanel implements Runnable
         g2D.setFont(GUIMethods.getFont());
         for (int i = 0; i < GUIMethods.getStations().size(); i++)
         {
-            //g2D.setColor(Color.WHITE);
-            //g2D.fillRect(GUIMethods.getStations().get(i).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(i).getLocation()[1]*scaledTileSize+(scaledTileSize*1),30,30);
             g2D.setColor(Color.BLACK);
             g2D.drawString(GUIMethods.getStations().get(i).getName(),GUIMethods.getStations().get(i).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(i).getLocation()[1]*scaledTileSize+(scaledTileSize*1)+15);
             g2D.drawString(GUIMethods.getStations().get(i).getCurrentLoad()+"",GUIMethods.getStations().get(i).getLocation()[0]*scaledTileSize,GUIMethods.getStations().get(i).getLocation()[1]*scaledTileSize+(scaledTileSize*2)+3);

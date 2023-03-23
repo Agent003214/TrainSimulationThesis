@@ -21,6 +21,7 @@ public abstract class Tile implements Loadable
         }
         catch (IOException e)
         {
+            System.out.println(errorMessage());
             e.printStackTrace();
         }
 
