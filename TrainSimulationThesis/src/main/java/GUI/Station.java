@@ -53,22 +53,6 @@ public class Station
         this.currentLoad = currentLoad;
     }
 
-    /*public int unload(int amount)
-    {
-        if (currentLoad-amount>=0)
-        {
-            currentLoad-=amount;
-            return 0;
-        }
-        else
-        {
-            int helper=Math.abs(load-num);
-            load=0;
-            cargo=null;
-            return helper;
-        }
-    }*/
-
     public int getMaxCapacity()
     {
         return maxCapacity;

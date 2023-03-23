@@ -28,7 +28,6 @@ public class MapPage extends JPanel
     private ArrayList<Routes> routes;
     private MapPanel map = new MapPanel();
     private JTextArea stationsInfo;
-    //private TrainDispatcher dispatcher=new TrainDispatcher();
 
     public MapPage()
     {
@@ -41,7 +40,6 @@ public class MapPage extends JPanel
         trainPanel.setLayout(new GridLayout(2, 1));
         JPanel trainPanelTop = new JPanel();
         trainPanelTop.setLayout(new BorderLayout());
-        //JPanel trainPanelBottom=new JPanel();
 
         trainListInfoPanel = new JList<>(new DefaultListModel<>());
         trainListInfoPanel.setFont(GUIMethods.getFont());
@@ -66,8 +64,6 @@ public class MapPage extends JPanel
         trainContentInfoPanel.setFont(GUIMethods.getFont());
         trainPanel.add(trainContentInfoPanel);
 
-        /*trainPanel.add(trainPanelTop);
-        trainPanel.add(trainPanelBottom);*/
 
         trainPanel.setPreferredSize(new Dimension((int) (GUIMethods.getDim().getWidth()*0.16), (int) (GUIMethods.getDim().getHeight()-40)));
         c.gridx = 0;
@@ -492,8 +488,6 @@ public class MapPage extends JPanel
         {
             stopDLM.addElement(routes.get(i).getRouteName());
         }
-        //stopDLM.addElement("A -> B");
-        //stopDLM.addElement("A -> C");
         JList<String> stopList = new JList<>(stopDLM);
         JScrollPane stopListSP=new JScrollPane(stopList);
         stopList.setFont(GUIMethods.getFont());
@@ -509,8 +503,6 @@ public class MapPage extends JPanel
         });
 
         routePanel.add(stopListSP,BorderLayout.CENTER);
-        //stopsPanel.setLayout(new BorderLayout());
-        //stopsPanel.add(stopList, BorderLayout.CENTER);
 
         JButton sendTrainButton = new JButton("Send train");
         routePanel.add(sendTrainButton, BorderLayout.SOUTH);
@@ -521,8 +513,6 @@ public class MapPage extends JPanel
         JScrollPane stationsInfoSP=new JScrollPane(stationsInfo);
         stationsPanel.add(stationsInfoSP);
         stationInfo();
-        //stationsPanel.add(stationsInfo,BorderLayout.CENTER);
-        //sendTrainButton.addActionListener(e -> sendTrain());
         //sendTrainButton.addActionListener(e -> map.send(routes.get(stopList.getSelectedIndex()), trainListInfoPanel.getSelectedIndex()));
         sendTrainButton.addActionListener(e ->
         {
@@ -553,18 +543,12 @@ public class MapPage extends JPanel
         add(stopsPanel, c);
     }
 
-    /*private void sendTrain()
-    {
-        dispatcher.sendTrain(map,routes.get(0),GUIMethods.getTrain().get(0));
-    }*/
-
     private void refresh()
     {
         String[] refreshArray = new String[GUIMethods.getTrain().size()];
         for (int i = 0; i < GUIMethods.getTrain().size(); i++)
         {
             refreshArray[i] = GUIMethods.getTrain().get(i).getTrainName();
-            //System.out.println(tempArray[i]);
         }
         trainListInfoPanel.setListData(refreshArray);
         trainListInfoPanel.revalidate();

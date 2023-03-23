@@ -15,8 +15,6 @@ public abstract class Tile implements Loadable
     public void load()
     {
         Random rnd = new Random();
-        //File file = new File(filePaths[rnd.nextInt(filePaths.length)]);
-        //InputStream is=getClass().getClassLoader().getResourceAsStream(filePaths[rnd.nextInt(filePaths.length)]);
         try
         {
             image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResource(filePaths[rnd.nextInt(filePaths.length)])));
@@ -25,8 +23,6 @@ public abstract class Tile implements Loadable
         {
             e.printStackTrace();
         }
-        //InputStream is= ClassLoader.getSystemResource(filePaths[rnd.nextInt(filePaths.length)]).openStream();
-        //image=new ImageIcon(getClass().getClassLoader().getResource(filePaths[rnd.nextInt(filePaths.length)]));
 
     }
 

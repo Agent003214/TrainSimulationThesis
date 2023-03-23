@@ -13,7 +13,6 @@ import java.awt.*;
 public class TileManager
 {
     private MapPanel mapPanel;
-    private boolean background;
     private Tile[][] map;
 
     public TileManager(MapPanel map,Boolean background)

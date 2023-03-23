@@ -4,33 +4,14 @@ import Tiles.Tile;
 
 public class Routes
 {
-    /**
-     * Array size of 2;
-     * X coordinate, Y coordinate
-     */
-    //private final int[] start;
-    /**
-     * Array size of 2;
-     * X coordinate, Y coordinate
-     */
-    //private final int[] stop;
 
-    private Station startStation;
-    private Station endStation;
+    private final Station startStation;
+    private final Station endStation;
     private int xSpeed;
     private int ySpeed;
     private final String routeName;
     private final Tile[][] line;
     private final boolean isElectrified;
-
-   /* public Routes(int[] start, int[] stop, String routeName, Tile[][] line, boolean isElectrified)
-    {
-        this.start = start;
-        this.stop = stop;
-        this.routeName = routeName;
-        this.line=line;
-        this.isElectrified=isElectrified;
-    }*/
 
     public Routes(Station startStation, Station endStation, String routeName, Tile[][] line,int xSpeed,int ySpeed, boolean isElectrified)
     {
@@ -45,14 +26,12 @@ public class Routes
 
     public int[] getStart()
     {
-        //return start;
         return startStation.getLocation();
     }
 
     public int[] getStop()
     {
         return endStation.getLocation();
-        //return stop;
     }
 
     public int getxSpeed()

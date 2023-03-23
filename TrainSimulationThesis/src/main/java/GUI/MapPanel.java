@@ -51,10 +51,14 @@ public class MapPanel extends JPanel implements Runnable
                 {
                     dispatcher.sendTrain(this, route, GUIMethods.getTrain().get(i));
                 }
+                else if (GUIMethods.getTrain().get(i).checkElectrified() == !route.isElectrified())
+                {
+                    JOptionPane.showMessageDialog(this,"Electrified train on a non electrified railway track!");
+                }
             }
             catch (IndexOutOfBoundsException e)
             {
-                JOptionPane.showMessageDialog(this,"Select train");
+                JOptionPane.showMessageDialog(this,"Please select train");
             }
         });
         thread.start();
