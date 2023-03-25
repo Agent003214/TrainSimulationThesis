@@ -14,7 +14,6 @@ public class TrainDispatcher
     private ArrayList<TrainDrawable> trainsOnTrack = new ArrayList();
     private ArrayList<CompoundTrain> startedTrains = new ArrayList<>();
     private MethodClass GUIMethods = new MethodClass();
-    private int helper = 0;
 
     public void sendTrain(MapPanel mp, Routes route, CompoundTrain train)
     {
@@ -43,12 +42,8 @@ public class TrainDispatcher
             if (timer >= 1000)
             {
                 //System.out.println("FPS: "+drawCount);
-                //trainsOnTrack.add(new TrainDrawable(mp,route,train.getRightImage(i),train.getBackImage(i),train.getFrontImage(i),1,0));
                 if (train.getCar(i) instanceof Attachable)
                 {
-
-
-                        //((Car) train.getCar(i)).clone();
                         trainsOnTrack.add(new TrainDrawable(mp, route, (Train) ((Attachable) train.getCar(i)).clone()));
 
                 }
@@ -56,8 +51,6 @@ public class TrainDispatcher
                 {
                     trainsOnTrack.add(new TrainDrawable(mp, route, train.getCar(i)));
                 }
-
-                //trainsOnTrack.add(new TrainDrawable(mp, route, new InterCityPlus()));
                 i++;
                 timer = 0;
             }
