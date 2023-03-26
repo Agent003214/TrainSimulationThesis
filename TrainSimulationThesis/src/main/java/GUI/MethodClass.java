@@ -13,7 +13,7 @@ import TrainEngines.Locomotive;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class MethodClass
+public final class MethodClass
 {
     private static ArrayList<CompoundTrain> train = new ArrayList<>();
     private static ArrayList<Station> stations = new ArrayList<>();
@@ -30,7 +30,7 @@ public class MethodClass
      *
      * @return
      */
-    protected ArrayList<Locomotive> getLocomotivesArrayList()
+    public ArrayList<Locomotive> getLocomotivesArrayList()
     {
         ArrayList<Locomotive> locomotiveList = new ArrayList<>();
         locomotiveList.add(new V63());
@@ -42,7 +42,7 @@ public class MethodClass
         return locomotiveList;
     }
 
-    protected ArrayList<Attachable> getAttachableArrayList()
+    public ArrayList<Attachable> getAttachableArrayList()
     {
         ArrayList<Attachable> attachableList = new ArrayList<>();
         attachableList.add(new InterCityPlus());
@@ -55,7 +55,7 @@ public class MethodClass
         return attachableList;
     }
 
-    protected CompoundTrain getLatestTrain()
+    public CompoundTrain getLatestTrain()
     {
         if (train.size() > 0)
         {
@@ -64,38 +64,38 @@ public class MethodClass
         return train.get(0);
     }
 
-    protected void addStation(int[] location, String name, int currentLoad, Cargo cargoType)
+    public void addStation(int[] location, String name, int currentLoad, Cargo cargoType)
     {
         stations.add(new Station(location, name, currentLoad, cargoType));
     }
 
-    protected ArrayList<Station> getStations()
+    public ArrayList<Station> getStations()
     {
         return stations;
     }
 
-    protected void setTrainName(String name)
+    public void setTrainName(String name)
     {
         getLatestTrain().setTrainName(name);
     }
 
-    protected String getLatestTrainName()
+    public String getLatestTrainName()
     {
         return getLatestTrain().getTrainName();
     }
 
-    protected void createTrain()
+    public void createTrain()
     {
         train.add(new CompoundTrain());
     }
 
-    protected void createTrain(CompoundTrain createdTrain)
+    public void createTrain(CompoundTrain createdTrain)
     {
         train.add(new CompoundTrain());
         train.set(train.size() - 1, createdTrain);
     }
 
-    protected Font getFont()
+    public Font getFont()
     {
         return font;
     }

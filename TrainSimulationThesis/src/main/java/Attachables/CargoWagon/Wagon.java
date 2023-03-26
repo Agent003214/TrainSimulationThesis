@@ -2,15 +2,14 @@ package Attachables.CargoWagon;
 
 import Attachables.Attachable;
 import Attachables.Cargo.*;
-import Factories.BaseTrain;
+import Factories.Train;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
-public abstract class Wagon extends BaseTrain implements Attachable,Cloneable
+public abstract class Wagon implements Attachable,Cloneable
 {
     //https://www.greenbrier-europe.com/home/
     protected BufferedImage imageFront, imageBack, imageRightSide,imageLarge;

@@ -17,7 +17,7 @@ public abstract class Tile implements Loadable
         Random rnd = new Random();
         try
         {
-            image = ImageIO.read(Objects.requireNonNull(getClass().getClassLoader().getResource(filePaths[rnd.nextInt(filePaths.length)])));
+            image = ImageIO.read(getClass().getClassLoader().getResource(filePaths[rnd.nextInt(filePaths.length)]));
         }
         catch (IOException e)
         {

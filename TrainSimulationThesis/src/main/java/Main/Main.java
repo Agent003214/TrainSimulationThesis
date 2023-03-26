@@ -18,22 +18,11 @@ public class Main
         {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         }
-        catch (UnsupportedLookAndFeelException e)
+        catch (Exception e)
         {
-            throw new RuntimeException(e);
+
         }
-        catch (ClassNotFoundException e)
-        {
-            throw new RuntimeException(e);
-        }
-        catch (InstantiationException e)
-        {
-            throw new RuntimeException(e);
-        }
-        catch (IllegalAccessException e)
-        {
-            throw new RuntimeException(e);
-        }
+
         //new TrainGUI();
         SwingUtilities.invokeLater(() -> new TrainGUI().setVisible(true));
 

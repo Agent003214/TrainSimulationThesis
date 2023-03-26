@@ -3,15 +3,14 @@ package Attachables.PassengerCar;
 import Attachables.Attachable;
 import Attachables.Cargo.Cargo;
 import Attachables.Cargo.Passenger;
-import Factories.BaseTrain;
+import Factories.Train;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
-public abstract class Car extends BaseTrain implements Attachable,Cloneable
+public abstract class Car implements Attachable,Cloneable
 {
     protected BufferedImage imageFront, imageBack, imageRightSide, imageLarge;
     protected String[] filePaths;

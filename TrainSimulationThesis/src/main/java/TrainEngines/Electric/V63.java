@@ -38,14 +38,6 @@ public class V63 extends ElectricLocomotive
         return imageRightSide;
     }
     @Override
-    public BufferedImage getLeftSidePixelArt()
-    {
-        AffineTransform tx=AffineTransform.getScaleInstance(-1,1);
-        tx.translate(-imageRightSide.getWidth(null),0);
-        AffineTransformOp op=new AffineTransformOp(tx,AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-        return op.filter(imageRightSide,null);
-    }
-    @Override
     public BufferedImage getImageLarge()
     {
         return imageLarge;
@@ -84,18 +76,6 @@ public class V63 extends ElectricLocomotive
     public int getWeight()
     {
         return 116000;
-    }
-
-    @Override
-    public int getLenght()
-    {
-        return 20;
-    }
-
-    @Override
-    public int getGaugeSize()
-    {
-        return 1435;
     }
 
     @Override

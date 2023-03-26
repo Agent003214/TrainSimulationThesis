@@ -12,7 +12,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class CompoundTrain extends BaseTrain
+public class CompoundTrain implements Train
 {
     protected ArrayList<Train> trains =new ArrayList<>();
     private final int maxlength=10;
@@ -174,21 +174,7 @@ public class CompoundTrain extends BaseTrain
         return trains.get(i);
     }
 
-    /*public void createTankFlatBed()
-    {
-        trains.add(new RLMMPS651FlatWagon(new TankContainer()));
-    }*/
 
-    /*public void createIntermodelFlatBed()
-    {
-        trains.add(new RLMMPS651FlatWagon(new IntermodelContainer()));
-    }*/
-
-    @Override
-    public int getLength()
-    {
-        return super.getLength();
-    }
 
     public String[] trainCars()
     {

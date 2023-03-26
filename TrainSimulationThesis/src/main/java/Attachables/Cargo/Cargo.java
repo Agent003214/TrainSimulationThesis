@@ -1,8 +1,8 @@
 package Attachables.Cargo;
 
-import Factories.BaseTrain;
+import Factories.Train;
 
-public abstract class Cargo extends BaseTrain
+public abstract class Cargo implements Train
 {
     public abstract String getName();
 

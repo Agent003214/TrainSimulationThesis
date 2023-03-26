@@ -71,8 +71,6 @@ public class MapPage extends JPanel
         add(trainPanel, c);
 
         //Middle map panel
-
-        JPanel mapPanel = map;
         JScrollPane scrollMap=new JScrollPane(map);
         //mapPanel.setPreferredSize(new Dimension(1920 - 600, 1040));
         scrollMap.setPreferredSize(new Dimension((int) (GUIMethods.getDim().getWidth()*0.68), (int) (GUIMethods.getDim().getHeight()-40)));
