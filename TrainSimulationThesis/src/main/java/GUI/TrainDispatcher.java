@@ -12,12 +12,10 @@ import java.util.ArrayList;
 public class TrainDispatcher
 {
     private ArrayList<TrainDrawable> trainsOnTrack = new ArrayList();
-    private ArrayList<CompoundTrain> startedTrains = new ArrayList<>();
     private MethodClass GUIMethods = new MethodClass();
 
     public void sendTrain(MapPanel mp, Routes route, CompoundTrain train)
     {
-        //startedTrains.add(train);
         double drawInterval = 1000 / 30;
         double delta = 0;
         long lastTime = System.currentTimeMillis();
@@ -26,7 +24,6 @@ public class TrainDispatcher
         int i = 0;
 
         int drawCount = 0;
-        //trainsOnTrack.add(new TrainDrawable(mp,route,train.getRightImage(i),train.getBackImage(i),train.getFrontImage(i),1,0));
         trainsOnTrack.add(new TrainDrawable(mp, route, train.getCar(i)));
         i++;
         while (i < train.getTrainLenght())

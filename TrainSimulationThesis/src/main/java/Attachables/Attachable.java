@@ -1,10 +1,11 @@
 package Attachables;
 
 import Attachables.Cargo.Cargo;
+import Factories.Train;
 
 import java.awt.image.BufferedImage;
 
-public interface Attachable
+public interface Attachable extends Train
 {
     BufferedImage getFrontPixelArt();
     BufferedImage getBackPixelArt();

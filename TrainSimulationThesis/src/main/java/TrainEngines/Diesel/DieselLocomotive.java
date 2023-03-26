@@ -1,14 +1,13 @@
 package TrainEngines.Diesel;
 
-import Factories.BaseTrain;
+import Factories.Train;
 import TrainEngines.Locomotive;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
-public abstract class DieselLocomotive extends BaseTrain implements Locomotive
+public abstract class DieselLocomotive implements Locomotive, Train
 {
     protected BufferedImage imageFront, imageBack, imageRightSide,imageLarge;
     protected String[] filePaths;

@@ -46,14 +46,6 @@ public class SD70M extends DieselLocomotive
     }
 
     @Override
-    public BufferedImage getLeftSidePixelArt()
-    {
-        AffineTransform tx=AffineTransform.getScaleInstance(-1,1);
-        tx.translate(-imageRightSide.getWidth(null),0);
-        AffineTransformOp op=new AffineTransformOp(tx,AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
-        return op.filter(imageRightSide,null);
-    }
-    @Override
     public BufferedImage getImageLarge()
     {
         return imageLarge;
@@ -94,15 +86,4 @@ public class SD70M extends DieselLocomotive
         return 181000;
     }
 
-    @Override
-    public int getLenght()
-    {
-        return 0;
-    }
-
-    @Override
-    public int getGaugeSize()
-    {
-        return 1435;
-    }
 }

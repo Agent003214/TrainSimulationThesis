@@ -114,7 +114,7 @@ public class MapPanel extends JPanel implements Runnable
     @Override
     public void run()
     {
-        double drawInterval = 1000 / FPS;
+        double drawInterval = 1000.0 / FPS;
         double delta = 0;
         long lastTime = System.currentTimeMillis();
         long currentTime;

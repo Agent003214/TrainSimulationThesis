@@ -1,8 +1,10 @@
 package TrainEngines;
 
+import Factories.Train;
+
 import java.awt.image.BufferedImage;
 
-public interface Locomotive
+public interface Locomotive extends Train
 {
     String getModelName();
 
@@ -25,14 +27,9 @@ public interface Locomotive
      * @return
      */
     int getWeight();
-
-    int getLenght();
-
-    int getGaugeSize();
     BufferedImage getFrontPixelArt();
     BufferedImage getBackPixelArt();
     BufferedImage getRightSidePixelArt();
-    BufferedImage getLeftSidePixelArt();
     BufferedImage getImageLarge();
     void load();
 }
