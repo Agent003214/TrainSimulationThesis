@@ -541,7 +541,7 @@ public class MapPage extends JPanel
         add(stopsPanel, c);
     }
 
-    private void refresh()
+    protected void refresh()
     {
         String[] refreshArray = new String[GUIMethods.getTrain().size()];
         for (int i = 0; i < GUIMethods.getTrain().size(); i++)

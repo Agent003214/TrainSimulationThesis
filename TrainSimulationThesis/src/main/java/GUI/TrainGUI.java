@@ -7,6 +7,8 @@ public class TrainGUI extends JFrame
 {
     private final CardLayout cardLayout;
     private final JPanel mainPane;
+    private ViewTrainsPage viewTrainsPage=new ViewTrainsPage();
+    private MapPage trainMap=new MapPage();
 
     public TrainGUI()
     {
@@ -30,10 +32,10 @@ public class TrainGUI extends JFrame
 
         }
 
-        MapPage trainMap=new MapPage();
+
 
         mainPane.add("createTrainPage", new CreateTrainPage());
-        mainPane.add("viewTrainPage", new ViewTrainsPage());
+        mainPane.add("viewTrainPage", viewTrainsPage);
         mainPane.add("mapPage", trainMap);
 
 
@@ -42,9 +44,9 @@ public class TrainGUI extends JFrame
         JButton button1 = new JButton("Create train");
         button1.addActionListener(e -> cardLayout.show(mainPane, "createTrainPage"));
         JButton button2 = new JButton("View trains");
-        button2.addActionListener(e -> cardLayout.show(mainPane, "viewTrainPage"));
+        button2.addActionListener(e -> showViewTrainPage());
         JButton button3 = new JButton("Map");
-        button3.addActionListener(e -> cardLayout.show(mainPane, "mapPage"));
+        button3.addActionListener(e -> showMapPage());
         JButton button4 = new JButton("Quit");
         button4.addActionListener(e -> System.exit(0));
 
@@ -58,5 +60,15 @@ public class TrainGUI extends JFrame
 
         setUndecorated(true);
         setVisible(true);
+    }
+
+    private void showViewTrainPage() {
+        cardLayout.show(mainPane, "viewTrainPage");
+        viewTrainsPage.trainList();
+    }
+
+    private void showMapPage() {
+        cardLayout.show(mainPane, "mapPage");
+        trainMap.refresh();
     }
 }
