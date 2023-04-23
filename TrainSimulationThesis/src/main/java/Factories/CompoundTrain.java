@@ -266,6 +266,16 @@ public class CompoundTrain implements Train
         return false;
     }
 
+    public String removeLast()
+    {
+        if (trains.size()>0)
+        {
+            trains.remove(trains.size()-1);
+            return "";
+        }
+        return "The train is already empty!";
+    }
+
     @Override
     public String toString()
     {

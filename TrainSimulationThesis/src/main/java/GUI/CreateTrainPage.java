@@ -314,9 +314,13 @@ public class CreateTrainPage extends JPanel
         JPanel imageDrawPanel = drawBottomImage;
         imageDrawPanel.setPreferredSize(new Dimension(5000, ((GUIMethods.getDim().height) / 3) - 20));
         drawSP = new JScrollPane(imageDrawPanel);
-        drawSP.setPreferredSize(new Dimension(GUIMethods.getDim().width, ((GUIMethods.getDim().height) / 3) - 20));
+        drawSP.setPreferredSize(new Dimension(GUIMethods.getDim().width, ((GUIMethods.getDim().height) / 3) - 70));
         drawSP.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         drawSP.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+        JButton removeButton=new JButton("Remove last");
+        removeButton.addActionListener(e -> getRemoveLast());
+        removeButton.setPreferredSize(new Dimension(125,30));
+        createTrainPageBottomPanel.add(removeButton);
         createTrainPageBottomPanel.add(drawSP);
 
         c = new GridBagConstraints();
@@ -325,6 +329,17 @@ public class CreateTrainPage extends JPanel
         c.gridheight = 1;
         c.gridwidth = 1;
         add(createTrainPageBottomPanel, c);
+
+    }
+
+    private void getRemoveLast() {
+        errorLabel.setText(tempTrain.get(0).removeLast());
+        if (errorLabel.getText().length()==0)
+        {
+            drawBottomImage.removeTrainImage();
+            printCurrentTrain();
+            drawSP.repaint();
+        }
 
     }
 

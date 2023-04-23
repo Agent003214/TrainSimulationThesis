@@ -22,6 +22,11 @@ public class CTPImageDraw extends JPanel
         imgArray.add(img);
     }
 
+    protected void removeTrainImage()
+    {
+        imgArray.remove(imgArray.size()-1);
+    }
+
     protected void resetImages()
     {
         imgArray=new ArrayList<>();
@@ -32,14 +37,10 @@ public class CTPImageDraw extends JPanel
         super.paintComponent(g);
         Graphics2D g2D = (Graphics2D) g;
 
-        g2D.setColor(Color.GREEN);
         for (int i = 0; i < imgArray.size(); i++)
         {
             g2D.drawImage(imgArray.get(i),(int) ((i)*(imgWidth*scale)+50), yCoord, (int) (imgWidth*scale), (int)(imgHeight*scale),null);
         }
-
-
-
 
         g2D.dispose();
     }
