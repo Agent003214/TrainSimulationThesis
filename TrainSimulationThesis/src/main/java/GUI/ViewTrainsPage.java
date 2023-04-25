@@ -65,6 +65,7 @@ public class ViewTrainsPage extends JPanel
         //middleSeparator.setBackground(Color.BLUE);
 
         JButton refreshButton=new JButton("Refresh");
+        refreshButton.setVisible(false);
         refreshButton.addActionListener(e -> trainList());
         middleSeparator.add(refreshButton);
         topPanel.add(middleSeparator);

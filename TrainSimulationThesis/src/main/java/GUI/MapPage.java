@@ -12,6 +12,7 @@ import Tiles.Scenery.*;
 import Tiles.Tile;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -41,10 +42,13 @@ public class MapPage extends JPanel
         JPanel trainPanelTop = new JPanel();
         trainPanelTop.setLayout(new BorderLayout());
 
+        Border border=BorderFactory.createMatteBorder(0,0,1,0,Color.BLACK);
         trainListInfoPanel = new JList<>(new DefaultListModel<>());
         trainListInfoPanel.setFont(GUIMethods.getFont());
         trainPanelTop.add(trainListInfoPanel, BorderLayout.CENTER);
+        trainPanelTop.setBorder(border);
         JButton refreshButton = new JButton("Refresh");
+        refreshButton.setVisible(false);
         refreshButton.addActionListener(e -> refresh());
         trainPanelTop.add(refreshButton, BorderLayout.SOUTH);
         trainPanel.add(trainPanelTop);
@@ -528,7 +532,7 @@ public class MapPage extends JPanel
             }
             catch (IndexOutOfBoundsException exe)
             {
-                JOptionPane.showMessageDialog(this,"Route");
+                JOptionPane.showMessageDialog(this,"Please select route");
             }
         });
 
