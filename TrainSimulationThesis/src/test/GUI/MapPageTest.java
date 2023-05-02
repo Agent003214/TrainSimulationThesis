@@ -1,7 +1,6 @@
 package GUI;
 
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import javax.swing.*;
@@ -21,7 +20,7 @@ public class MapPageTest
     {
     }
 
-    @BeforeClass
+    @BeforeTest
     public void GUISetup()
     {
         try
