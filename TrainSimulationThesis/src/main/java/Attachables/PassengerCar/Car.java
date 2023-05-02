@@ -98,6 +98,11 @@ public abstract class Car implements Attachable,Cloneable
         return cargo;
     }
 
+    public Cargo getCargo()
+    {
+        return cargo;
+    }
+
     @Override
     public Object clone()
     {
