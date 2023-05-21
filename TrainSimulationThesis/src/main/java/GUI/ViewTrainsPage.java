@@ -1,5 +1,7 @@
 package GUI;
 
+import FileIO.FileIO;
+
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
@@ -64,10 +66,14 @@ public class ViewTrainsPage extends JPanel
         JPanel middleSeparator=new JPanel();
         //middleSeparator.setBackground(Color.BLUE);
 
-        JButton refreshButton=new JButton("Refresh");
-        refreshButton.setVisible(false);
-        refreshButton.addActionListener(e -> trainList());
-        middleSeparator.add(refreshButton);
+        JButton saveButton=new JButton("Save train");
+        saveButton.addActionListener(e -> saveTrainToFile());
+        middleSeparator.add(saveButton);
+        topPanel.add(middleSeparator);
+
+        JButton loadButton=new JButton("Load train");
+        loadButton.addActionListener(e -> loadTrain());
+        middleSeparator.add(loadButton);
         topPanel.add(middleSeparator);
 
         //Top right panel
@@ -106,6 +112,24 @@ public class ViewTrainsPage extends JPanel
         trainStatsInfoPanel.append("Total cargo capacity: "+GUIMethods.getTrain().get(index).getCargoCapacity()+"\n");
     }
 
+    private void saveTrainToFile()
+    {
+        try
+        {
+            new FileIO().save(GUIMethods.getTrain().get(trainListInfoPanel.getSelectedIndex()), this);
+        }
+        catch (NullPointerException e)
+        {
+
+        }
+    }
+
+    private void loadTrain()
+    {
+        new FileIO().load(this);
+        trainList();
+    }
+
     /**
      * Displays the cars for the selected train.
      * @param index The selected index for train cars to display
@@ -124,6 +148,8 @@ public class ViewTrainsPage extends JPanel
     {
         GUIMethods.getTrain().remove(trainListInfoPanel.getSelectedIndex());
         trainList();
+        trainStatsInfoPanel.setText("");
+        trainElementsInfoPanel.setText("");
     }
 
     /**
