@@ -73,11 +73,24 @@ public class FileIO
             fileChooser.setApproveButtonText("Save");
             fileChooser.setSelectedFile(new File(System.getProperty("user.dir")+"/"+compoundTrain.getTrainName()+".xml"));
             fileChooser.setFileFilter(xmlFilter);
+            fileChooser.addChoosableFileFilter(xmlFilter);
             int helperint=fileChooser.showOpenDialog(panel);
             if (helperint==JFileChooser.APPROVE_OPTION)
             {
-
-                StreamResult streamResult=new StreamResult(fileChooser.getSelectedFile());
+                StreamResult streamResult;
+                String helperString= String.valueOf(fileChooser.getSelectedFile());
+                String helperXml=helperString.substring(helperString.length()-4);
+                System.out.println(helperString);
+                if (!helperXml.equals(".xml"))
+                {
+                    streamResult=new StreamResult(new File(helperString+".xml"));
+                    System.out.println("1");
+                }
+                else
+                {
+                    streamResult=new StreamResult(new File(helperString));
+                    System.out.println("2");
+                }
                 transformer.transform(domSource,streamResult);
             }
 
