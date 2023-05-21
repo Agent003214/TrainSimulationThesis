@@ -84,12 +84,10 @@ public class FileIO
                 if (!helperXml.equals(".xml"))
                 {
                     streamResult=new StreamResult(new File(helperString+".xml"));
-                    System.out.println("1");
                 }
                 else
                 {
                     streamResult=new StreamResult(new File(helperString));
-                    System.out.println("2");
                 }
                 transformer.transform(domSource,streamResult);
             }
