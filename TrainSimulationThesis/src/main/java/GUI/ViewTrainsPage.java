@@ -105,11 +105,18 @@ public class ViewTrainsPage extends JPanel
 
     private void trainInfoTop(int index)
     {
-        trainStatsInfoPanel.setText("");
-        trainStatsInfoPanel.append("Combined locomotive power: "+GUIMethods.getTrain().get(index).getCombinedPower()+"\n");
-        trainStatsInfoPanel.append("Number of cars: "+GUIMethods.getTrain().get(index).getNumbersOfCars()+"\n");
-        trainStatsInfoPanel.append("Total passenger capacity: "+GUIMethods.getTrain().get(index).getPassengerCapacity()+"\n");
-        trainStatsInfoPanel.append("Total cargo capacity: "+GUIMethods.getTrain().get(index).getCargoCapacity()+"\n");
+        try
+        {
+            trainStatsInfoPanel.setText("");
+            trainStatsInfoPanel.append("Combined locomotive power: " + GUIMethods.getTrain().get(index).getCombinedPower() + "\n");
+            trainStatsInfoPanel.append("Number of cars: " + GUIMethods.getTrain().get(index).getNumbersOfCars() + "\n");
+            trainStatsInfoPanel.append("Total passenger capacity: " + GUIMethods.getTrain().get(index).getPassengerCapacity() + "\n");
+            trainStatsInfoPanel.append("Total cargo capacity: " + GUIMethods.getTrain().get(index).getCargoCapacity() + "\n");
+        }
+        catch (IndexOutOfBoundsException ignored)
+        {
+
+        }
     }
 
     private void saveTrainToFile()
@@ -136,20 +143,33 @@ public class ViewTrainsPage extends JPanel
      */
     private void trainInfoBottom(int index)
     {
-        trainElementsInfoPanel.setText("");
-        String[] printString=GUIMethods.getTrain().get(index).trainCars();
-        for (int i = 0; i < printString.length; i++)
+        try
         {
-            trainElementsInfoPanel.append(printString[i]+"\n");
+            trainElementsInfoPanel.setText("");
+            String[] printString = GUIMethods.getTrain().get(index).trainCars();
+            for (int i = 0; i < printString.length; i++) {
+                trainElementsInfoPanel.append(printString[i] + "\n");
+            }
+        }
+        catch (IndexOutOfBoundsException ignored)
+        {
+
         }
     }
 
     private void deleteTrain()
     {
-        GUIMethods.getTrain().remove(trainListInfoPanel.getSelectedIndex());
-        trainList();
-        trainStatsInfoPanel.setText("");
-        trainElementsInfoPanel.setText("");
+        try
+        {
+            GUIMethods.getTrain().remove(trainListInfoPanel.getSelectedIndex());
+            trainList();
+            trainStatsInfoPanel.setText("");
+            trainElementsInfoPanel.setText("");
+        }
+        catch (IndexOutOfBoundsException ignored)
+        {
+
+        }
     }
 
     /**
