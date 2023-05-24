@@ -18,6 +18,7 @@ public class ViewTrainsPage extends JPanel
     private static JTextArea trainStatsInfoPanel;
     private JTextArea trainElementsInfoPanel;
     protected  String[] refreshArray;
+    private JLabel errorLabel;
     public ViewTrainsPage()
     {
         //setBackground(Color.YELLOW);
@@ -64,17 +65,38 @@ public class ViewTrainsPage extends JPanel
 
         //Top middle panel
         JPanel middleSeparator=new JPanel();
+        middleSeparator.setLayout(gridBagLayout);
+        c=new GridBagConstraints();
         //middleSeparator.setBackground(Color.BLUE);
 
         JButton saveButton=new JButton("Save train");
         saveButton.addActionListener(e -> saveTrainToFile());
-        middleSeparator.add(saveButton);
+        c.gridx=0;
+        c.gridy=0;
+        c.weighty=0;
+        c.fill=GridBagConstraints.NONE;
+        c.anchor=GridBagConstraints.NORTH;
+        middleSeparator.add(saveButton,c);
         topPanel.add(middleSeparator);
 
         JButton loadButton=new JButton("Load train");
         loadButton.addActionListener(e -> loadTrain());
+        c.gridx=1;
+        c.gridy=0;
+        c.weighty=10;
+        c.fill=GridBagConstraints.NONE;
+        c.anchor=GridBagConstraints.NORTH;
         middleSeparator.add(loadButton);
         topPanel.add(middleSeparator);
+
+        errorLabel=new JLabel();
+        errorLabel.setForeground(Color.RED);
+        c.gridx=0;
+        c.gridy=1;
+        c.gridwidth=GridBagConstraints.REMAINDER;
+        //c.fill=GridBagConstraints.BOTH;
+        c.anchor=GridBagConstraints.NORTH;
+        middleSeparator.add(errorLabel,c);
 
         //Top right panel
         JPanel trainInfoPanel=new JPanel(new GridLayout(2,1));
@@ -84,6 +106,8 @@ public class ViewTrainsPage extends JPanel
         trainStatsInfoPanel.setFont(GUIMethods.getFont());
         trainElementsInfoPanel=new JTextArea();
         trainElementsInfoPanel.setFont(GUIMethods.getFont());
+        trainStatsInfoPanel.setEditable(false);
+        trainElementsInfoPanel.setEditable(false);
         trainInfoPanel.add(trainStatsInfoPanel);
         trainInfoPanel.add(trainElementsInfoPanel);
         //trainInfoPanel.setBackground(Color.CYAN);
@@ -103,10 +127,15 @@ public class ViewTrainsPage extends JPanel
         add(createTrainPageBottomPanel, c);
     }
 
+    /**
+     * Displays information for the selected train.
+     * @param index The selected index for train to display
+     */
     private void trainInfoTop(int index)
     {
         try
         {
+            errorLabel.setText("");
             trainStatsInfoPanel.setText("");
             trainStatsInfoPanel.append("Combined locomotive power: " + GUIMethods.getTrain().get(index).getCombinedPower() + "\n");
             trainStatsInfoPanel.append("Number of cars: " + GUIMethods.getTrain().get(index).getNumbersOfCars() + "\n");
@@ -119,15 +148,18 @@ public class ViewTrainsPage extends JPanel
         }
     }
 
+    /**
+     * The selected train to be saved.
+     */
     private void saveTrainToFile()
     {
         try
         {
             new FileIO().save(GUIMethods.getTrain().get(trainListInfoPanel.getSelectedIndex()), this);
         }
-        catch (NullPointerException e)
+        catch (IndexOutOfBoundsException e)
         {
-
+            errorLabel.setText("Please select a train first!");
         }
     }
 
@@ -145,6 +177,7 @@ public class ViewTrainsPage extends JPanel
     {
         try
         {
+            errorLabel.setText("");
             trainElementsInfoPanel.setText("");
             String[] printString = GUIMethods.getTrain().get(index).trainCars();
             for (int i = 0; i < printString.length; i++) {
@@ -165,10 +198,11 @@ public class ViewTrainsPage extends JPanel
             trainList();
             trainStatsInfoPanel.setText("");
             trainElementsInfoPanel.setText("");
+            errorLabel.setText("");
         }
-        catch (IndexOutOfBoundsException ignored)
+        catch (IndexOutOfBoundsException e)
         {
-
+            errorLabel.setText("Please select a train first!");
         }
     }
 

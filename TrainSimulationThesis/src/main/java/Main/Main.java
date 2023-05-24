@@ -12,8 +12,6 @@ public class Main
 {
     public static void main(String[] args)
     {
-        //Look and feel
-        //https://www.codegrepper.com/code-examples/java/java+swing+windows+10+look+and+feel
        try
         {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

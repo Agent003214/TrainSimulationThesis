@@ -12,8 +12,6 @@ public class TrainGUI extends JFrame
 
     public TrainGUI()
     {
-        //https://techhelpnotes.com/swing-java-gui-switching-between-panels-on-button-click-2/
-
         setTitle("Train");
         setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);

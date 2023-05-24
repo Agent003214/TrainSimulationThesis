@@ -35,6 +35,12 @@ public class MapPanel extends JPanel implements Runnable
         setPreferredSize(new Dimension(mapTileColumn*scaledTileSize,mapTileRow*scaledTileSize));
     }
 
+    /**
+     * Send the selected train to the map
+     * @param route The route for the train to follow
+     * @param i The index for the selected train
+     * @param thread
+     */
     protected void send(Routes route,int i,Thread thread)
     {
         //try
@@ -275,6 +281,12 @@ public class MapPanel extends JPanel implements Runnable
         g2D.dispose();
     }
 
+    /**
+     * Draws a rectangle around the station on the map
+     * @param start The starting station
+     * @param end The end station
+     * @param g2D
+     */
     private void drawGlowStations(Station start, Station end, Graphics2D g2D)
     {
         g2D.setColor(Color.RED);

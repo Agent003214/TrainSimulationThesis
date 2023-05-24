@@ -24,6 +24,12 @@ public class TrainDrawable
     private Routes route;
     private Train trainPiece;
 
+    /**
+     *
+     * @param mp The map panel, which the images will appear
+     * @param route The route the train piece will follow
+     * @param trainPiece The part of the train that you want to put on the map
+     */
     public TrainDrawable(MapPanel mp, Routes route, Train trainPiece)
     {
         this.mp = mp;

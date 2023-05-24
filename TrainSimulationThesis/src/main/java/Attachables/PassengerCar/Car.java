@@ -33,6 +33,10 @@ public abstract class Car implements Attachable,Cloneable
         }
     }
 
+    /**
+     * The error message shown when an image is not found
+     * @return
+     */
     protected abstract String errorMessage();
 
     @Override
@@ -43,6 +47,7 @@ public abstract class Car implements Attachable,Cloneable
             this.cargo = cargo;
         }
     }
+
 
     @Override
     public int loadCargo(int num,Cargo type)
@@ -67,6 +72,7 @@ public abstract class Car implements Attachable,Cloneable
         return -1;
     }
 
+
     @Override
     public int unloadCargo(int num)
     {
@@ -83,6 +89,7 @@ public abstract class Car implements Attachable,Cloneable
             return helper;
         }
     }
+
 
     @Override
     public int getLoad()

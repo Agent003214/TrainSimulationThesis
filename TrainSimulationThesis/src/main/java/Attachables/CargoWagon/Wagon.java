@@ -32,6 +32,10 @@ public abstract class Wagon implements Attachable,Cloneable
         }
     }
 
+    /**
+     * The error message shown when an image is not found
+     * @return
+     */
     protected abstract String errorMessage();
 
     @Override

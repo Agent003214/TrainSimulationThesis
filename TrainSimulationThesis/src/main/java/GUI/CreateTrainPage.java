@@ -222,14 +222,11 @@ public class CreateTrainPage extends JPanel
         JPanel attachableFilterButtonPanel = new JPanel();
         attachableFilterButtonPanel.setLayout(new GridLayout(2, 2));
         JButton carFilterButton = new JButton("Passener cars");
-        //JButton fluidTankFilterButton = new JButton("Fluid tank");
-        //JButton intermodelContainerFilterButton = new JButton("Container");
         JButton looseBulkFilterButton = new JButton("Box wagons");
         JButton attachableRemoveFilterButton = new JButton("All");
 
         errorLabel = new JLabel();
         errorLabel.setForeground(Color.RED);
-        //errorLabel.setText("Error message");
         c = new GridBagConstraints();
         c.gridx = 0;
         c.gridy = 2;
@@ -238,8 +235,6 @@ public class CreateTrainPage extends JPanel
         modifierMiddlePanel.add(errorLabel,c);
 
         attachableFilterButtonPanel.add(carFilterButton);
-        //attachableFilterButtonPanel.add(fluidTankFilterButton);
-        //attachableFilterButtonPanel.add(intermodelContainerFilterButton);
         attachableFilterButtonPanel.add(looseBulkFilterButton);
         attachableFilterButtonPanel.add(attachableRemoveFilterButton);
 
@@ -261,8 +256,6 @@ public class CreateTrainPage extends JPanel
         locomotiveRemoveFilterButton.addActionListener(e -> setAllLocomotiveEnum());
 
         carFilterButton.addActionListener(e -> setCarAttachableEnum());
-        //fluidTankFilterButton.addActionListener(e -> setTankAttachableEnum());
-        //intermodelContainerFilterButton.addActionListener(e -> setContainerAttachableEnum());
         looseBulkFilterButton.addActionListener(e -> setBoxAttachableEnum());
         attachableRemoveFilterButton.addActionListener(e -> setAllAttachableEnum());
 
@@ -398,53 +391,14 @@ public class CreateTrainPage extends JPanel
         }
         catch (NullPointerException e)
         {
-            errorLabel.setText("Please create the train first");
+            errorLabel.setText("Please create the train first!");
         }
         if (errorLabel.getText().length() == 0)
         {
             drawBottomImage.addTrainImage(tempTrain.get(0).drawImage(tempTrain.get(0).getTrainLenght() - 1));
         }
-
-        //GUIMethods.getLocomotivesArrayList().get(locomotiveList.getSelectedIndex()).getImageLarge();
-        /*try
-        {
-            errorLabel.setText(tempTrain.get(0).addComponent((Train) GUIMethods.getLocomotivesArrayList().get(locomotiveList.getSelectedIndex())));
-        }
-        catch (IndexOutOfBoundsException e)
-        {
-            errorLabel.setText("Please create the train first");
-        }
-        if (errorLabel.getText().length() == 0)
-        {
-            drawBottomImage.addTrainImage(tempTrain.get(0).drawImage(tempTrain.get(0).getTrainLenght() - 1));
-        }*/
-
         drawSP.repaint();
-        /*try
-        {
-            for (int i = 0; i < GUIMethods.getLocomotivesArrayList().size(); i++)
-            {
-                if (locomotiveList.getSelectedValue().equals(GUIMethods.getLocomotivesArrayList().get(i).getModelName()))
-                {
-                    if (GUIMethods.getLocomotivesArrayList().get(i) instanceof Locomotive)
-                    {
-                        //GUIMethods.train.get(GUIMethods.train.size()-1).add((Train) GUIMethods.getLocomotivesArrayList().get(i));
-                        //GUIMethods.getLatestTrain().add((Train) GUIMethods.getLocomotivesArrayList().get(i));
-                        tempTrain.get(0).add((Train) GUIMethods.getLocomotivesArrayList().get(i));
-                        drawBottomImage.addTrainImage(tempTrain.size()-1,tempTrain.get(0).drawImage(tempTrain.get(0).getTrainLenght()-1));
-                        drawSP.repaint();
-                    }
-                }
-            }
-            showAttachableButton.setEnabled(true);
-        }
-        catch (NullPointerException e)
-        {
-
-        }*/
         printCurrentTrain();
-        /*GUIMethods.printCurrentTrain();
-        GUIMethods.printTest();*/
     }
 
     private void addAttachable()
@@ -467,31 +421,7 @@ public class CreateTrainPage extends JPanel
         {
 
         }
-
-
-        /*errorLabel.setText(tempTrain.get(tempTrain.size() - 1).addComponent((Train) GUIMethods.getAttachableArrayList().get(attachableList.getSelectedIndex())));
-        if (errorLabel.getText().length() == 0)
-        {
-            drawBottomImage.addTrainImage(tempTrain.get(0).drawImage(tempTrain.get(0).getTrainLenght() - 1));
-        }*/
-
         drawSP.repaint();
-        /*try
-        {
-            for (int i = 0; i < GUIMethods.getAttachableArrayList().size(); i++)
-            {
-                if (attachableList.getSelectedValue().equals(GUIMethods.getAttachableArrayList().get(i).getName()))
-                {
-                    //GUIMethods.train.get(GUIMethods.train.size()-1).add((Train) getAttachableArrayList().get(i));
-                    //GUIMethods.getLatestTrain().add((Train) getAttachableArrayList().get(i));
-                    tempTrain.get(tempTrain.size()-1).add((Train) GUIMethods.getAttachableArrayList().get(i));
-                }
-            }
-        }
-        catch (NullPointerException e)
-        {
-
-        }*/
         printCurrentTrain();
     }
 
@@ -615,18 +545,6 @@ public class CreateTrainPage extends JPanel
         attachableListData();
     }
 
-    private void setTankAttachableEnum()
-    {
-        attachableFilterVar = attachableFilter.TANK;
-        attachableListData();
-    }
-
-    private void setContainerAttachableEnum()
-    {
-        attachableFilterVar = attachableFilter.CONTAINER;
-        attachableListData();
-    }
-
     private void setAllAttachableEnum()
     {
         attachableFilterVar = attachableFilter.ALL;
@@ -731,7 +649,5 @@ public class CreateTrainPage extends JPanel
                 }
             }
         }
-
-        //locoAttachableInfoPanel.append("Max speed: " + GUIMethods.getAttachableArrayList().get(i).getMaxSpeed() + " KP/H");
     }
 }

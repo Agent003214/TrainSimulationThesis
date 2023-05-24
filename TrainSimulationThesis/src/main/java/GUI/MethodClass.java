@@ -26,9 +26,8 @@ public final class MethodClass
     }
 
     /**
-     * All available locomotives.
      *
-     * @return
+     * @return All available locomotives.
      */
     public ArrayList<Locomotive> getLocomotivesArrayList()
     {
@@ -42,6 +41,10 @@ public final class MethodClass
         return locomotiveList;
     }
 
+    /**
+     *
+     * @return All available attachables.
+     */
     public ArrayList<Attachable> getAttachableArrayList()
     {
         ArrayList<Attachable> attachableList = new ArrayList<>();
@@ -55,15 +58,13 @@ public final class MethodClass
         return attachableList;
     }
 
-    public CompoundTrain getLatestTrain()
-    {
-        if (train.size() > 0)
-        {
-            return train.get(train.size() - 1);
-        }
-        return train.get(0);
-    }
-
+    /**
+     * Creates and stores a new station.
+     * @param location The X,Y coordinates
+     * @param name The name of the new station for display
+     * @param currentLoad The initial load value
+     * @param cargoType The cargo type the station will load and unload
+     */
     public void addStation(int[] location, String name, int currentLoad, Cargo cargoType)
     {
         stations.add(new Station(location, name, currentLoad, cargoType));
@@ -72,16 +73,6 @@ public final class MethodClass
     public ArrayList<Station> getStations()
     {
         return stations;
-    }
-
-    public void setTrainName(String name)
-    {
-        getLatestTrain().setTrainName(name);
-    }
-
-    public String getLatestTrainName()
-    {
-        return getLatestTrain().getTrainName();
     }
 
     public void createTrain()
@@ -100,6 +91,10 @@ public final class MethodClass
         return font;
     }
 
+    /**
+     * Screen data for the used monitor
+     * @return
+     */
     public Dimension getDim()
     {
         return dim;
